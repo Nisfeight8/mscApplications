@@ -1,0 +1,122 @@
+{% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="{% static '/img/flavicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/app.css' %}?version=81" >
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+  <body>
+    {% load i18n %}
+    {% load flags %}
+    <div class="header navbar-expand-lg navbar-dark bg-info text-white"	>
+      <div class="container">
+      <div class="navbar-nav flag"> {% languages %}</div>
+    </div>
+    </div>
+
+  {% if user.is_authenticated %}
+    {% for group in user.groups.all %}
+      {% if group.name == 'applicant'  %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info text-white "	>
+          <a href="{% url 'applicant:applicant_home' %}" class="navbar-brand" >
+            <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
+          </a>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a  href="{% url 'applicant:calls' %}"
+              class="nav-link"><i class="far fa-calendar-alt"></i>{% trans "Open Calls" %} </a></li>
+            <li class="nav-item"><a
+              href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a></li>
+            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+              class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %}</a></li>
+          </ul>
+        </nav>
+        {% elif group.name == 'evaluator'  %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info text-white"	>
+          <a class="navbar-brand"  href="{% url 'evaluator:evaluator_home' %}">
+            <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
+          </a>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a  href="{% url 'evaluator:call_applications' %}"
+              class="nav-link"><i class="fas fa-clipboard-list"></i> {% trans "Applications" %} </a></li>
+            <li class="nav-item"><a
+              href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a></li>
+            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+              class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %} </a></li>
+          </ul>
+        </nav>
+        {% endif %}
+        {% empty %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info text-white"	>
+          <a class="navbar-brand" >
+            <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
+          </a>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+              class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %} </a></li>
+          </ul>
+        </nav>
+       {% endfor %}
+       {% else %}
+       <nav class="navbar navbar-expand-lg navbar-dark bg-info text-white"	>
+        <a class="navbar-brand" >
+          <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
+        </a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="{% url 'user_account:login' %}"
+            class="btn btn-outline-light ">{% trans "Login" %}</a></li>
+
+          <li class="nav-item"><a href="{% url 'user_account:signup' %}"
+            class="btn btn-outline-light ">{% trans "Signup" %}</a></li>
+        </ul>
+      </nav>
+      {% endif %}
+      {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {% if message.tags == 'success' %}
+    <i class="fa fa-check-circle"></i> {{ message }}
+    {% else %}
+    <i class="fa fa-exclamation-circle"></i> {{ message }}
+    {% endif %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+    <div class="container flex-grow-1">
+      <br>
+      <br>
+{% block content %}
+{% endblock %}
+
+</div>
+<br>
+<br>
+<footer class="page-footer font-small text-info pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center ">
+  {% trans "Harokopio University" %} / 70,{% trans "El. Venizelou" %} / {% trans "Kallithea" %} 17671 /{% trans "Athens" %} - {% trans "GREECE" %}
+              {% trans "Tel" %}. +30 2109549100 / {% trans "Fax" %}. +30 2109577050
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© {% now 'Y' %} Copyright:
+    <a href="https://www.hua.gr/index.php/en/"> HUA</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>

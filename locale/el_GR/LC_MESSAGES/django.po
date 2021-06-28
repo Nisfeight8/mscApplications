@@ -1,0 +1,2020 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-22 20:04+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: applicant/templates/applicant_home.html:4
+#: evaluator/templates/evaluator_home.html:4
+msgid "Home"
+msgstr "Αρχική"
+
+#: applicant/templates/applicant_home.html:9
+#: evaluator/templates/evaluator_home.html:9
+msgid "Welcome"
+msgstr "Καλώς Ήρθατε"
+
+#: applicant/templates/applicant_home.html:12
+#: evaluator/templates/evaluator_home.html:12
+msgid "Instructions"
+msgstr "Οδηγίες"
+
+#: applicant/templates/applicant_home.html:15
+msgid "1. Click Profile to see your profile and then"
+msgstr "1. Πατήστε Προφίλ για να δείτε το προφίλ σας και μετά"
+
+#: applicant/templates/applicant_home.html:15
+#: applicant/templates/applicant_profile.html:539
+#: applicant/templates/applicant_profile_edit.html:5
+#: evaluator/templates/evaluator_profile.html:27
+#: evaluator/templates/evaluator_profile_edit.html:4
+#: evaluator/templates/evaluator_profile_edit.html:10
+msgid "Edit Profile"
+msgstr "Ενημέρωση Προφίλ"
+
+#: applicant/templates/applicant_home.html:15
+msgid "to add degrees and references ."
+msgstr "για να εισάγετε πτυχία και συστατικές επιστολές"
+
+#: applicant/templates/applicant_home.html:16
+#: evaluator/templates/evaluator_home.html:15
+msgid "Click"
+msgstr "Πατήστε"
+
+#: applicant/templates/applicant_home.html:16
+#: applicant/templates/call_list.html:9 templates/base.html:37
+msgid "Open Calls"
+msgstr "Ανοιχτές Προσκλήσεις"
+
+#: applicant/templates/applicant_home.html:16
+msgid "to see available calls"
+msgstr "για να δείτε τις διαθέσιμες προσκλήσεις"
+
+#: applicant/templates/applicant_home.html:17
+msgid "Click View Call to see informations about the call"
+msgstr "Πατήστε Προβολή Πρόσκλησης"
+
+#: applicant/templates/applicant_home.html:18
+msgid "Click New Application to make a new application for the detailed call"
+msgstr "Πατήστε Νέα Αίτηση για να κάνετε αίτηση στην αναφερόμενη πρόσκληση"
+
+#: applicant/templates/applicant_profile.html:4
+#: applicant/templates/applicant_profile_edit.html:15
+#: evaluator/templates/evaluator_profile.html:4 templates/base.html:39
+#: templates/base.html:53
+msgid "Profile"
+msgstr "Προφίλ"
+
+#: applicant/templates/applicant_profile.html:31
+msgid "About"
+msgstr "Εσείς"
+
+#: applicant/templates/applicant_profile.html:43
+#: applicant/templates/applicant_profile.html:102
+#: applicant/templates/applicant_profile_edit.html:27
+#: evaluator/templates/applicant_detail.html:100
+msgid "Diplomas"
+msgstr "Διπλώματα"
+
+#: applicant/templates/applicant_profile.html:55
+#: applicant/templates/applicant_profile.html:110
+#: applicant/templates/applicant_profile_edit.html:29
+#: evaluator/templates/applicant_detail.html:112
+msgid "PHDs"
+msgstr "Διδακτορικά"
+
+#: applicant/templates/applicant_profile.html:67
+#: applicant/templates/applicant_profile.html:106
+#: applicant/templates/applicant_profile_edit.html:31
+#: evaluator/templates/applicant_detail.html:124
+msgid "Job Experiences"
+msgstr "Εργασιακή Εμπειρία"
+
+#: applicant/templates/applicant_profile.html:79
+#: applicant/templates/applicant_profile.html:114
+#: applicant/templates/applicant_profile_edit.html:33
+#: evaluator/templates/applicant_detail.html:136
+msgid "References"
+msgstr "Συστατικές Επιστολές"
+
+#: applicant/templates/applicant_profile.html:91
+#: applicant/templates/applicant_profile.html:118
+#: evaluator/templates/call_applications.html:4
+#: evaluator/templates/call_applications.html:26
+#: evaluator/templates/evaluator_home.html:15 templates/base.html:51
+msgid "Applications"
+msgstr "Αιτήσεις"
+
+#: applicant/templates/applicant_profile.html:135
+#: applicant/templates/applicant_profile.html:329 applicant_degrees/forms.py:34
+#: applicant_degrees/models.py:93 evaluator/templates/applicant_detail.html:272
+#: evaluator/templates/evaluator_profile.html:36 msc/forms.py:14
+#: user_account/forms.py:50
+msgid "First Name"
+msgstr "Όνομα"
+
+#: applicant/templates/applicant_profile.html:143
+#: applicant/templates/applicant_profile.html:330 applicant_degrees/forms.py:35
+#: applicant_degrees/models.py:94 evaluator/templates/applicant_detail.html:273
+#: evaluator/templates/evaluator_profile.html:43 msc/forms.py:15
+#: user_account/forms.py:51
+msgid "Last Name"
+msgstr "Επώνυμο"
+
+#: applicant/templates/applicant_profile.html:151
+#: applicant/templates/applicant_profile.html:331
+#: applicant/templates/call_detail.html:123
+#: applicant/templates/call_detail.html:183
+#: applicant/templates/call_detail.html:210 applicant_degrees/forms.py:37
+#: applicant_degrees/models.py:19 applicant_degrees/models.py:95
+#: evaluator/templates/applicant_detail.html:30
+#: evaluator/templates/applicant_detail.html:274
+#: evaluator/templates/call_applications.html:119
+#: evaluator/templates/call_applications.html:179
+#: evaluator/templates/evaluator_profile.html:50 institution/models.py:16
+#: institution/models.py:25 msc/forms.py:16 msc/models.py:22 msc/models.py:40
+#: user_account/forms.py:53
+msgid "Telephone"
+msgstr "Τηλέφωνο"
+
+#: applicant/templates/applicant_profile.html:159 applicant_degrees/forms.py:48
+#: applicant_degrees/models.py:30 evaluator/templates/applicant_detail.html:37
+#: user_account/forms.py:64
+msgid "Gender"
+msgstr "Γένος"
+
+#: applicant/templates/applicant_profile.html:163 applicant_degrees/forms.py:29
+#: applicant_degrees/models.py:27 evaluator/templates/applicant_detail.html:40
+#: user_account/forms.py:47
+msgid "Male"
+msgstr "Αρσενικό"
+
+#: applicant/templates/applicant_profile.html:165 applicant_degrees/forms.py:30
+#: applicant_degrees/models.py:28 evaluator/templates/applicant_detail.html:42
+#: user_account/forms.py:48
+msgid "Female"
+msgstr "Θυληκό"
+
+#: applicant/templates/applicant_profile.html:171 applicant_degrees/forms.py:36
+#: evaluator/templates/applicant_detail.html:48 user_account/forms.py:52
+msgid "Birth Date"
+msgstr "Ημ/νια Γέννησης"
+
+#: applicant/templates/applicant_profile.html:179
+#: applicant/templates/applicant_profile.html:224
+#: applicant/templates/applicant_profile.html:261
+#: applicant/templates/applicant_profile.html:294
+#: applicant/templates/applicant_profile.html:333
+#: applicant/templates/call_detail.html:82
+#: applicant/templates/call_detail.html:143 applicant_degrees/forms.py:39
+#: applicant_degrees/models.py:22 applicant_degrees/models.py:51
+#: applicant_degrees/models.py:72 applicant_degrees/models.py:80
+#: applicant_degrees/models.py:91 evaluator/templates/applicant_detail.html:55
+#: evaluator/templates/applicant_detail.html:156
+#: evaluator/templates/applicant_detail.html:196
+#: evaluator/templates/applicant_detail.html:233
+#: evaluator/templates/applicant_detail.html:276
+#: evaluator/templates/call_applications.html:78
+#: evaluator/templates/call_applications.html:139 institution/models.py:15
+#: institution/models.py:24 msc/models.py:21 user_account/forms.py:55
+msgid "Country"
+msgstr "Χώρα"
+
+#: applicant/templates/applicant_profile.html:187
+#: applicant/templates/applicant_profile.html:225
+#: applicant/templates/applicant_profile.html:262
+#: applicant/templates/applicant_profile.html:295
+#: applicant/templates/applicant_profile.html:334
+#: applicant/templates/call_detail.html:93
+#: applicant/templates/call_detail.html:154 applicant_degrees/forms.py:40
+#: applicant_degrees/models.py:21 applicant_degrees/models.py:50
+#: applicant_degrees/models.py:71 applicant_degrees/models.py:79
+#: applicant_degrees/models.py:90 evaluator/templates/applicant_detail.html:62
+#: evaluator/templates/applicant_detail.html:157
+#: evaluator/templates/applicant_detail.html:197
+#: evaluator/templates/applicant_detail.html:234
+#: evaluator/templates/applicant_detail.html:277
+#: evaluator/templates/call_applications.html:89
+#: evaluator/templates/call_applications.html:150 institution/models.py:14
+#: institution/models.py:23 msc/models.py:20 user_account/forms.py:56
+msgid "City"
+msgstr "Πόλη"
+
+#: applicant/templates/applicant_profile.html:195
+#: applicant/templates/call_detail.html:105
+#: applicant/templates/call_detail.html:165 applicant_degrees/forms.py:38
+#: applicant_degrees/models.py:20 evaluator/templates/applicant_detail.html:69
+#: evaluator/templates/call_applications.html:101
+#: evaluator/templates/call_applications.html:161 institution/models.py:12
+#: institution/models.py:21 msc/models.py:18 user_account/forms.py:54
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: applicant/templates/applicant_profile.html:203
+msgid "Citizenhsip"
+msgstr "Ιθαγένεια"
+
+#: applicant/templates/applicant_profile.html:218
+#: applicant/templates/applicant_profile.html:288
+#: applicant_degrees/models.py:44 applicant_degrees/models.py:64
+#: evaluator/templates/applicant_detail.html:150
+#: evaluator/templates/applicant_detail.html:227
+msgid "Type"
+msgstr "Τύπος"
+
+#: applicant/templates/applicant_profile.html:219
+#: applicant/templates/applicant_profile.html:289
+#: applicant_degrees/models.py:45 applicant_degrees/models.py:65
+#: evaluator/templates/applicant_detail.html:151
+#: evaluator/templates/applicant_detail.html:228
+msgid "Awarding Institution"
+msgstr "Πανεπιστήμιο"
+
+#: applicant/templates/applicant_profile.html:220
+#: applicant/templates/applicant_profile.html:290
+#: applicant/templates/call_detail.html:27 applicant_degrees/models.py:46
+#: applicant_degrees/models.py:66 evaluator/templates/applicant_detail.html:152
+#: evaluator/templates/applicant_detail.html:229
+#: evaluator/templates/call_applications.html:23 msc/models.py:23
+msgid "Department"
+msgstr "Τμήμα"
+
+#: applicant/templates/applicant_profile.html:221
+#: applicant_degrees/models.py:47 evaluator/templates/applicant_detail.html:153
+msgid "Specialization"
+msgstr "Ειδικότητα"
+
+#: applicant/templates/applicant_profile.html:222
+#: applicant/templates/applicant_profile.html:292 applicant_degrees/forms.py:89
+#: applicant_degrees/forms.py:134 applicant_degrees/models.py:48
+#: applicant_degrees/models.py:69 evaluator/templates/applicant_detail.html:154
+#: evaluator/templates/applicant_detail.html:231
+msgid "Date Awarded"
+msgstr "Ημ/νία Βράβευσης"
+
+#: applicant/templates/applicant_profile.html:223
+#: applicant/templates/applicant_profile.html:293
+#: applicant_degrees/models.py:49 applicant_degrees/models.py:70
+#: evaluator/templates/applicant_detail.html:155
+#: evaluator/templates/applicant_detail.html:232
+msgid "Average Grade"
+msgstr "ΜΟ βαθμού"
+
+#: applicant/templates/applicant_profile.html:233
+#: applicant/templates/applicant_profile.html:303 applicant_degrees/forms.py:85
+#: applicant_degrees/forms.py:130 applicant_degrees/models.py:42
+#: applicant_degrees/models.py:62 evaluator/templates/applicant_detail.html:165
+#: evaluator/templates/applicant_detail.html:243
+msgid "Postgraduate"
+msgstr "Μεταπτυχιακό"
+
+#: applicant/templates/applicant_profile.html:235
+#: applicant/templates/applicant_profile.html:305 applicant_degrees/forms.py:84
+#: applicant_degrees/forms.py:129 applicant_degrees/models.py:41
+#: applicant_degrees/models.py:61 evaluator/templates/applicant_detail.html:167
+#: evaluator/templates/applicant_detail.html:245
+msgid "Undergraduate"
+msgstr "Προπτυχιακό"
+
+#: applicant/templates/applicant_profile.html:257
+#: applicant/templates/applicant_profile.html:328
+#: applicant_degrees/models.py:78 applicant_degrees/models.py:89
+#: evaluator/templates/applicant_detail.html:192
+#: evaluator/templates/applicant_detail.html:271
+msgid "Organization"
+msgstr "Οργανισμός"
+
+#: applicant/templates/applicant_profile.html:258
+#: applicant/templates/applicant_profile.html:327
+#: applicant_degrees/models.py:81 applicant_degrees/models.py:92
+#: evaluator/templates/applicant_detail.html:193
+#: evaluator/templates/applicant_detail.html:270
+msgid "Job Title"
+msgstr "Τίτλος Δουλειάς"
+
+#: applicant/templates/applicant_profile.html:259
+#: applicant/templates/call_detail.html:53
+#: applicant/templates/call_list.html:15 applicant_degrees/forms.py:145
+#: applicant_degrees/models.py:82 evaluator/templates/applicant_detail.html:194
+#: evaluator/templates/call_applications.html:49
+msgid "Start Date"
+msgstr "Ημ/νια Έναρξης"
+
+#: applicant/templates/applicant_profile.html:260
+#: applicant/templates/call_detail.html:60
+#: applicant/templates/call_list.html:16 applicant_degrees/forms.py:146
+#: applicant_degrees/models.py:83 evaluator/templates/applicant_detail.html:195
+#: evaluator/templates/call_applications.html:56 msc/models.py:34
+msgid "End Date"
+msgstr "Ημ/νία Ολοκλήρωσης"
+
+#: applicant/templates/applicant_profile.html:287
+#: applicant/templates/call_detail.html:39
+#: applicant/templates/call_detail.html:70
+#: applicant/templates/call_detail.html:132
+#: applicant/templates/call_list.html:14 applicant_degrees/models.py:67
+#: evaluator/templates/applicant_detail.html:226
+#: evaluator/templates/call_applications.html:35
+#: evaluator/templates/call_applications.html:66
+#: evaluator/templates/call_applications.html:128 institution/models.py:11
+#: institution/models.py:20 msc/models.py:17 msc/models.py:27 msc/models.py:32
+msgid "Title"
+msgstr "Τίτλος"
+
+#: applicant/templates/applicant_profile.html:291
+#: applicant_degrees/models.py:68 evaluator/templates/applicant_detail.html:230
+msgid "Supervisor"
+msgstr "Προιστάμενος"
+
+#: applicant/templates/applicant_profile.html:332 applicant_degrees/forms.py:99
+#: applicant_degrees/models.py:96 evaluator/templates/applicant_detail.html:275
+msgid "Reference Date"
+msgstr "Ημ/νια Επιστολής"
+
+#: applicant/templates/applicant_profile.html:402
+#: applicant_degrees/models.py:106
+#: evaluator/templates/application_admit.html:22
+#: evaluator/templates/call_applications.html:206
+msgid "Submission Date"
+msgstr "Ημ/νία Υποβολής"
+
+#: applicant/templates/applicant_profile.html:410
+#: applicant/templates/call_detail.html:18
+#: evaluator/templates/application_admit.html:31
+#: evaluator/templates/call_applications.html:14
+msgid "Call"
+msgstr "Πρόσκληση"
+
+#: applicant/templates/applicant_profile.html:422
+#: applicant_degrees/forms.py:123 applicant_degrees/models.py:109
+#: evaluator/templates/application_admit.html:44
+msgid "Reference"
+msgstr "Συστατική Επιστολή"
+
+#: applicant/templates/applicant_profile.html:428
+#: applicant/templates/applicant_profile.html:470
+#: env/lib/python3.9/site-packages/modeltranslation/widgets.py:25
+#: evaluator/templates/application_admit.html:49
+msgid "None"
+msgstr "Καμία"
+
+#: applicant/templates/applicant_profile.html:435
+#: evaluator/templates/application_admit.html:61
+msgid "Flows by prefered Order"
+msgstr "Κατευθύνσεις με σειρά προτίμησης"
+
+#: applicant/templates/applicant_profile.html:439
+#: applicant_degrees/models.py:118
+#: evaluator/templates/application_admit.html:65
+msgid "Priority"
+msgstr "Προτίμηση"
+
+#: applicant/templates/applicant_profile.html:440
+#: applicant_degrees/models.py:117
+#: evaluator/templates/application_admit.html:66
+msgid "Flow"
+msgstr "Κατεύθυνση"
+
+#: applicant/templates/applicant_profile.html:460
+#: evaluator/templates/application_admit.html:85
+msgid "Admitted Flow"
+msgstr "Αποδεκτή Κατεύθυνση"
+
+#: applicant/templates/applicant_profile.html:478
+#: applicant_degrees/models.py:108
+#: evaluator/templates/application_admit.html:93
+#: evaluator/templates/call_applications.html:207
+msgid "Admitted"
+msgstr "Αποδεκτή"
+
+#: applicant/templates/applicant_profile.html:482
+#: evaluator/templates/call_applications.html:218
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+#: applicant/templates/applicant_profile.html:484
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:715
+#: evaluator/templates/call_applications.html:220
+msgid "Yes"
+msgstr "Ναι"
+
+#: applicant/templates/applicant_profile.html:486
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:716
+#: evaluator/templates/call_applications.html:222
+msgid "No"
+msgstr "Όχι"
+
+#: applicant/templates/applicant_profile.html:543
+#: evaluator/templates/evaluator_profile.html:28
+#: user_account/templates/user-change-email.html:5
+msgid "Change Email"
+msgstr "Αλλαγή Email"
+
+#: applicant/templates/applicant_profile.html:544
+#: evaluator/templates/evaluator_profile.html:29
+#: user_account/templates/change-password.html:3
+#: user_account/templates/change-password.html:7
+#: user_account/templates/password-reset/password_reset_confirm.html:11
+#: user_account/templates/user-change-password.html:5
+msgid "Change Password"
+msgstr "Αλλαγή Κωδικού"
+
+#: applicant/templates/applicant_profile_edit.html:74
+#: applicant/templates/application_create.html:24
+#: evaluator/templates/application_admit.html:98
+#: evaluator/templates/evaluator_profile_edit.html:15
+#: user_account/templates/change-password.html:12
+#: user_account/templates/new-applicant.html:15
+#: user_account/templates/password-reset/password_reset.html:11
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: applicant/templates/application_create.html:5
+#: applicant/templates/call_detail.html:226
+#: applicant/templates/call_list.html:38
+msgid "New Application"
+msgstr "Νέα Αίτηση"
+
+#: applicant/templates/application_create.html:13
+msgid "New Application for"
+msgstr "Νέα Αίτηση για"
+
+#: applicant/templates/call_detail.html:21
+#: evaluator/templates/call_applications.html:17
+msgid "Programme"
+msgstr "Πρόγραμμα"
+
+#: applicant/templates/call_detail.html:24
+#: evaluator/templates/call_applications.html:20
+msgid "Flows"
+msgstr "Κατευθύνσεις"
+
+#: applicant/templates/call_detail.html:30
+msgid "Evaluators"
+msgstr "Επιτροπή"
+
+#: applicant/templates/call_detail.html:116
+#: applicant/templates/call_detail.html:176
+#: evaluator/templates/call_applications.html:112
+#: evaluator/templates/call_applications.html:172 institution/models.py:13
+#: institution/models.py:22 msc/models.py:19
+msgid "Pobox"
+msgstr "Ταχ. Κώδικας"
+
+#: applicant/templates/call_detail.html:209
+#: evaluator/templates/applicant_detail.html:16
+msgid "Fullname"
+msgstr "Ον/μο"
+
+#: applicant/templates/call_list.html:4
+msgid "Calls"
+msgstr "Πρoσκλήσεις"
+
+#: applicant/templates/call_list.html:17 msc/models.py:28 msc/models.py:35
+msgid "Msc Programme"
+msgstr "Πρόγραμμα"
+
+#: applicant/templates/call_list.html:18
+#: evaluator/templates/call_applications.html:208
+msgid "Actions"
+msgstr "Ενέργειες"
+
+#: applicant/templates/call_list.html:37
+msgid "View Call"
+msgstr "Προβολή Πρόσκλησης"
+
+#: applicant/views.py:74 evaluator/views.py:80
+msgid "Your profile has been updated."
+msgstr "Το προφίλ σας έχει ενημερωθεί."
+
+#: applicant/views.py:95
+msgid "Select flows by the order you prefer"
+msgstr "Διαλέξτε Κατευθύνσεις με σειρά προτίμησης"
+
+#: applicant_degrees/forms.py:32 msc/forms.py:12
+msgid "This value may contain only letters, numbers, and @/./+/-/_ characters."
+msgstr ""
+"Αυτή η τιμή πρέπει να περιέχει μονο γράμματα,αριθμούς , και  @/./+/-/_ "
+"χαρακτήρες."
+
+#: applicant_degrees/forms.py:41 applicant_degrees/models.py:31
+#: evaluator/templates/applicant_detail.html:76 user_account/forms.py:57
+msgid "Citizenship"
+msgstr "Υποκοότητα"
+
+#: applicant_degrees/forms.py:90 applicant_degrees/forms.py:100
+#: applicant_degrees/forms.py:135 applicant_degrees/forms.py:147
+msgid "supported type is pdf"
+msgstr "Δεχόμαστε μόνο pdf"
+
+#: applicant_degrees/forms.py:90 applicant_degrees/forms.py:100
+#: applicant_degrees/forms.py:135 applicant_degrees/forms.py:147
+#: applicant_degrees/models.py:52 applicant_degrees/models.py:73
+#: applicant_degrees/models.py:84 applicant_degrees/models.py:97
+#: applicant_degrees/models.py:110
+#: evaluator/templates/applicant_detail.html:158
+#: evaluator/templates/applicant_detail.html:198
+#: evaluator/templates/applicant_detail.html:235
+#: evaluator/templates/applicant_detail.html:278
+#: evaluator/templates/application_admit.html:55
+msgid "Media File"
+msgstr "Αρχείο"
+
+#: applicant_degrees/forms.py:124 applicant_degrees/models.py:107
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: applicant_degrees/models.py:12 institution/models.py:6 msc/models.py:12
+msgid "Only digits allowed"
+msgstr "Μόνο ψηφία είναι αποδεκτά"
+
+#: applicant_degrees/models.py:14 institution/models.py:8 msc/models.py:14
+msgid "Telephone must have 10 digits"
+msgstr "Το τηλέφωνο πρέπει να περιέχει ακριβώς 10 ψηφία."
+
+#: applicant_degrees/models.py:18 msc/models.py:39
+msgid "User"
+msgstr "Χρήστης"
+
+#: applicant_degrees/models.py:53 applicant_degrees/models.py:74
+#: applicant_degrees/models.py:85 applicant_degrees/models.py:98
+#: evaluator/templates/call_applications.html:205
+msgid "Applicant"
+msgstr "Αιτών"
+
+#: applicant_degrees/models.py:111
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: applicant_degrees/models.py:112
+msgid "Admitted FLow"
+msgstr "Αποδεκτή Κατεύθυνση"
+
+#: applicant_degrees/models.py:116
+msgid "Application"
+msgstr "Αίτηση"
+
+#: env/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:129
+#: env/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:139
+#: env/lib/python3.9/site-packages/django/forms/fields.py:54
+msgid "This field is required."
+msgstr "Αυτό το πεδίο είναι απαραίτητο"
+
+#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:391
+msgid "i18n text"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:393
+msgid "i18n legend"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout_objects.py:134
+#: env/lib/python3.9/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr "Δώστε μία σωστή τιμή."
+
+#: env/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr "Μυνήματα"
+
+#: env/lib/python3.9/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: env/lib/python3.9/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/paginator.py:51
+msgid "That page number is not an integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/paginator.py:53
+msgid "That page number is less than 1"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/paginator.py:58
+msgid "That page contains no results"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:93
+#: env/lib/python3.9/site-packages/django/forms/fields.py:664
+msgid "Enter a valid URL."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:150
+msgid "Enter a valid integer."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:161
+msgid "Enter a valid email address."
+msgstr "Δώστε ένα email σωστό"
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: env/lib/python3.9/site-packages/django/core/validators.py:262
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:269
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:278
+#: env/lib/python3.9/site-packages/django/core/validators.py:298
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:283
+#: env/lib/python3.9/site-packages/django/core/validators.py:299
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:293
+#: env/lib/python3.9/site-packages/django/core/validators.py:297
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:327
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:333
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:366
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:375
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:385
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:400
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:419
+#: env/lib/python3.9/site-packages/django/forms/fields.py:292
+#: env/lib/python3.9/site-packages/django/forms/fields.py:327
+msgid "Enter a number."
+msgstr "Δώστε έναν αριθμό."
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:421
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:426
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:431
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:493
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+"Ο τύπος αρχείου “%(extension)s” δεν υποστηρίζεται.Υποστηρίζεται μόνο αρχεία "
+"τύπου %(allowed_extensions)s. "
+
+#: env/lib/python3.9/site-packages/django/core/validators.py:546
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/base.py:1197
+#: env/lib/python3.9/site-packages/django/forms/models.py:768
+msgid "and"
+msgstr "και"
+
+#: env/lib/python3.9/site-packages/django/db/models/base.py:1199
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s με %(field_labels)s υπάρχει ήδη"
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr "Η τίμη %(value)r δεν είναι σωστή."
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:101
+msgid "This field cannot be null."
+msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:102
+msgid "This field cannot be blank."
+msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:958
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:959
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:961
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1002
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1096
+msgid "Comma-separated integers"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1145
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1147
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1290
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1150
+msgid "Date (without time)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1288
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1292
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1296
+msgid "Date (with time)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1444
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1446
+msgid "Decimal number"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1585
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1588
+msgid "Duration"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1638
+msgid "Email address"
+msgstr "Email"
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1661
+msgid "File path"
+msgstr "Μονοπάτι αρχείου"
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1727
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1729
+msgid "Floating point number"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1767
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1769
+msgid "Integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1852
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1867
+msgid "Small integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1875
+msgid "IPv4 address"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1906
+msgid "IP address"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1986
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1987
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1989
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2043
+msgid "Positive big integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2056
+msgid "Positive integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2069
+msgid "Positive small integer"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2083
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2115
+msgid "Text"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2181
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2183
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2186
+msgid "Time"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2312
+msgid "URL"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2334
+msgid "Raw binary data"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2399
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2401
+msgid "Universally unique identifier"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/files.py:226
+msgid "File"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/files.py:375
+msgid "Image"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: env/lib/python3.9/site-packages/django/forms/boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:391
+#: env/lib/python3.9/site-packages/django/forms/fields.py:1132
+msgid "Enter a valid date."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:415
+#: env/lib/python3.9/site-packages/django/forms/fields.py:1133
+msgid "Enter a valid time."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:443
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:477
+msgid "Enter a valid duration."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:478
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:538
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:539
+msgid "No file was submitted."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:540
+msgid "The submitted file is empty."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:542
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:545
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:606
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:768
+#: env/lib/python3.9/site-packages/django/forms/fields.py:858
+#: env/lib/python3.9/site-packages/django/forms/models.py:1309
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:859
+#: env/lib/python3.9/site-packages/django/forms/fields.py:974
+#: env/lib/python3.9/site-packages/django/forms/models.py:1308
+msgid "Enter a list of values."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:975
+msgid "Enter a complete value."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:1191
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/fields.py:1221
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: env/lib/python3.9/site-packages/django/forms/forms.py:76
+msgid ":"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/forms.py:203
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:370
+#, python-format
+msgid "Please submit at most %d form."
+msgid_plural "Please submit at most %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:377
+#, python-format
+msgid "Please submit at least %d form."
+msgid_plural "Please submit at least %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:405
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:412
+msgid "Order"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/formsets.py:417
+msgid "Delete"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:763
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:767
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:773
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:782
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:1109
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:1193
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/models.py:1311
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/utils.py:172
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:403
+msgid "Clear"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:404
+msgid "Currently"
+msgstr "Τωρινό"
+
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:405
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: env/lib/python3.9/site-packages/django/forms/widgets.py:714
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. Translators: Please do not add spaces around commas.
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:805
+msgid "yes,no,maybe"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:834
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:851
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:853
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:855
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:857
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:859
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:861
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:66
+msgid "p.m."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:67
+msgid "a.m."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:72
+msgid "PM"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:73
+msgid "AM"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:146
+msgid "midnight"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dateformat.py:148
+msgid "noon"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:6
+#: env/lib/python3.9/site-packages/extra_views/dates.py:26
+msgid "Monday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:6
+#: env/lib/python3.9/site-packages/extra_views/dates.py:27
+msgid "Tuesday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:6
+#: env/lib/python3.9/site-packages/extra_views/dates.py:28
+msgid "Wednesday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:6
+#: env/lib/python3.9/site-packages/extra_views/dates.py:29
+msgid "Thursday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:6
+#: env/lib/python3.9/site-packages/extra_views/dates.py:30
+msgid "Friday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:7
+#: env/lib/python3.9/site-packages/extra_views/dates.py:31
+msgid "Saturday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:7
+#: env/lib/python3.9/site-packages/extra_views/dates.py:32
+msgid "Sunday"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:15
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:15
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:16
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "jan"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "oct"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/text.py:71
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/text.py:240
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: env/lib/python3.9/site-packages/django/utils/text.py:259
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:94
+msgid ", "
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:61
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:111
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:338
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:594
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/dates.py:628
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:7
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/tests/settings.py:44
+#: mscApplications/settings.py:193
+msgid "English"
+msgstr ""
+
+#: env/lib/python3.9/site-packages/tests/settings.py:45
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: evaluator/templates/applicant_detail.html:11
+msgid "Applicant Informations"
+msgstr "Πληροφορίες Αιτούντα"
+
+#: evaluator/templates/applicant_detail.html:23 user_account/forms.py:18
+msgid "Email"
+msgstr "Email"
+
+#: evaluator/templates/applicant_detail.html:87
+msgid "Applicant Degrees and References"
+msgstr "Πτυχία και συστατικές επιστολές Αιτούντα"
+
+#: evaluator/templates/application_admit.html:5
+#: evaluator/templates/application_admit.html:17
+msgid "Admit application"
+msgstr "Αποδοχή Αίτησης"
+
+#: evaluator/templates/call_applications.html:226
+msgid "Admit"
+msgstr "Αποδοχή"
+
+#: evaluator/templates/evaluator_home.html:15
+msgid "to see the applications you have to check about your assigned call ."
+msgstr "για να δείτε τις αιτήσεις προς αποδοχή για την αναφερόμενη πρόσκληση"
+
+#: evaluator/templates/evaluator_home.html:16
+msgid "Click View Application to check if the application is accepted ."
+msgstr "Πατήστε Προβολή Αίτησης για να δείτε εάν η αίτηση είναι αποδεκτή"
+
+#: evaluator/templates/evaluator_home.html:17
+msgid "Select Admitted and Admitted Flow to accept the application."
+msgstr "Επιλέξτε Αποδοχή και αποδεκτή κατεύθυνση για να αποδεχτείτε την αίτηση"
+
+#: evaluator/templates/evaluator_profile.html:25
+msgid "Actions :"
+msgstr "Ενέργειες"
+
+#: evaluator/views.py:38
+msgid "Application admitted !"
+msgstr "Η αίτηση ελέγχθηκε"
+
+#: institution/models.py:26
+msgid "Institution"
+msgstr "Πανεπιστήμιο"
+
+#: msc/models.py:33
+msgid "Start date"
+msgstr "Ημ/νία Έναρξης"
+
+#: msc/models.py:41
+msgid "Committe"
+msgstr "Επιτροπή"
+
+#: mscApplications/settings.py:194
+msgid "Greek"
+msgstr ""
+
+#: templates/base.html:41 templates/base.html:55 templates/base.html:66
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: templates/base.html:77 user_account/templates/login.html:4
+#: user_account/templates/login.html:7 user_account/templates/login.html:13
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: templates/base.html:80 user_account/templates/signup.html:4
+#: user_account/templates/signup.html:8 user_account/templates/signup.html:12
+msgid "Signup"
+msgstr "Εγγραφή"
+
+#: templates/base.html:110
+msgid "Harokopio University"
+msgstr "Χαροκόπειο Πανεπιστήμιο"
+
+#: templates/base.html:110
+msgid "El. Venizelou"
+msgstr "Ελ. Βενιζέλου"
+
+#: templates/base.html:110
+msgid "Kallithea"
+msgstr "Καλλιθέα"
+
+#: templates/base.html:110
+msgid "Athens"
+msgstr "Αθήνα"
+
+#: templates/base.html:110
+msgid "GREECE"
+msgstr "ΕΛΛΑΔΑ"
+
+#: templates/base.html:111
+msgid "Tel"
+msgstr "Τηλ"
+
+#: templates/base.html:111
+msgid "Fax"
+msgstr "Φαξ"
+
+#: user_account/forms.py:18
+msgid "Existing email"
+msgstr "Τωρινό email"
+
+#: user_account/forms.py:19
+msgid "Enter new email"
+msgstr "Δώστε νέο email"
+
+#: user_account/forms.py:19
+msgid "New email"
+msgstr "Nέο email"
+
+#: user_account/forms.py:20
+msgid "Confirm email"
+msgstr "Επιβεβαίωση email"
+
+#: user_account/forms.py:32
+msgid "New Email and Confirm Email does not match"
+msgstr "Οι κωδικοί δεν ταιριάζουν"
+
+#: user_account/forms.py:36
+msgid "Email already exists"
+msgstr "το email υπάρχει ήδη"
+
+#: user_account/forms.py:40
+msgid "Email is wrong"
+msgstr "Το email είναι λάθος"
+
+#: user_account/templates/activate_account.html:4
+msgid "Hi"
+msgstr "Γειά σου"
+
+#: user_account/templates/activate_account.html:5
+msgid "Please click on the link to confirm your registration"
+msgstr "Παρακαλώ πατήστε στο λινκ για την επιβεβαίωση εγγραφής"
+
+#: user_account/templates/change-password.html:11
+msgid "Back"
+msgstr "Πίσω"
+
+#: user_account/templates/login.html:10
+msgid "Forgot Password"
+msgstr "Ξέχασα τον κωδικό"
+
+#: user_account/templates/new-applicant.html:4
+#: user_account/templates/new-applicant.html:10
+msgid "Complete Signup"
+msgstr "Ολοκλήρωση Εγγραφής"
+
+#: user_account/templates/password-reset/password_reset.html:7
+#: user_account/templates/password-reset/password_reset_done.html:6
+msgid "Reset Password"
+msgstr "Επαναφορά κωδικού"
+
+#: user_account/templates/password-reset/password_reset_complete.html:2
+msgid "Reset Password Complete"
+msgstr "Επαναφορά κωδικού"
+
+#: user_account/templates/password-reset/password_reset_complete.html:6
+msgid "Hurray! Your password has been changed."
+msgstr "Ο κωδικός σας άλλαξε."
+
+#: user_account/templates/password-reset/password_reset_complete.html:7
+msgid "Click here to Login"
+msgstr "Πατήστε έδω για σύνδεση"
+
+#: user_account/templates/password-reset/password_reset_confirm.html:4
+msgid "Reset Password Confirm"
+msgstr "Επαναφορά κωδικού"
+
+#: user_account/templates/password-reset/password_reset_confirm.html:7
+msgid "Enter your new password"
+msgstr "Δώστε νέο κωδικό"
+
+#: user_account/templates/password-reset/password_reset_done.html:3
+msgid "Reset Password Done"
+msgstr "Επαναφορά κωδικού"
+
+#: user_account/templates/password-reset/password_reset_done.html:7
+msgid ""
+"We have sended you reset password link on your email. Please Check Your "
+"Email."
+msgstr "Σας έχουμε στείλει λινκ για Επαναφορά κωδικού στο email σας."
+
+#: user_account/templates/password-reset/password_reset_done.html:8
+msgid "Back to Login Page"
+msgstr "Πίσω"
+
+#: user_account/templates/password-reset/password_reset_email.html:3
+msgid ""
+"Hey You're receiving this email because you requested a password reset for "
+"your user account at"
+msgstr ""
+"Λαμβάνετε αυτό το email επειδή ζητήσατε επαναφορά κωδικού για τον λογαριασμό "
+"σας στο"
+
+#: user_account/templates/password-reset/password_reset_email.html:5
+msgid "Please go to the following page and choose a new password:"
+msgstr "Παρακαλώ πηγαίνετε στην ακόλουθη σελίδα και εισάγετε νέο κωδικό:"
+
+#: user_account/templates/password-reset/password_reset_email.html:9
+msgid "Your username, in case you've forgotten:"
+msgstr "Το username σας σε περίπτωση που το ξεχάσατε:"
+
+#: user_account/templates/password-reset/password_reset_email.html:11
+msgid "Thanks for using our site!"
+msgstr "Ευχαριστούμε!"
+
+#: user_account/templates/password-reset/password_reset_email.html:13
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "Η %(site_name)s ομάδα"
+
+#: user_account/templates/password-reset/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr "Επαναφορά κωδικού στο %(site_name)s"
+
+#: user_account/templates/user-change-email.html:11
+#: user_account/templates/user-change-password.html:11
+msgid "Save changes"
+msgstr "Αποθήκευση Αλλαγών"
+
+#: user_account/views.py:98
+msgid "Your password was successfully updated!"
+msgstr "Ο κωδικός σας άλλαξε με επιτυχία !"
+
+#: user_account/views.py:113
+msgid "Your email was successfully updated!"
+msgstr "Το email σας άλλαξε με επιτυχία !."
+
+#~ msgid "Undregraduate"
+#~ msgstr "Προπτυχιακό"
+
+#~ msgid "Programe"
+#~ msgstr "Πρόγραμμα"
+
+#~ msgid "End date"
+#~ msgstr "Ημ/νία Ολοκλήρωσης"

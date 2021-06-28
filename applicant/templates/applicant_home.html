@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{%block title %}{% trans "Home" %} {% endblock title %}
+{% block content%}
+
+<div class="card ">
+    <div class="card-header bg-info text-white">
+        {% trans "Welcome" %}
+    </div>
+    <div class="card-body ">
+        <h4>{% trans "Instructions" %}</h4>
+        <br>
+        <div class="container">
+        <p>{% trans "1. Click Profile to see your profile and then" %} <a href="{% url 'applicant:applicant_profile_edit' %}">{% trans "Edit Profile" %}</a>  {% trans "to add degrees and references ." %}</p>
+        <p>2. {% trans "Click" %} <a href="{% url 'applicant:calls' %}">{% trans "Open Calls" %}</a> {% trans "to see available calls" %} .</p>
+        <p> 3. {% trans "Click View Call to see informations about the call" %} .</p>
+        <p> 4.{% trans "Click New Application to make a new application for the detailed call" %} .</p>
+    </div>
+    </div>
+</div>
+
+
+{% endblock content %}

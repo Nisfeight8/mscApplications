@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %}{% trans "Complete Signup" %}{% endblock title %}
+{% block content %}
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"
+	rel="stylesheet" />
+    <h2>{% trans "Complete Signup" %}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% crispy form %}
+
+    <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
+    <br>
+    <br>
+  </form>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <script>
+    $(".dateinput").datepicker({
+      format: 'dd/mm/yyyy',
+});
+  </script>
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+{%block title %} {% trans "Admit application" %}{% endblock title %}
+{% block content%}
+{% get_current_language as LANGUAGE_CODE %}
+
+<form
+  enctype="multipart/form-data"
+  class="form-special"
+  action="."
+  method="post"
+>
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-header bg-info text-white">{% trans "Admit application" %}</div>
+    <div class="card-body">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Submission Date" %}</label>
+        </div>
+        <div class="col-md-6">
+          <p>{{application.submission_date}}</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Programme" %}</label>
+        </div>
+        <div class="col-md-6">
+          <p> {% if LANGUAGE_CODE == 'el-gr' %}
+            {{application.call.msc_programme.title_el_GR}}
+        {% else %}
+            {{application.call.msc_programme}}
+        {% endif %}</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Reference" %}</label>
+        </div>
+        {% if application.reference %}
+        <div class="col-md-6"><a href="{{application.reference.media_file.url}}">{{application.reference}}</a></div>
+        {% else %}
+        <div class="col-md-6">{% trans "None" %}</div>
+        {% endif %}
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Media File" %}</label>
+        </div>
+        <div class="col-md-6"><a href="{{application.media_file.url}}">{{application.media_file}}</a></div>
+      </div>
+      <hr />
+      {% if application.preference_set.all %}
+      <h5 >{% trans "Flows by prefered Order" %}</h5>
+      <table style="width:40%">
+        <thead>
+          <tr>
+            <th>{% trans "Priority" %}</th>
+            <th >{% trans "Flow" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pref in application.preference_set.all %}
+              <tr>
+                <td>{{pref.priority}}</td>
+                <td> {% if LANGUAGE_CODE == 'el-gr' %}
+                  {{pref.flow.title_el_GR}}
+              {% else %}
+                  {{pref.flow}}
+              {% endif %}</td>
+              </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Admitted Flow" %}</label>
+        </div>
+        <div class="col-md-6">{{ form.admitted_flow |as_crispy_field }}</div>
+      </div>
+      <hr />
+      {% endif %}
+      <div class="row">
+        <div class="col-md-6">
+          <label>{% trans "Admitted" %}</label>
+        </div>
+        <div class="col-md-6">{{ form.admitted |as_crispy_field }}</div>
+      </div>
+      <hr />
+      <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
+    </div>
+    </div>
+  </div>
+</form>
+{% endblock content %}

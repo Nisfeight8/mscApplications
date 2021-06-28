@@ -1,0 +1,62 @@
+
+.big-icon {
+  font-size: 150px;
+}
+.nav-item{
+    color: white;
+}
+a.nav-link:link{
+    color:black;
+}
+a.nav-link:visited{
+    color:blue;
+}
+a.nav-link:hover{
+    color:gray;
+}
+
+.flag-icon-el{
+  padding-right: 5px;
+  background-image: url(/staticfiles/img/el.png);
+
+}
+
+.flag li{
+    padding-right: 5px;
+}
+
+input[type="text"],
+select.form-control,
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"]
+ {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select.form-control:focus,
+selectmultiple.form-control:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus
+ {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+input[type="text"]:disabled,
+input[type="file"]:disabled,
+select:disabled
+{
+  background: white;
+}
+
+
+

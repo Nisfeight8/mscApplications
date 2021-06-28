@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% block title %} {{applicant.user.username}} {% endblock title %}
+{% block content %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header text-white bg-info">
+          {% trans "Applicant Informations" %}
+        </div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Fullname" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.user.first_name}} {{applicant.user.last_name}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Email" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary ">{{applicant.user.email}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Telephone" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.telephone}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Gender" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{% if applicant.gender == 'M' %}
+              {% trans "Male" %}
+            {% else %}
+              {% trans "Female" %}
+            {% endif %} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Birth Date" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.birth_date}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Country" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.country}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "City" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.city}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Address" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.address}} </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <h6 class="mb-0">{% trans "Citizenship" %}</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">{{applicant.citizenship}} </div>
+        </div>
+        <hr>
+        </div>
+    </div>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header text-white bg-info">
+          {% trans "Applicant Degrees and References" %}
+        </div>
+        <div class="card-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="diplomas-tab"
+                data-toggle="tab"
+                href="#diplomas"
+                role="tab"
+                aria-controls="diplomas"
+                aria-selected="false"
+                >{% trans "Diplomas" %}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="phds-tab"
+                data-toggle="tab"
+                href="#phds"
+                role="tab"
+                aria-controls="phds"
+                aria-selected="true"
+                >{% trans "PHDs" %}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="jobexperiences-tab"
+                data-toggle="tab"
+                href="#jobexperiences"
+                role="tab"
+                aria-controls="jobexperiences"
+                aria-selected="true"
+                >{% trans "Job Experiences" %}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="references-tab"
+                data-toggle="tab"
+                href="#references"
+                role="tab"
+                aria-controls="references"
+                aria-selected="true"
+                >{% trans "References" %}</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+            class="tab-pane fade show active "
+            id="diplomas"
+            role="tabpanel"
+            aria-labelledby="diplomas-tab">
+            <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Type" %}</th>
+                  <th scope="col">{% trans "Awarding Institution" %}</th>
+                  <th scope="col">{% trans "Department" %}</th>
+                  <th scope="col">{% trans "Specialization" %}</th>
+                  <th scope="col">{% trans "Date Awarded" %}</th>
+                  <th scope="col">{% trans "Average Grade" %}</th>
+                  <th scope="col">{% trans "Country" %}</th>
+                  <th scope="col">{% trans "City" %}</th>
+                  <th scope="col">{% trans "Media File" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for diploma in applicant.diploma_set.all %}
+                <tr>
+                  <td>{% if diploma.type == 'PG' %}
+                    {% trans "Postgraduate" %}
+                  {% else %}
+                    {% trans "Undergraduate" %}
+                  {% endif %}</td>
+                  <td>{{diploma.awarding_institution}}</td>
+                  <td>{{diploma.department}}</td>
+                  <td>{{diploma.specialization}}</td>
+                  <td>{{diploma.date_awarded}}</td>
+                  <td>{{diploma.grade_point_average}}</td>
+                  <td>{{diploma.country}}</td>
+                  <td>{{diploma.city}}</td>
+                  <td><a href="{{diploma.media_file.url}}">{{diploma.media_file}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+            class="tab-pane fade"
+            id="jobexperiences"
+            role="tabpanel"
+            aria-labelledby="jobexperiences-tab">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Organization" %}</th>
+                  <th scope="col">{% trans "Job Title" %}</th>
+                  <th scope="col">{% trans "Start Date" %}</th>
+                  <th scope="col">{% trans "End Date" %}</th>
+                  <th scope="col">{% trans "Country" %}</th>
+                  <th scope="col">{% trans "City" %}</th>
+                  <th scope="col">{% trans "Media File" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for job in applicant.jobexperience_set.all %}
+                <tr>
+                  <td>{{job.organization}}</td>
+                  <td>{{job.job_title}}</td>
+                  <td>{{job.start_date}}</td>
+                  <td>{{job.end_date}}</td>
+                  <td>{{job.country}}</td>
+                  <td>{{job.city}}</td>
+                  <td><a href="{{job.media_file.url}}">{{job.media_file}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            </div>
+        </div>
+        <div
+            class="tab-pane fade "
+            id="phds"
+            role="tabpanel"
+            aria-labelledby="phds-tab">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Title" %}</th>
+                  <th scope="col">{% trans "Type" %}</th>
+                  <th scope="col">{% trans "Awarding Institution" %}</th>
+                  <th scope="col">{% trans "Department" %}</th>
+                  <th scope="col">{% trans "Supervisor" %}</th>
+                  <th scope="col">{% trans "Date Awarded" %}</th>
+                  <th scope="col">{% trans "Average Grade" %}</th>
+                  <th scope="col">{% trans "Country" %}</th>
+                  <th scope="col">{% trans "City" %}</th>
+                  <th scope="col">{% trans "Media File" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for phd in applicant.phd_set.all %}
+                <tr>
+                  <td>{{phd.title}}</td>
+                  <td>{% if phd.type == 'PG' %}
+                    {% trans "Postgraduate" %}
+                  {% else %}
+                    {% trans "Undergraduate" %}
+                  {% endif %}</td>
+                  <td>{{phd.awarding_institution}}</td>
+                  <td>{{phd.department}}</td>
+                  <td>{{phd.supervisor}}</td>
+                  <td>{{phd.date_awarded}}</td>
+                  <td>{{phd.grade_point_average}}</td>
+                  <td>{{phd.country}}</td>
+                  <td>{{phd.city}}</td>
+                  <td><a href="{{phd.media_file.url}}">{{phd.media_file}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            </div>
+        </div>
+        <div
+            class="tab-pane fade"
+            id="references"
+            role="tabpanel"
+            aria-labelledby="references-tab">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Job Title" %}</th>
+                  <th scope="col">{% trans "Organization" %}</th>
+                  <th scope="col">{% trans "First Name" %}</th>
+                  <th scope="col">{% trans "Last Name" %}</th>
+                  <th scope="col">{% trans "Telephone" %}</th>
+                  <th scope="col">{% trans "Reference Date" %}</th>
+                  <th scope="col">{% trans "Country" %}</th>
+                  <th scope="col">{% trans "City" %}</th>
+                  <th scope="col">{% trans "Media File" %}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ref in applicant.reference_set.all %}
+                <tr>
+                  <td>{{ref.job_title}}</td>
+                  <td>{{ref.organization}}</td>
+                  <td>{{ref.first_name}}</td>
+                  <td>{{ref.last_name}}</td>
+                  <td>{{ref.telephone}}</td>
+                  <td>{{ref.reference_date}}</td>
+                  <td>{{ref.country}}</td>
+                  <td>{{ref.city}}</td>
+                  <td><a href="{{ref.media_file.url}}">{{ref.media_file}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+</div>
+{% endblock content %}
