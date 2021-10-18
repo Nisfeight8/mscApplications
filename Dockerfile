@@ -2,7 +2,7 @@
 FROM python:3.8-alpine
 
 # set workdir
-WORKDIR /usr/src/
+WORKDIR /usr/src/app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -15,6 +15,13 @@ RUN apk update \
     && apk add --virtual build-deps\
     && apk add jpeg-dev zlib-dev libjpeg
 
+# add user
+RUN addgroup -S appuser && adduser -S appuser -G appuser  --home /usr/src/app
+# add permissions
+
+ENV PATH=$PATH:/usr/src/app/.local/bin
+
+# install requirements
 RUN pip install --upgrade pip
 
 COPY ./requirements.txt .
@@ -22,8 +29,20 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 RUN apk del build-deps
+
 #copy project
-COPY . .
+COPY mscApplications .
 
+USER root
+RUN chown -R appuser:appuser /usr/src/app
 
+USER appuser:appuser
+
+RUN  python manage.py collectstatic --noinput
+
+# TODO: superuser, migrations
+WORKDIR /usr/src/app
+
+EXPOSE 8000/tcp
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000","mscApplications.wsgi"]
 
