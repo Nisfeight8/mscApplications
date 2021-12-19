@@ -1,70 +1,75 @@
-from applicant_degrees.models import *
-from django.views.generic import ( ListView, CreateView, DetailView,TemplateView)
-from applicant_degrees.forms import *
+from .models import *
+from user_account.models import Applicant
+from msc.models import *
+
+from .forms import *
+from utils import pdf_generator
+
 import datetime
+
+import uuid
+
+from django.views.generic import ( ListView, CreateView, DetailView,TemplateView)
 from django.contrib import messages
 from django.shortcuts import get_object_or_404,render
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView, InlineFormSetFactory
-from applicant_degrees.models import *
-from msc.models import *
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
-from utils import pdf_generator
 from django.http import FileResponse
 from django.forms.models import inlineformset_factory
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import activate
-import uuid
 
 class ApplicantHomeView(TemplateView):
     template_name = 'applicant_home.html'
 
-class ProfileDetailView(PermissionRequiredMixin,DetailView):
+class ProfileDetailView(DetailView):
     model=Applicant
     context_object_name = 'applicant'
     template_name = 'applicant_profile.html'
-    permission_required = ('applicant_degrees.change_applicant',)
+
     def get_object(self,queryset=None):
         return self.request.user.applicant
 
-class DiplomaInline(PermissionRequiredMixin,InlineFormSetFactory):
+
+class DiplomaInline(InlineFormSetFactory):
     model = Diploma
     form_class=DiplomaForm
     factory_kwargs = {'extra': 1}
-    permission_required = ('applicant_degrees.change_applicant',)
 
-class PhdInline(PermissionRequiredMixin,InlineFormSetFactory):
+class PhdInline(InlineFormSetFactory):
     model = Phd
     form_class=PhdForm
     factory_kwargs = {'extra': 1}
-    permission_required = ('applicant_degrees.change_applicant',)
 
-class JobExperienceInline(PermissionRequiredMixin,InlineFormSetFactory):
+
+class JobExperienceInline(InlineFormSetFactory):
     model = JobExperience
     form_class=JobExperienceForm
     factory_kwargs = {'extra': 1}
-    permission_required = ('applicant_degrees.change_applicant',)
-class ReferenceInline(PermissionRequiredMixin,InlineFormSetFactory):
+
+
+class ReferenceInline(InlineFormSetFactory):
     model = Reference
     form_class=ReferenceForm
     factory_kwargs = {'extra': 1}
-    permission_required = ('applicant_degrees.change_applicant',)
 
 
-class ProfileUpdateView(PermissionRequiredMixin,UpdateWithInlinesView):
+class ProfileUpdateView(UpdateWithInlinesView):
     model = Applicant
     inlines = [ DiplomaInline,PhdInline, JobExperienceInline,ReferenceInline]
     form_class=ApplicantForm
     template_name = 'applicant_profile_edit.html'
-    permission_required = ('applicant_degrees.change_applicant',)
     success_url = reverse_lazy('applicant:applicant_profile')
+
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
         form.fields['first_name'].initial = self.request.user.first_name
         form.fields['last_name'].initial = self.request.user.last_name
         form.fields['username'].initial = self.request.user.username
         return form
+
     def form_valid(self,form):
         applicant = form.save(commit=False)
         applicant.user.first_name=form.cleaned_data['first_name']
@@ -74,18 +79,20 @@ class ProfileUpdateView(PermissionRequiredMixin,UpdateWithInlinesView):
         applicant.save()
         messages.success(self.request, (_('Your profile has been updated.')))
         return super().form_valid(form)
+
     def get_object(self,queryset=None):
         return self.request.user.applicant
 
-class ApplicationCreateView(PermissionRequiredMixin,CreateView):
+class ApplicationCreateView(CreateView):
     model=Application
     template_name='application_create.html'
     form_class=ApplicationForm
-    permission_required = ('applicant_degrees.add_application',)
+
     def get_context_data(self, **kwargs):
         context = super(ApplicationCreateView, self).get_context_data(**kwargs)
         context['call'] =Call.objects.get(id=self.kwargs['pk'])
         return context
+
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
         call=Call.objects.get(id=self.kwargs['pk'])
@@ -95,6 +102,7 @@ class ApplicationCreateView(PermissionRequiredMixin,CreateView):
         form.fields['reference'].queryset = Reference.objects.filter(applicant=self.request.user.applicant)
         form.fields['preferences'].label = _("Select flows by the order you prefer")
         return form
+
     def form_valid(self, form):
         application = form.save(commit=False)
         application.applicant=self.request.user.applicant
@@ -111,19 +119,20 @@ class ApplicationCreateView(PermissionRequiredMixin,CreateView):
         application.save()
         return FileResponse(application.media_file)
 
-class CallListView(PermissionRequiredMixin,ListView):
+class CallListView(ListView):
     model = Call
     template_name = 'call_list.html'
     context_object_name = 'calls'
-    permission_required = ('msc.view_call',)
+
     def get_queryset(self) :
         queryset = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now()))
         return queryset
-class CallDetailView(PermissionRequiredMixin,DetailView):
+
+class CallDetailView(DetailView):
     model = Call
     template_name = 'call_detail.html'
     context_object_name = 'call'
-    permission_required = ('msc.view_call',)
+
     def get_context_data(self, **kwargs):
         context = super(CallDetailView, self).get_context_data(**kwargs)
         context['msc_flows'] =MscFlow.objects.filter(msc_programme=self.object.msc_programme)
