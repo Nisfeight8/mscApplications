@@ -17,32 +17,29 @@ RUN apk update \
 
 # add user
 RUN addgroup -S appuser && adduser -S appuser -G appuser  --home /usr/src/app
+
 # add permissions
+RUN chown -R appuser:appuser /usr/src/app
+
+USER appuser:appuser
 
 ENV PATH=$PATH:/usr/src/app/.local/bin
+
 
 # install requirements
 RUN pip install --upgrade pip
 
-COPY ./requirements.txt .
+COPY  --chown=appuser:appuser ./requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN apk del build-deps
-
 #copy project
-COPY mscApplications .
-
-USER root
-RUN chown -R appuser:appuser /usr/src/app
-
-USER appuser:appuser
+COPY  --chown=appuser:appuser mscApplications .
 
 RUN  python manage.py collectstatic --noinput
 
 # TODO: superuser, migrations
 WORKDIR /usr/src/app
 
-EXPOSE 8000/tcp
 ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000","mscApplications.wsgi"]
 
