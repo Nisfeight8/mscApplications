@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import PermissionDenied
 
-def group_required(*group_names):
-    def in_groups(u):
+
+def check_user(type):
+    def user_type(u):
         if u.is_authenticated:
-            if u.groups.filter(name__in=group_names):
+            if type==1 and u.is_applicant or type==2 and u.is_evaluator:
                 return True
         raise PermissionDenied
 
-    return user_passes_test(in_groups)
+    return user_passes_test(user_type)

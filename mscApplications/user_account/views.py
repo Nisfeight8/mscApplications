@@ -1,21 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import CreateView,View,UpdateView,FormView
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.views.generic import CreateView,View,FormView
+from django.shortcuts import redirect
 from .forms import *
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from django.contrib.auth.tokens import default_token_generator
+from applicant.models import *
+from applicant.forms import *
+
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
-from django.contrib.auth import views as auth_views
-from applicant_degrees.models import Applicant
-from django.contrib.auth.models import Permission
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
@@ -33,43 +26,6 @@ class Home(View):
                return redirect('user_account:new_applicant')
         return redirect('user_account:login')
 
-class UserSignUpView(CreateView):
-    model=User
-    form_class=UserSignUpForm
-    template_name = 'signup.html'
-    def form_valid(self, form):
-        user = form.save()
-        user.is_active = False
-        user.save()
-        current_site = self.request.META['HTTP_HOST']
-        email_subject = 'Activate Your Account'
-        message = render_to_string('activate_account.html', {
-            'user': user,
-            'domain': current_site,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': default_token_generator.make_token(user),
-        })
-        to_email = form.cleaned_data.get('email')
-        email = EmailMessage(email_subject, message, to=[to_email])
-        email.send()
-        messages.success(self.request, ('Please Confirm your email to complete registration.'))
-        return redirect('user_account:login')
-class ActivateAccount(View):
-    def get(self, request, uidb64, token, *args, **kwargs):
-        try:
-            uid = force_text(urlsafe_base64_decode(uidb64))
-            user = User.objects.get(pk=uid)
-        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-            user = None
-        if user is not None and default_token_generator.check_token(user, token):
-            user.is_active = True
-            user.save()
-            login(request, user)
-            messages.success(request, ('Your account has been confirmed.'))
-            return redirect('user_account:new_applicant')
-        else:
-            messages.warning(request, ('The confirmation link was invalid, possibly because it has already been used.'))
-            return redirect('user_account:login')
 
 class ApplicantCreateView(LoginRequiredMixin,CreateView):
     model=Applicant
@@ -100,21 +56,4 @@ class ChangePasswordView(FormView,LoginRequiredMixin):
             return redirect('applicant:applicant_profile')
         if self.request.user.groups.filter(name='evaluator').exists():
             return redirect('evaluator:evaluator_profile')
-
-class ChangeEmailView(UpdateView,LoginRequiredMixin):
-    model=User
-    form_class = EmailChangeForm
-    template_name = 'user-change-email.html'
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        print(user)
-        user.email=form.cleaned_data['new_email']
-        user.save()
-        messages.success(self.request, _('Your email was successfully updated!'))
-        if self.request.user.groups.filter(name='applicant').exists():
-            return redirect('applicant:applicant_profile')
-        if self.request.user.groups.filter(name='evaluator').exists():
-            return redirect('evaluator:evaluator_profile')
-    def get_object(self,queryset=None):
-        return self.request.user
 

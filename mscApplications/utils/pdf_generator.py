@@ -1,4 +1,4 @@
-from applicant_degrees. models import *
+from applicant. models import *
 from msc. models import MscFlow
 from reportlab.platypus import Table
 import PyPDF2
@@ -13,6 +13,8 @@ import PyPDF2
 import tempfile
 from datetime import datetime
 from reportlab.platypus import TableStyle
+
+
 def generate_applicant_app(applicant,application):
     temp_base = tempfile.TemporaryFile()
     temp_final = tempfile.TemporaryFile()

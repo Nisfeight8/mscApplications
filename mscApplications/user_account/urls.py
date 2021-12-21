@@ -21,17 +21,6 @@ urlpatterns = [
     auth_views.LogoutView.as_view(),
     name='logout'),
 
-    path(
-    'signup',
-    UserSignUpView.as_view(),
-    name='signup',
-    ),
-
-    path(
-    'activate/<uidb64>/<token>/',
-    ActivateAccount.as_view(),
-    name='activate',
-    ),
     # Change Password
     path(
     'change-password/',
@@ -45,11 +34,6 @@ urlpatterns = [
     'user-change-password/',
     ChangePasswordView.as_view(),
     name='user_change_password'
-    ),
-    path(
-    'user-change-email/',
-    ChangeEmailView.as_view(),
-    name='user_change_email'
     ),
     # Forget Password
     path('password-reset/',

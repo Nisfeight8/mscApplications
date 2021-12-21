@@ -1,12 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.db import transaction
-from applicant_degrees.models import Applicant
-from django.core.exceptions import ValidationError
+from applicant.models import Applicant
 from django.utils.translation import gettext_lazy as _
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column,Div,Field
+from crispy_forms.layout import Layout, Row, Column,Div,Field
 from django.conf import settings
 
 class UserSignUpForm(UserCreationForm):

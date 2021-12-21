@@ -1,45 +1,49 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-from django.core.exceptions import ObjectDoesNotExist
 
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,BaseUserManager
 from django.utils.translation import gettext as _
 
-from.validators import only_int
-from.constants import GENDER_CHOICES
+class UserManager(BaseUserManager):
+    """Define a model manager for User model with no username field."""
+
+    use_in_migrations = True
+
+    def _create_user(self, email, password, **extra_fields):
+        """Create and save a User with the given email and password."""
+        if not email:
+            raise ValueError('The given email must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, email, password=None, **extra_fields):
+        """Create and save a regular User with the given email and password."""
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        return self._create_user(email, password, **extra_fields)
+
+    def create_superuser(self, email, password, **extra_fields):
+        """Create and save a SuperUser with the given email and password."""
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
+    username = None
     email = models.EmailField(unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    first_name = models.CharField(_('first name'), max_length=30)
+    last_name = models.CharField(_('last name'), max_length=30)
     is_applicant = models.BooleanField(default=False)
     is_evaluator = models.BooleanField(default=False)
-
-class Evaluator(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name='evaluator', on_delete=models.CASCADE,primary_key=True, verbose_name=_("User"))
-    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
-    committee = models.ForeignKey(Call,on_delete=models.SET_NULL,null=True, verbose_name=_("Committe"))
-
-    def __str__(self):
-        try:
-            return self.user.first_name+" "+self.user.last_name
-        except ObjectDoesNotExist:
-            return self.telephone
-
-class Applicant(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='applicant',primary_key=True, verbose_name=_("User"))
-    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
-    address = models.CharField(_('Address'),max_length=50)
-    city = models.CharField(_('City'),max_length=64)
-    country = models.CharField(_('Country'),max_length=50)
-    birth_date=models.DateField()
-    gender = models.CharField(_('Gender'),max_length=1, choices=GENDER_CHOICES)
-    citizenship = models.CharField(_('Citizenship'),max_length=64)
-
-    def __str__(self):
-        try:
-            return self.user.first_name+" "+self.user.last_name
-        except ObjectDoesNotExist:
-            return self.telephone
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name','last_name']
+    objects = UserManager()

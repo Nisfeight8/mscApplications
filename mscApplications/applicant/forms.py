@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import *
+from .constants import GENDER_CHOICES,TYPE_CHOICES
 from msc.models import MscFlow
 from django.core.exceptions import ValidationError
 from crispy_forms.helper import FormHelper
@@ -19,16 +20,13 @@ class AdmittedFlowModelChoiceField(forms.ModelChoiceField):
 
 class ApplicationAdmitForm(forms.ModelForm):
     admitted_flow=AdmittedFlowModelChoiceField(queryset=MscFlow.objects.none())
+    
     class Meta:
         model = Application
         fields = ('admitted','admitted_flow')
+
+
 class ApplicantForm(forms.ModelForm):
-    MALE='M'
-    FEMALE='F'
-    GENDER_CHOICES = [
-        (MALE, _('Male')),
-        (FEMALE, _('Female')),
-    ]
     username = forms.CharField(max_length=150 ,validators=[UnicodeUsernameValidator()],help_text=_('This value may contain only letters, '
         'numbers, and @/./+/-/_ characters.'))
     first_name = forms.CharField(label=_("First Name"),max_length=150)
@@ -40,9 +38,11 @@ class ApplicantForm(forms.ModelForm):
     city = forms.CharField(label=_("City"))
     citizenship = forms.CharField(label=_("Citizenship"))
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
+    
     class Meta:
         model = Applicant
         fields = ('username','first_name','last_name','telephone', 'address', 'city', 'country','birth_date','gender','citizenship')
+   
     def __init__(self, *args, **kwargs):
         super(ApplicantForm, self).__init__(*args, **kwargs)
         self.fields['gender'].label=_("Gender")
@@ -77,13 +77,8 @@ class ApplicantForm(forms.ModelForm):
                 raise ValidationError("Username already exists")
         return username
 
+
 class DiplomaForm(forms.ModelForm):
-    UNDERGRADUATE='UG'
-    POSTGRADUATE='PG'
-    TYPE_CHOICES = [
-        (UNDERGRADUATE, _('Undergraduate')),
-        (POSTGRADUATE, _('Postgraduate')),
-    ]
     TYPE_CHOICES.insert(0, ('', ''))
     type = forms.ChoiceField(choices=TYPE_CHOICES)
     date_awarded = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label=_("Date Awarded"),help_text="(dd/mm/yyyy)")
@@ -95,6 +90,8 @@ class DiplomaForm(forms.ModelForm):
         super(DiplomaForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False
+
+
 class ReferenceForm(forms.ModelForm):
     reference_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label=_("Reference Date"),help_text="(dd/mm/yyyy)")
     media_file = forms.FileField(help_text=_("supported type is pdf"),label=_("Media File"))
@@ -105,13 +102,15 @@ class ReferenceForm(forms.ModelForm):
         super(ReferenceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False
-# helper class: returning full_name instead of username
+
+
 class PreferenceModelChoiceField(forms.ModelMultipleChoiceField):
     def label_from_instance(self, obj):
         if get_language() =='en-us':
             return obj.title_en_us
         else:
             return obj.title_el_GR
+
 
 class ApplicationForm(forms.ModelForm):
     preferences=PreferenceModelChoiceField(queryset=MscFlow.objects.none())
@@ -122,13 +121,9 @@ class ApplicationForm(forms.ModelForm):
         super(ApplicationForm, self).__init__(*args, **kwargs)
         self.fields['reference'].label=_("Reference")
         self.fields['comments'].label=_("Comments")
+
+
 class PhdForm(forms.ModelForm):
-    UNDERGRADUATE='UG'
-    POSTGRADUATE='PG'
-    TYPE_CHOICES = [
-        (UNDERGRADUATE, _('Undergraduate')),
-        (POSTGRADUATE, _('Postgraduate')),
-    ]
     TYPE_CHOICES.insert(0, ('', ''))
     type = forms.ChoiceField(choices=TYPE_CHOICES)
     date_awarded = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label=_("Date Awarded"),help_text="(dd/mm/yyyy)")
@@ -141,13 +136,17 @@ class PhdForm(forms.ModelForm):
         self.fields['type'].initial = None
         self.helper = FormHelper()
         self.helper.form_show_labels = False
+
+
 class JobExperienceForm(forms.ModelForm):
     start_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label=_("Start Date"),help_text="(dd/mm/yyyy)")
     end_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label=_("End Date"),help_text="(dd/mm/yyyy)")
     media_file = forms.FileField(help_text=_("supported type is pdf"),label=_("Media File"))
+    
     class Meta:
         model = JobExperience
         exclude = ('applicant',)
+    
     def __init__(self, *args, **kwargs):
         super(JobExperienceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()

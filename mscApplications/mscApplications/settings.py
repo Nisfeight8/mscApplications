@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'msc',
     'user_account',
     'institution',
-    'applicant_degrees',
     'applicant',
     'evaluator',
 ]
@@ -122,6 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'user_account.User'
 
 
 

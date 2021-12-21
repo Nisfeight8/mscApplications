@@ -15,20 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
 from decorator_include import decorator_include
 from django.contrib.auth.decorators import login_required
-from utils import decorators
-from django.conf.urls.static import static
-from django.conf import settings
-
+from utils.decorators import check_user
+from utils.user_types import UserType
 
 
 
 urlpatterns = [
     path('', include('user_account.urls',namespace='user_account')),
-    path('applicant/', decorator_include([login_required,decorators.group_required('applicant')],'applicant.urls',namespace='applicant')),
-    path('evaluator/', decorator_include([login_required,decorators.group_required('evaluator')],'evaluator.urls',namespace='evaluator')),
+    path('applicant/', decorator_include([login_required,check_user(UserType.applicant)],'applicant.urls',namespace='applicant')),
+    path('evaluator/', decorator_include([login_required,check_user(UserType.evaluator)],'evaluator.urls',namespace='evaluator')),
     path('admin/', admin.site.urls),
     path('i18n/', include('django_translation_flags.urls'))
 ]

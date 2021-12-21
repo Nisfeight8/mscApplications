@@ -2,12 +2,30 @@ from django.db import models
 
 from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext as _
+from django.core.exceptions import ObjectDoesNotExist
 
-from user_account.models import Applicant
 from msc.models import Call,MscFlow
 
 from .validators import only_int
-from .constants import TYPE_CHOICES
+from .constants import TYPE_CHOICES,GENDER_CHOICES
+
+from django.conf import settings
+
+class Applicant(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='applicant',primary_key=True, verbose_name=_("User"))
+    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
+    address = models.CharField(_('Address'),max_length=50)
+    city = models.CharField(_('City'),max_length=64)
+    country = models.CharField(_('Country'),max_length=50)
+    birth_date=models.DateField()
+    gender = models.CharField(_('Gender'),max_length=1, choices=GENDER_CHOICES)
+    citizenship = models.CharField(_('Citizenship'),max_length=64)
+
+    def __str__(self):
+        try:
+            return self.user.first_name+" "+self.user.last_name
+        except ObjectDoesNotExist:
+            return self.telephone
 
 class Diploma (models.Model):
     type = models.CharField(_('Type'),max_length=2, choices=TYPE_CHOICES)
