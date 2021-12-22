@@ -1,8 +1,14 @@
 from django.contrib import admin
-from django.apps import apps
+from .models import *
 
-# Register your models here.
-app = apps.get_app_config('institution')
-# Register your models here.
-for model_name, model in app.models.items():
-    admin.site.register(model)
+class DepartmentInline(admin.StackedInline):
+    model = Department
+    extra = 1
+
+class InstitutionAdmin(admin.ModelAdmin):
+    list_display = ['title','country','city','address','pobox','telephone' ]
+    search_fields = ('title', 'telephone','country','city')
+    list_filter = ('country', 'city')
+    inlines=[DepartmentInline]
+
+admin.site.register(Institution,InstitutionAdmin)

@@ -12,7 +12,6 @@ class DiplomaInline(admin.StackedInline):
     def has_delete_permission(self, request, obj=None):
         return False
     extra = 0
-    can_delete = False
     verbose_name_plural = 'diploma'
 
 
@@ -49,6 +48,7 @@ class JobExperienceInline(admin.StackedInline):
 class ReferenceInline(admin.StackedInline):
     model = Reference
     extra = 0
+    can_change= False
     def has_change_permission(self, request, obj=None):
         return False
     def has_add_permission(self, request, obj=None):

@@ -13,5 +13,8 @@ class MscProgrammeAdmin(admin.ModelAdmin):
 
 admin.site.register(MscProgramme,MscProgrammeAdmin)
 
-admin.site.register(Call)
+
+class CallAdmin(admin.ModelAdmin):
+   list_display = ['title','start_date','end_date','msc_programme']
+admin.site.register(Call,CallAdmin)
 

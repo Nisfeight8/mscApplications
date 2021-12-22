@@ -39,7 +39,7 @@ class ApplicationCreateView(CreateView):
         form = super().get_form(*args, **kwargs)
         call=Call.objects.get(id=self.kwargs['pk'])
         if call.msc_programme.mscflow_set.all:
-            form.fields['preferences'].widget.attrs['required'] = 'required'
+            form.fields['preferences'].required = True
         form.fields['preferences'].queryset = MscFlow.objects.filter(msc_programme=call.msc_programme)
         form.fields['reference'].queryset = Reference.objects.filter(applicant=self.request.user.applicant)
         form.fields['preferences'].label = _("Select flows by the order you prefer")

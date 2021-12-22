@@ -22,9 +22,8 @@ class ApplicantInline(admin.StackedInline):
 class UserAdmin(UserAdmin):
     list_per_page = 10
     model = User
-    list_display = ('id', 'first_name', 'last_name',
-                    'email', 'is_staff', 'is_applicant','is_evaluator')
-    readonly_fields = ('id',)
+    list_display = ('email','first_name', 'last_name',
+                     'is_staff', 'is_applicant','is_evaluator')
     list_filter = ('email', 'is_staff', 'is_applicant','is_evaluator',)
     fieldsets = (
         (None, {'fields': ('first_name', 'last_name',
