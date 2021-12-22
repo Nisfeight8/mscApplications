@@ -19,6 +19,9 @@ from decorator_include import decorator_include
 from django.contrib.auth.decorators import login_required
 from utils.decorators import check_user
 from utils.user_types import UserType
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 
 urlpatterns = [
@@ -43,3 +46,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("i18n/", include("django_translation_flags.urls")),
 ]
+if settings.DEBUG==True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

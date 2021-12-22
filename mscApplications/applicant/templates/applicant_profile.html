@@ -13,8 +13,6 @@
   </div>
   <div class="col-md-9">
     <div class="profile-head">
-        <br>
-      <h5>{{applicant.user.username}}</h5>
       <br>
       <h6>{{applicant.user.email}}</h6>
         <br>
@@ -498,34 +496,7 @@
 
               </ul>
           </nav>
-          <script type="text/javascript">
-            $(document).ready(function(){
-
-              //Hide all cards
-              $(".card").each(function(index, value){
-                $('.card').hide();
-              })
-              $( ".card" ).first().show();
-              $( ".page-item" ).first().addClass("active");
-
-              $(".page-link").on('click', function(){
-
-                $(".page-link").each(function(index, value){
-                  $(value).parent().removeClass("active");
-                });
-
-                //Hide all cards
-                $(".card").each(function(index, value){
-                  $('.card').hide();
-                })
-
-                $(this).parent().addClass("active");
-                var cardId = "#" + $(this).text();
-                $(cardId).show();
-              });
-
-            });
-          </script>
+          
             </div>
 
     </div>
@@ -540,10 +511,37 @@
   </div>
   <div class="col-md-9">
     <div class=" float-right">
-  <a href="{% url 'user_account:user_change_email'  %}" class="btn btn-info">{% trans "Change Email" %}</a>
   <a href="{% url 'user_account:user_change_password'  %}" class="btn btn-info">{% trans "Change Password" %}</a>
       </div>
 </div>
 </div>
 
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    //Hide all cards
+    $(".card").each(function(index, value){
+      $('.card').hide();
+    })
+    $( ".card" ).first().show();
+    $( ".page-item" ).first().addClass("active");
+
+    $(".page-link").on('click', function(){
+
+    $(".page-link").each(function(index, value){
+      $(value).parent().removeClass("active");
+    });
+    //Hide all cards
+    $(".card").each(function(index, value){
+      $('.card').hide();
+    })
+
+    $(this).parent().addClass("active");
+      var cardId = "#" + $(this).text();
+      $(cardId).show();
+    });
+
+  });
+</script>
 {% endblock %}

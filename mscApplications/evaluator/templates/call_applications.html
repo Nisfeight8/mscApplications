@@ -2,306 +2,307 @@
 {% load static %}
 {% load i18n %}
 {% block title %} {% trans "Applications" %}{% endblock title %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
+{% endblock %}
 {% block content %}
-{% get_current_language as LANGUAGE_CODE %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <div class="card text-center">
+        <div class="card-header text-white bg-info">
+        <ul class="nav nav-tabs card-header-tabs " id="myTab" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link "id="call-tab" data-toggle="tab" href="#call" role="tab" aria-controls="call" aria-selected="false">{% trans "Call" %}</a>
+            </li>
+            <li class="nav-item" >
+            <a class="nav-link" id="programme-tab" data-toggle="tab" href="#programme" role="tab" aria-controls="programme" aria-selected="false">{% trans "Programme" %}</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="flows-tab" data-toggle="tab" href="#flows" role="tab" aria-controls="flows" aria-selected="false">{% trans "Flows" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="department-tab" data-toggle="tab" href="#department" role="tab" aria-controls="department" aria-selected="false">{% trans "Department" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="department-tab" data-toggle="tab" href="#university" role="tab" aria-controls="university" aria-selected="false">{% trans "Institution" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="false">{% trans "Applications" %}</a>
+            </li>
+        </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade " id="call" role="tabpanel" aria-labelledby="call-tab">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Title" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">
+                            {% if LANGUAGE_CODE == 'el-gr' %}
+                                {{call.title_el_GR}}
+                            {% else %}
+                                {{call.title}}
+                            {% endif %}
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
-<div class="card text-center">
-    <div class="card-header text-white bg-info">
-      <ul class="nav nav-tabs card-header-tabs " id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link "id="call-tab" data-toggle="tab" href="#call" role="tab" aria-controls="call" aria-selected="false">{% trans "Call" %}</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" id="programme-tab" data-toggle="tab" href="#programme" role="tab" aria-controls="programme" aria-selected="false">{% trans "Programme" %}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="flows-tab" data-toggle="tab" href="#flows" role="tab" aria-controls="flows" aria-selected="false">{% trans "Flows" %}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="department-tab" data-toggle="tab" href="#department" role="tab" aria-controls="department" aria-selected="false">{% trans "Department" %}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="department-tab" data-toggle="tab" href="#university" role="tab" aria-controls="university" aria-selected="false">{% trans "Institution" %}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="false">{% trans "Applications" %}</a>
-          </li>
-      </ul>
-    </div>
-    <div class="card-body">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade " id="call" role="tabpanel" aria-labelledby="call-tab">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Title" %}</h6>
+                        </div>
                     </div>
-                    <div class="col-sm-8 text-secondary">
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Start Date" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.start_date}}</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "End Date" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.end_date}}</div>
+                    </div>
+                    <hr>
+
+                </div>
+                <div class="tab-pane fade" id="programme" role="tabpanel" aria-labelledby="programme-tab">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Title" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">
                         {% if LANGUAGE_CODE == 'el-gr' %}
-                            {{call.title_el_GR}}
+                            {{call.msc_programme.title_el_GR}}
                         {% else %}
-                            {{call.title}}
+                            {{call.msc_programme.title}}
+                        {% endif %}</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Country" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.country_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.country}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "City" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">
+                            {% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.city_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.city}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Address" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.address_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.address}}
+                        {% endif %}</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.pobox}} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.telephone}} </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="tab-pane fade" id="department" role="tabpanel" aria-labelledby="department-tab">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Title" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.title_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.title}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Country" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.country_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.country}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "City" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.city_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.city}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Address" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.address_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.address}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.pobox}} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.telephone}} </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="tab-pane fade" id="university" role="tabpanel" aria-labelledby="university-tab">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Title" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.institution.title_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.institution.title}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Country" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.institution.country_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.institution.country}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "City" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.institution.city_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.institution.city}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Address" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{call.msc_programme.department.institution.address_el_GR}}
+                        {% else %}
+                            {{call.msc_programme.department.institution.address}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.pobox}} </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.telephone}} </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="tab-pane fade" id="flows" role="tabpanel" aria-labelledby="flows-tab">
+                    {% for flow in msc_flows %}
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <h6 class="mb-0">{{forloop.counter}}</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
+                            {{flow.title_el_GR}}
+                        {% else %}
+                            {{flow.title}}
+                        {% endif %} </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+            </div>
+            <div class="tab-pane fade show active" id="applications" role="tabpanel" aria-labelledby="applications-tab">
+                <table id="datatable" class="table align-items-center table-flush">
+                    <thead class="bg-light">
+                    <tr>
+                        <th scope="col">{% trans "Applicant" %}</th>
+                        <th scope="col">{% trans "Submission Date" %}</th>
+                        <th scope="col">{% trans "Admitted" %}</th>
+                        <th scope="col">{% trans "Actions" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for app in applications %}
+                    <tr>
+                        <td><a href="{% url 'evaluator:applicant_detail'  app.applicant.pk  %}">{{app.applicant}}</a></td>
+                        <td>{{app.submission_date}}</td>
+                        <td>
+                        {% if app.admitted == None %}
+                        {% trans "Pending" %}
+                        {% elif app.admitted == True %}
+                        {% trans "Yes" %}
+                        {% else %}
+                        {% trans "No" %}
                         {% endif %}
-
-                    </div>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{% url 'evaluator:application_update'  app.pk  %}">{% trans "Admit" %}</a>
+                        </td>
+                    {% endfor %}
+                    </tbody>
+                </table>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Start Date" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.start_date}}</div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "End Date" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.end_date}}</div>
-                </div>
-                <hr>
-
             </div>
-            <div class="tab-pane fade" id="programme" role="tabpanel" aria-labelledby="programme-tab">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Title" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">
-                    {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.title_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.title}}
-                    {% endif %}</div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Country" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.country_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.country}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "City" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">
-                        {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.city_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.city}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Address" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.address_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.address}}
-                    {% endif %}</div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.pobox}} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.telephone}} </div>
-                </div>
-                <hr>
-            </div>
-            <div class="tab-pane fade" id="department" role="tabpanel" aria-labelledby="department-tab">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Title" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.title_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.title}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Country" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.country_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.country}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "City" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.city_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.city}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Address" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.address_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.address}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.department.pobox}} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.telephone}} </div>
-                </div>
-                <hr>
-            </div>
-            <div class="tab-pane fade" id="university" role="tabpanel" aria-labelledby="university-tab">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Title" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary"> {% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.institution.title_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.institution.title}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Country" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.institution.country_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.institution.country}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "City" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.institution.city_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.institution.city}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Address" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{call.msc_programme.department.institution.address_el_GR}}
-                    {% else %}
-                        {{call.msc_programme.department.institution.address}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.pobox}} </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.telephone}} </div>
-                </div>
-                <hr>
-            </div>
-            <div class="tab-pane fade" id="flows" role="tabpanel" aria-labelledby="flows-tab">
-                {% for flow in msc_flows %}
-                <div class="row">
-
-                    <div class="col-sm-4">
-                        <h6 class="mb-0">{{forloop.counter}}</h6>
-                    </div>
-                    <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                        {{flow.title_el_GR}}
-                    {% else %}
-                        {{flow.title}}
-                    {% endif %} </div>
-                </div>
-                <hr>
-                {% endfor %}
-          </div>
-          <div class="tab-pane fade show active" id="applications" role="tabpanel" aria-labelledby="applications-tab">
-            <table id="datatable" class="table align-items-center table-flush">
-                <thead class="bg-light">
-                  <tr>
-                    <th scope="col">{% trans "Applicant" %}</th>
-                    <th scope="col">{% trans "Submission Date" %}</th>
-                    <th scope="col">{% trans "Admitted" %}</th>
-                    <th scope="col">{% trans "Actions" %}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for app in applications %}
-                  <tr>
-                    <td><a href="{% url 'evaluator:applicant_detail'  app.applicant.pk  %}">{{app.applicant}}</a></td>
-                    <td>{{app.submission_date}}</td>
-                    <td>
-                    {% if app.admitted == None %}
-                      {% trans "Pending" %}
-                    {% elif app.admitted == True %}
-                      {% trans "Yes" %}
-                    {% else %}
-                    {% trans "No" %}
-                    {% endif %}
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info" href="{% url 'evaluator:application_update'  app.pk  %}">{% trans "Admit" %}</a>
-                    </td>
-                  {% endfor %}
-                </tbody>
-              </table>
-              </div>
-        </div>
         </div>
     </div>
-    <script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-     $('#datatable').DataTable({
-          "ordering" : false,
-      });
-      </script>
 {% endblock content %}
+{% block javascript %}
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $('#datatable').DataTable({
+            "ordering" : false,
+        });
+    </script>
+{% endblock %}

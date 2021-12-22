@@ -10,7 +10,9 @@ from django.db.models.signals import post_save
 def evaluator_field_to_user(sender, instance, created, *args, **kwargs):
     evaluator = instance
     if created:
-        evaluator.user.is_evaluator=True
+        user=evaluator.user
+        user.is_evaluator=True
+        user.save()
 
 
 @receiver(post_save, sender=Applicant)

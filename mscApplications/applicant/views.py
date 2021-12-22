@@ -57,7 +57,7 @@ class ApplicationCreateView(CreateView):
             file_data= pdf_generator.generate_applicant_app(self.request.user.applicant,application)
         else:
             file_data= pdf_generator.generate_applicant_app_to_greek(self.request.user.applicant,application)
-        application.media_file.save(self.request.user.username+uuid.uuid4().hex[:6].upper()+".pdf", file_data, save=False)
+        application.media_file.save(self.request.user.email+uuid.uuid4().hex[:6].upper()+".pdf", file_data, save=False)
         application.save()
         return FileResponse(application.media_file)
 

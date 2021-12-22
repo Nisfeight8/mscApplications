@@ -29,8 +29,8 @@ class ApplicationAdmitForm(forms.ModelForm):
 
 
 class ApplicantForm(forms.ModelForm):
-    first_name = forms.CharField(label=_("First Name"), max_length=150)
-    last_name = forms.CharField(label=_("Last Name"), max_length=150)
+    first_name = forms.CharField(label=_("First Name"), max_length=30)
+    last_name = forms.CharField(label=_("Last Name"), max_length=30)
     birth_date = forms.DateField(
         input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Birth Date"),
@@ -59,7 +59,6 @@ class ApplicantForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ApplicantForm, self).__init__(*args, **kwargs)
-        self.fields["gender"].label = _("Gender")
         self.helper = FormHelper()
         self.helper.form_tag = False
         self.helper.layout = Layout(
@@ -87,13 +86,13 @@ class ApplicantForm(forms.ModelForm):
 class DiplomaForm(forms.ModelForm):
     TYPE_CHOICES.insert(0, ("", ""))
     type = forms.ChoiceField(choices=TYPE_CHOICES)
+    media_file = forms.FileField(
+        help_text=_("supported type is pdf"), label=_("Media File")
+    )
     date_awarded = forms.DateField(
         input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Date Awarded"),
         help_text="(dd/mm/yyyy)",
-    )
-    media_file = forms.FileField(
-        help_text=_("supported type is pdf"), label=_("Media File")
     )
 
     class Meta:

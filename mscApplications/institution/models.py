@@ -21,7 +21,7 @@ class Department(models.Model):
     city = models.CharField(_('City'),max_length=64)
     country = models.CharField(_('Country'),max_length=50)
     telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
-    institution=models.ForeignKey(Institution,on_delete=models.CASCADE,verbose_name=_('Institution'))
+    institution=models.ForeignKey(Institution,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

@@ -9,10 +9,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class EvaluatorForm(forms.ModelForm):
-    first_name = forms.CharField(label=_("First Name"), max_length=150)
-    last_name = forms.CharField(label=_("Last Name"), max_length=150)
-    telephone = forms.CharField(label=_("Telephone"))
-
+    first_name = forms.CharField(max_length=30, label=_('First Name'))
+    last_name = forms.CharField(max_length=30, label=_('Last Name'))
     class Meta:
         model = Evaluator
         fields = ("first_name", "last_name", "telephone")

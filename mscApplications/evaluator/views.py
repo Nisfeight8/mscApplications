@@ -67,14 +67,12 @@ class EvaluatorProfileUpdateView(UpdateView):
         form = super().get_form(*args, **kwargs)
         form.fields['first_name'].initial = self.request.user.first_name
         form.fields['last_name'].initial = self.request.user.last_name
-        form.fields['username'].initial = self.request.user.username
         return form
 
     def form_valid(self,form):
         evaluator = form.save(commit=False)
         evaluator.user.first_name=form.cleaned_data['first_name']
         evaluator.user.last_name=form.cleaned_data['last_name']
-        evaluator.user.username=form.cleaned_data['username']
         evaluator.user.save()
         evaluator.save()
         messages.success(self.request, (_('Your profile has been updated.')))

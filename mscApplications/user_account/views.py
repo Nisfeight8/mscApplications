@@ -23,19 +23,6 @@ class CheckUser(View):
                return redirect('user_account:new_applicant')
         return redirect('/accounts/login')
 
-class ApplicantCreateView(LoginRequiredMixin,CreateView):
-    model=Applicant
-    form_class=ApplicantForm
-    template_name = 'new-applicant.html'
-
-    def form_valid(self, form):
-        user = self.request.user
-        form.instance.user = user
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('applicant:applicant_profile')
-
 class ChangePasswordView(FormView,LoginRequiredMixin):
     model=User
     form_class = PasswordChangeForm

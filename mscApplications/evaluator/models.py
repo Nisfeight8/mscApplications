@@ -7,9 +7,9 @@ from msc.models import Call
 from django.conf import settings
 
 class Evaluator(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name='evaluator', on_delete=models.CASCADE,primary_key=True, verbose_name=_("User"))
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name='evaluator', on_delete=models.CASCADE,primary_key=True)
     telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
-    committee = models.ForeignKey(Call,on_delete=models.SET_NULL,null=True, verbose_name=_("Committe"))
+    committee = models.ForeignKey(Call,on_delete=models.SET_NULL,null=True)
 
     def __str__(self):
         try:

@@ -3,20 +3,16 @@
 {% load i18n %}
 {% block title %}{% trans "Edit Profile" %}{% endblock title %}
 {% block content %}
-
-<form enctype="multipart/form-data" class="form-special" action="." method="post">
-    <div class="card">
-        <div class="card-header text-white bg-info">
-          {% trans "Edit Profile" %}
-        </div>
-        <div class="card-body">
-    {% csrf_token %}
-  {% crispy form  %}
-  <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
-
-
+  <div class="card">
+    <div class="card-header text-white bg-info">
+      {% trans "Edit Profile" %}
     </div>
+    <div class="card-body">
+      <form enctype="multipart/form-data" class="form-special" action="." method="post">
+        {% csrf_token %}
+        {% crispy form  %}
+        <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
+      </form>
     </div>
-
-    </form>
-    {% endblock %}
+  </div>
+{% endblock %}
