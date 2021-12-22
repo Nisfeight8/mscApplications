@@ -4,5 +4,7 @@ env/
 postgres_data
 mscApplications/db.sqlite3
 mscApplications/mscApplications/.env
+mscApplications/mediafiles
+mscApplications/staticfiles
 mediafiles
 staticfiles
