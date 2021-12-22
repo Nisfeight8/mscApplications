@@ -38,7 +38,7 @@
               class="nav-link"><i class="far fa-calendar-alt"></i>{% trans "Open Calls" %} </a></li>
             <li class="nav-item"><a
               href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a></li>
-            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+            <li class="nav-item"><a href="{% url 'account_logout' %}"
               class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %}</a></li>
           </ul>
         </nav>
@@ -52,7 +52,7 @@
               class="nav-link"><i class="fas fa-clipboard-list"></i> {% trans "Applications" %} </a></li>
             <li class="nav-item"><a
               href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a></li>
-            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+            <li class="nav-item"><a href="{% url 'account_logout' %}"
               class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %} </a></li>
           </ul>
         </nav>
@@ -63,7 +63,7 @@
             <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
           </a>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="{% url 'user_account:logout' %}"
+            <li class="nav-item"><a href="{% url 'account_logout' %}"
               class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %} </a></li>
           </ul>
         </nav>
@@ -74,10 +74,10 @@
           <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
         </a>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="{% url 'user_account:login' %}"
+          <li class="nav-item"><a href="{% url 'account_login' %}"
             class="btn btn-outline-light ">{% trans "Login" %}</a></li>
 
-          <li class="nav-item"><a href="{% url 'user_account:signup' %}"
+          <li class="nav-item"><a href="{% url 'account_signup' %}"
             class="btn btn-outline-light ">{% trans "Signup" %}</a></li>
         </ul>
       </nav>

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
 from .models import *
 from evaluator.models import Evaluator
 from applicant.models import Applicant
@@ -15,3 +14,5 @@ class ApplicantInline(admin.StackedInline):
     model = Applicant
     can_delete = True
     verbose_name_plural = 'applicant'
+
+admin.site.register(User)

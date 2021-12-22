@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',  # new
+    'allauth.account',  # new
+    'allauth.socialaccount',  # new
     'modeltranslation',
     'crispy_forms',
     'django_translation_flags',
@@ -159,13 +163,43 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT =  587
 
 
-LOGIN_URL = 'user_account:login'
+# Ensure SITE_ID is set sites app
+SITE_ID = 1
 
-LOGOUT_URL = 'user_account:logout'
+# Add the 'allauth' backend to AUTHENTICATION_BACKEND and keep default ModelBackend
+AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend',
+                           'allauth.account.auth_backends.AuthenticationBackend']
+# EMAIL_BACKEND so allauth can proceed to send confirmation emails
+# ONLY for development/testing use console
 
-LOGIN_REDIRECT_URL = 'user_account:home'
+# Custom allauth settings
+# Use email as the primary identifier
+ACCOUNT_EMAIL_REQUIRED = True
 
-LOGOUT_REDIRECT_URL = 'user_account:home'
+# Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_LOGOUT_ON_GET=True
+
+#ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
+
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE =False
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'user_account.forms.SignupForm'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+LOGIN_REDIRECT_URL = '/users/check'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

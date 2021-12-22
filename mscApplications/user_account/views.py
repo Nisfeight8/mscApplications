@@ -4,7 +4,6 @@ from django.views.generic import CreateView,View,FormView
 from django.shortcuts import redirect
 from .forms import *
 from applicant.models import *
-from applicant.forms import *
 
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -13,32 +12,29 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 
-class Home(View):
+class CheckUser(View):
     def get(self,request):
         if self.request.user.is_authenticated:
-            if self.request.user.groups.filter(name='applicant').exists():
+            if self.request.user.is_applicant:
                 return redirect('applicant:applicant_home')
-            elif self.request.user.groups.filter(name='evaluator').exists():
+            elif self.request.user.is_evaluator:
                 return redirect('evaluator:evaluator_home')
-            elif self.request.user.is_superuser:
-                return HttpResponseRedirect(reverse('admin:index'))
             else:
                return redirect('user_account:new_applicant')
-        return redirect('user_account:login')
-
+        return redirect('/accounts/login')
 
 class ApplicantCreateView(LoginRequiredMixin,CreateView):
     model=Applicant
     form_class=ApplicantForm
     template_name = 'new-applicant.html'
+
     def form_valid(self, form):
-        applicant = form.save(commit=False)
-        self.request.user.first_name=form.cleaned_data['first_name']
-        self.request.user.last_name=form.cleaned_data['last_name']
-        self.request.user.save()
-        applicant.user=self.request.user
-        applicant.save()
-        return redirect('applicant:applicant_profile')
+        user = self.request.user
+        form.instance.user = user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('applicant:applicant_profile')
 
 class ChangePasswordView(FormView,LoginRequiredMixin):
     model=User

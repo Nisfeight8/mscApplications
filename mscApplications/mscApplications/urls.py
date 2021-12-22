@@ -21,11 +21,25 @@ from utils.decorators import check_user
 from utils.user_types import UserType
 
 
-
 urlpatterns = [
-    path('', include('user_account.urls',namespace='user_account')),
-    path('applicant/', decorator_include([login_required,check_user(UserType.applicant)],'applicant.urls',namespace='applicant')),
-    path('evaluator/', decorator_include([login_required,check_user(UserType.evaluator)],'evaluator.urls',namespace='evaluator')),
-    path('admin/', admin.site.urls),
-    path('i18n/', include('django_translation_flags.urls'))
+    path("accounts/", include("allauth.urls")),
+    path("users/", include("user_account.urls", namespace="user_account")),
+    path(
+        "applicant/",
+        decorator_include(
+            [login_required, check_user(UserType.applicant)],
+            "applicant.urls",
+            namespace="applicant",
+        ),
+    ),
+    path(
+        "evaluator/",
+        decorator_include(
+            [login_required, check_user(UserType.evaluator)],
+            "evaluator.urls",
+            namespace="evaluator",
+        ),
+    ),
+    path("admin/", admin.site.urls),
+    path("i18n/", include("django_translation_flags.urls")),
 ]

@@ -104,14 +104,12 @@ class ApplicantProfileUpdateView(UpdateWithInlinesView):
         form = super().get_form(*args, **kwargs)
         form.fields['first_name'].initial = self.request.user.first_name
         form.fields['last_name'].initial = self.request.user.last_name
-        form.fields['username'].initial = self.request.user.username
         return form
 
     def form_valid(self,form):
         applicant = form.save(commit=False)
         applicant.user.first_name=form.cleaned_data['first_name']
         applicant.user.last_name=form.cleaned_data['last_name']
-        applicant.user.username=form.cleaned_data['username']
         applicant.user.save()
         applicant.save()
         messages.success(self.request, (_('Your profile has been updated.')))
