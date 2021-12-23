@@ -42,9 +42,9 @@
                               </h5>
                         </div>
                         <div class="card-body">
-                              <p>{% trans "Start Date" %}: {{ call.start_date }}</p>
-                              <p>{% trans "End Date" %}: {{ call.end_date }}</p>
-                              <p>{% trans "Msc Programme" %}:
+                              <p><strong>{% trans "Start Date" %}:</strong> {{ call.start_date }}</p>
+                              <p><strong>{% trans "End Date" %}:</strong> {{ call.end_date }}</p>
+                              <p><strong>{% trans "Msc Programme" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                   {{ call.msc_programme.title_el_GR }}
                                 {% else %}
@@ -66,29 +66,29 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p>{% trans "Country" %}:
+                            <p><strong>{% trans "Country" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.country_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.country}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "City" %}:
+                            <p><strong>{% trans "City" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.city_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.city}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Address" %}:
+                            <p><strong>{% trans "Address" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.address_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.address}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Pobox" %}: {{call.msc_programme.pobox }}</p>
-                            <p>{% trans "Telephone" %}: {{call.msc_programme.telephone }}</p>
+                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.pobox }}</p>
+                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.telephone }}</p>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="card-body">
                             {% for flow in msc_flows %}
-                                <p>{{forloop.counter}} :
+                                <p><strong>{{forloop.counter}} :</strong>
                                     {% if LANGUAGE_CODE == 'el-gr' %}
                                         {{flow.title_el_GR}}
                                     {% else %}
@@ -129,29 +129,29 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p>{% trans "Country" %}:
+                            <p><strong>{% trans "Country" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.country_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.country}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "City" %}:
+                            <p><strong>{% trans "City" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.city_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.city}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Address" %}:
+                            <p><strong>{% trans "Address" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.address_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.address}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Pobox" %}: {{call.msc_programme.department.pobox }}</p>
-                            <p>{% trans "Telephone" %}: {{call.msc_programme.department.telephone }}</p>
+                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.department.pobox }}</p>
+                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.department.telephone }}</p>
                         </div>
                     </div>
                 </div>
@@ -167,29 +167,29 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p>{% trans "Country" %}:
+                            <p><strong>{% trans "Country" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.institution.country_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.institution.country}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "City" %}:
+                            <p><strong>{% trans "City" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.institution.city_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.institution.city}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Address" %}:
+                            <p><strong>{% trans "Address" %}:</strong>
                                 {% if LANGUAGE_CODE == 'el-gr' %}
                                     {{call.msc_programme.department.institution.address_el_GR}}
                                 {% else %}
                                     {{call.msc_programme.department.institution.address}}
                                 {% endif %}
                             </p>
-                            <p>{% trans "Pobox" %}: {{call.msc_programme.department.institution.pobox }}</p>
-                            <p>{% trans "Telephone" %}: {{call.msc_programme.department.institution.telephone }}</p>
+                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.department.institution.pobox }}</p>
+                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.department.institution.telephone }}</p>
                         </div>
                     </div>
                 </div>

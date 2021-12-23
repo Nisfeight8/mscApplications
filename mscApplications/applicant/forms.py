@@ -41,7 +41,7 @@ class ApplicantForm(forms.ModelForm):
     country = forms.CharField(label=_("Country"))
     city = forms.CharField(label=_("City"))
     citizenship = forms.CharField(label=_("Citizenship"))
-    gender = forms.ChoiceField(choices=GENDER_CHOICES)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES,label=_("Gender"))
 
     class Meta:
         model = Applicant
@@ -85,7 +85,7 @@ class ApplicantForm(forms.ModelForm):
 
 class DiplomaForm(forms.ModelForm):
     TYPE_CHOICES.insert(0, ("", ""))
-    type = forms.ChoiceField(choices=TYPE_CHOICES)
+    type = forms.ChoiceField(choices=TYPE_CHOICES, initial=None)
     media_file = forms.FileField(
         help_text=_("supported type is pdf"), label=_("Media File")
     )
@@ -147,7 +147,7 @@ class ApplicationForm(forms.ModelForm):
 
 
 class PhdForm(forms.ModelForm):
-    TYPE_CHOICES.insert(0, ("", ""))
+    #TYPE_CHOICES.insert(0, ("", ""))
     type = forms.ChoiceField(choices=TYPE_CHOICES)
     date_awarded = forms.DateField(
         input_formats=settings.DATE_INPUT_FORMATS,

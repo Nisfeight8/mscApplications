@@ -14,7 +14,7 @@
       <br>
       <p>{% trans "Diplomas" %}</p>
       {% for diploma in applicant.diploma_set.all %}
-      <a href="{{diploma.media_file.url}}">{{diploma.awarding_institution}}</a>
+      <a href="{{diploma.media_file.url}}">{{diploma.specialization}}</a>
       {% endfor %}
       <p>{% trans "Job Experiences" %}</p>
       {% for job in applicant.jobexperience_set.all %}
@@ -207,67 +207,167 @@
         id="diplomas"
         role="tabpanel"
         aria-labelledby="diplomas-tab">
-        <div class="accordion accordion-flush" id="accordionFlushDiplomas">
-          {% for diploma in applicant.diploma_set.all %}
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
-                  {{diploma.specialization}}
-                </button>
-              </h2>
-              <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushDiplomas">
-                <div class="accordion-body">
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                      <p><strong>{% trans "Type" %}: </strong>
-                        {% if diploma.type == 'PG' %}
-                          {% trans "Postgraduate" %}
-                        {% else %}
-                          {% trans "Undergraduate" %}
-                        {% endif %}
-                      </p>
-                      <p><strong>{% trans "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
-                      <p><strong>{% trans "Department" %}: </strong>{{ diploma.department }}</p>
-                    </div>
-                    <div class="col-6">
-                        <p><strong>{% trans "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
-                        <p><strong>{% trans "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
-                        <p><strong>{% trans "Country" %}: </strong>{{ diploma.country }}</p>
-                        <p><strong>{% trans "City" %}: </strong>{{ diploma.city }}</p>
+        {% if applicant.diploma_set.all %}
+          <div class="accordion accordion-flush" id="accordionFlushDiplomas">
+            {% for diploma in applicant.diploma_set.all %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                  <button class="accordion-button gray-500 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                    {{diploma.specialization}}
+                  </button>
+                </h2>
+                <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushDiplomas">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        <p><strong>{% trans "Type" %}: </strong>
+                          {% if diploma.type == 'PG' %}
+                            {% trans "Postgraduate" %}
+                          {% else %}
+                            {% trans "Undergraduate" %}
+                          {% endif %}
+                        </p>
+                        <p><strong>{% trans "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
+                        <p><strong>{% trans "Department" %}: </strong>{{ diploma.department }}</p>
+                      </div>
+                      <div class="col-6">
+                          <p><strong>{% trans "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
+                          <p><strong>{% trans "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
+                          <p><strong>{% trans "Country" %}: </strong>{{ diploma.country }}</p>
+                          <p><strong>{% trans "City" %}: </strong>{{ diploma.city }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="row">
+            <div class="col col-12">
+                <div class="alert alert-danger">{% trans "No Diplomas found " %}</div>
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endif %}
       </div>
       <div
         class="tab-pane fade"
         id="jobexperiences"
         role="tabpanel"
         aria-labelledby="jobexperiences-tab">
-        <div class="accordion accordion-flush" id="accordionFlushJobs">
-          {% for job in applicant.jobexperience_set.all %}
+        {% if applicant.jobexperience_set.all %}
+          <div class="accordion accordion-flush" id="accordionFlushJobs">
+            {% for job in applicant.jobexperience_set.all %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                    {{job.job_title}}
+                  </button>
+                </h2>
+                <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushJobs">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        <p><strong>{% trans "Organization" %}: </strong>
+                          {{job.organization}}
+                        </p>
+                        <p><strong>{% trans "Start Date" %}: </strong>{{ job.start_date }}</p>
+                        <p><strong>{% trans "End Date" %}: </strong>{{ jb.end_date }}</p>
+                      </div>
+                      <div class="col-6">
+                        <p><strong>{% trans "Country" %}: </strong>{{ job.country }}</p>
+                        <p><strong>{% trans "City" %}: </strong>{{ job.city }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="row">
+            <div class="col col-12">
+                <div class="alert alert-danger">{% trans "No Job Experiences found " %}</div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div
+        class="tab-pane fade "
+        id="phds"
+        role="tabpanel"
+        aria-labelledby="phds-tab">
+        {% if applicant.phd_set.all %}
+          <div class="accordion accordion-flush" id="accordionFlushPhds">
+            {% for phd in applicant.phd_set.all %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                    {{phd.title}}
+                  </button>
+                </h2>
+                <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushPhds">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        <p><strong>{% trans "Type" %}: </strong>
+                          {% if phd.type == 'PG' %}
+                            {% trans "Postgraduate" %}
+                          {% else %}
+                            {% trans "Undergraduate" %}
+                          {% endif %}
+                        </p>
+                        <p><strong>{% trans "Awarding Institution" %}: </strong>{{ phd.awarding_institution }}</p>
+                        <p><strong>{% trans "Department" %}: </strong>{{ phd.department }}</p>
+                        <p><strong>{% trans "Supervisor" %}: </strong>{{ phd.supervisor }}</p>
+                      </div>
+                      <div class="col-6">
+                          <p><strong>{% trans "Date Awarded" %}: </strong>{{ phd.date_awarded }}</p>
+                          <p><strong>{% trans "Average Grade" %}: </strong>{{ phd.grade_point_average }}</p>
+                          <p><strong>{% trans "Country" %}: </strong>{{ phd.country }}</p>
+                          <p><strong>{% trans "City" %}: </strong>{{ phd.city }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="row">
+            <div class="col col-12">
+                <div class="alert alert-danger">{% trans "No Phds found " %}</div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div
+        class="tab-pane fade"
+        id="references"
+        role="tabpanel"
+        aria-labelledby="references-tab">
+        {% if applicant.reference_set.all %}
+        <div class="accordion accordion-flush" id="accordionFlushRefs">
+          {% for ref in applicant.reference_set.all %}
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
-                  {{job.job_title}}
+                  {{ref.job_title}} {% trans 'Reference' %}
                 </button>
               </h2>
-              <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushJobs">
+              <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushRefs">
                 <div class="accordion-body">
                   <div class="row">
                     <div class="col-12 col-md-6">
-                      <p><strong>{% trans "Organization" %}: </strong>
-                        {{job.organization}}
-                      </p>
-                      <p><strong>{% trans "Start Date" %}: </strong>{{ job.start_date }}</p>
-                      <p><strong>{% trans "End Date" %}: </strong>{{ jb.end_date }}</p>
+                      <p><strong>{% trans "Organization" %}: </strong>{{ ref.organization }}</p>
+                      <p><strong>{% trans "First Name" %}: </strong>{{ ref.first_name }}</p>
+                      <p><strong>{% trans "Last Name" %}: </strong>{{ ref.last_name }}</p>
+                      <p><strong>{% trans "Telephone" %}: </strong>{{ ref.telephone }}</p>
                     </div>
                     <div class="col-6">
-                      <p><strong>{% trans "Country" %}: </strong>{{ job.country }}</p>
-                      <p><strong>{% trans "City" %}: </strong>{{ job.city }}</p>
+                      <p><strong>{% trans "Reference Date" %}: </strong>{{ ref.reference_date }}</p>
+                      <p><strong>{% trans "Country" %}: </strong>{{ ref.country }}</p>
+                      <p><strong>{% trans "City" %}: </strong>{{ ref.city }}</p>
                     </div>
                   </div>
                 </div>
@@ -275,269 +375,15 @@
             </div>
           {% endfor %}
         </div>
-    </div>
-    <div
-        class="tab-pane fade "
-        id="phds"
-        role="tabpanel"
-        aria-labelledby="phds-tab">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col">{% trans "Title" %}</th>
-              <th scope="col">{% trans "Type" %}</th>
-              <th scope="col">{% trans "Awarding Institution" %}</th>
-              <th scope="col">{% trans "Department" %}</th>
-              <th scope="col">{% trans "Supervisor" %}</th>
-              <th scope="col">{% trans "Date Awarded" %}</th>
-              <th scope="col">{% trans "Average Grade" %}</th>
-              <th scope="col">{% trans "Country" %}</th>
-              <th scope="col">{% trans "City" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for phd in applicant.phd_set.all %}
-            <tr>
-              <td>{{phd.title}}</td>
-              <td>{% if phd.type == 'PG' %}
-                {% trans "Postgraduate" %}
-              {% else %}
-                {% trans "Undergraduate" %}
-              {% endif %}</td>
-              <td>{{phd.awarding_institution}}</td>
-              <td>{{phd.department}}</td>
-              <td>{{phd.supervisor}}</td>
-              <td>{{phd.date_awarded}}</td>
-              <td>{{phd.grade_point_average}}</td>
-              <td>{{phd.country}}</td>
-              <td>{{phd.city}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-    </div>
-    <div
-        class="tab-pane fade"
-        id="references"
-        role="tabpanel"
-        aria-labelledby="references-tab">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col">{% trans "Job Title" %}</th>
-              <th scope="col">{% trans "Organization" %}</th>
-              <th scope="col">{% trans "First Name" %}</th>
-              <th scope="col">{% trans "Last Name" %}</th>
-              <th scope="col">{% trans "Telephone" %}</th>
-              <th scope="col">{% trans "Reference Date" %}</th>
-              <th scope="col">{% trans "Country" %}</th>
-              <th scope="col">{% trans "City" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for ref in applicant.reference_set.all %}
-            <tr>
-              <td>{{ref.job_title}}</td>
-              <td>{{ref.organization}}</td>
-              <td>{{ref.first_name}}</td>
-              <td>{{ref.last_name}}</td>
-              <td>{{ref.telephone}}</td>
-              <td>{{ref.reference_date}}</td>
-              <td>{{ref.country}}</td>
-              <td>{{ref.city}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      {% else %}
+        <div class="row">
+          <div class="col col-12">
+              <div class="alert alert-danger">{% trans "No References found " %}</div>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
-
-    {# <div
-    class="tab-pane fade"
-    id="applications"
-    role="tabpanel"
-    aria-labelledby="applications-tab">
-    <!--<table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Submission Date</th>
-          <th scope="col">Call</th>
-          <th scope="col">Reference</th>
-          <th scope="col">Prefered Flows</th>
-          <th scope="col">Admitted Flow</th>
-          <th scope="col">Admitted</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for app in applications %}
-        <tr>
-          <td>{{app.submission_date}}</td>
-          <td>{{app.call}}</td>
-          <td>{{app.reference}}</td>
-          <td>
-          {% for pref in app.preference_set.all %}
-             {{pref.priority }} {{pref.flow }},
-          {% endfor %}
-        </td>
-        <td>
-          {% for pref in app.preference_set.all %}
-            {% if pref.admitted == True %}
-              {{pref.flow }}
-            {% endif %}
-          {% endfor %}
-        </td>
-          <td>
-          {% if app.admitted == None %}
-            Pending
-          {% elif app.admitted == True %}
-            Yes
-          {% else %}
-          {% endif %}
-          </td>
-        {% endfor %}
-      </tbody>
-    </table>-->
-        {% for app in applicant.application_set.all %}
-            <div class="card" style="border: none;" id="{{forloop.counter}}">
-              <div class="row">
-                <div class="col-md-6">
-                  <label>{% trans "Submission Date" %}</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{app.submission_date}}</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>{% trans "Programme" %}</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{% if LANGUAGE_CODE == 'el-gr' %}
-                    {{app.call.msc_programme.title_el_GR}}
-                {% else %}
-                    {{app.call.msc_programme}}
-                {% endif %}</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>{% trans "Reference" %}</label>
-                </div>
-                <div class="col-md-6">
-                  {% if app.reference %}
-                  <p>{{app.reference}}</p>
-                  {% else %}
-                  <p>{% trans "None" %}</p>
-                  {% endif %}
-                </div>
-              </div>
-              <hr>
-
-              {% if app.preference_set.all %}
-              <h5 >{% trans "Flows by prefered Order" %}</h5>
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">{% trans "Priority" %}</th>
-                    <th scope="col">{% trans "Flow" %}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for pref in app.preference_set.all %}
-                      <tr>
-                        <td>{{pref.priority}}</td>
-                        <td>
-                          {% if LANGUAGE_CODE == 'el-gr' %}
-                            {{pref.flow.title_el_GR}}
-                        {% else %}
-                            {{pref.flow}}
-                        {% endif %}</td>
-                      </tr>
-                   {% endfor %}
-                </tbody>
-              </table>
-            <br>
-            <div class="row">
-              <div class="col-md-6">
-                <label>{% trans "Admitted Flow" %}</label>
-              </div>
-              <div class="col-md-6">
-                {% if app.admitted_flow %}
-                <p> {% if LANGUAGE_CODE == 'el-gr' %}
-                  {{app.admitted_flow.title_el_GR}}
-              {% else %}
-                  {{app.admitted_flow}}
-              {% endif %}</p>
-                {% else %}
-                <p>{% trans "None" %}</p>
-                {% endif %}
-              </div>
-            </div>
-            <hr>
-            {% endif %}
-              <div class="row">
-                <div class="col-md-6">
-                  <label>{% trans "Admitted" %}</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{% if app.admitted == None %}
-                    {% trans "Pending" %}
-                  {% elif app.admitted == True %}
-                  {% trans "Yes" %}
-                  {% else %}
-                  {% trans "No" %}
-                  {% endif %}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-            <nav>
-              <ul class="pagination pg-red">
-                  <!--Numbers-->
-                  {% for app in applicant.application_set.all %}
-                  <li class="page-item "><a class="page-link">{{ forloop.counter }}</a></li>
-                  {% endfor %}
-
-              </ul>
-          </nav>
-
-            </div>
-
-    </div>
-    </div>
-  <br>
-  <br>
-<br>
-</div> #}
-
-
-{% endblock %}
-{% block javascript %}
-<script type="text/javascript">
-  $(document).ready(function(){
-    //Hide all cards
-    $(".card").each(function(index, value){
-      $('.card').hide();
-    })
-    $( ".card" ).first().show();
-    $( ".page-item" ).first().addClass("active");
-
-    $(".page-link").on('click', function(){
-
-    $(".page-link").each(function(index, value){
-      $(value).parent().removeClass("active");
-    });
-    //Hide all cards
-    $(".card").each(function(index, value){
-      $('.card').hide();
-    })
-
-    $(this).parent().addClass("active");
-      var cardId = "#" + $(this).text();
-      $(cardId).show();
-    });
-
-  });
-</script>
+</div>
 {% endblock %}

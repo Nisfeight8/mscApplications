@@ -5,9 +5,9 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-12 col-sm-4">
       <div class="card">
-        <div class="card-header text-white bg-info">
+        <div class="card-header text-white msc-color">
           {% trans "Applicant Informations" %}
         </div>
         <div class="card-body">
@@ -81,18 +81,18 @@
         </div>
     </div>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-sm-8">
       <div class="card">
-        <div class="card-header text-white bg-info">
+        <div class="card-header text-white msc-color">
           {% trans "Applicant Degrees and References" %}
         </div>
         <div class="card-body">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
+          <ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
+            <li class="nav-item " role="presentation">
               <a
-                class="nav-link active"
+                class="flex-sm-fill text-sm-center nav-link active"
                 id="diplomas-tab"
-                data-toggle="tab"
+                data-bs-toggle="tab"
                 href="#diplomas"
                 role="tab"
                 aria-controls="diplomas"
@@ -100,11 +100,11 @@
                 >{% trans "Diplomas" %}</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <a
-                class="nav-link"
+                class="flex-sm-fill text-sm-center nav-link"
                 id="phds-tab"
-                data-toggle="tab"
+                data-bs-toggle="tab"
                 href="#phds"
                 role="tab"
                 aria-controls="phds"
@@ -112,11 +112,11 @@
                 >{% trans "PHDs" %}</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <a
-                class="nav-link"
+                class="flex-sm-fill text-sm-center nav-link"
                 id="jobexperiences-tab"
-                data-toggle="tab"
+                data-bs-toggle="tab"
                 href="#jobexperiences"
                 role="tab"
                 aria-controls="jobexperiences"
@@ -124,11 +124,11 @@
                 >{% trans "Job Experiences" %}</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <a
-                class="nav-link"
+                class="flex-sm-fill text-sm-center nav-link"
                 id="references-tab"
-                data-toggle="tab"
+                data-bs-toggle="tab"
                 href="#references"
                 role="tab"
                 aria-controls="references"
@@ -137,168 +137,197 @@
               >
             </li>
           </ul>
-          <div class="tab-content" id="myTabContent">
-            <div
-            class="tab-pane fade show active "
+        </div>
+        <hr>
+         <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
             id="diplomas"
             role="tabpanel"
             aria-labelledby="diplomas-tab">
-            <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-              <thead>
-                <tr>
-                  <th scope="col">{% trans "Type" %}</th>
-                  <th scope="col">{% trans "Awarding Institution" %}</th>
-                  <th scope="col">{% trans "Department" %}</th>
-                  <th scope="col">{% trans "Specialization" %}</th>
-                  <th scope="col">{% trans "Date Awarded" %}</th>
-                  <th scope="col">{% trans "Average Grade" %}</th>
-                  <th scope="col">{% trans "Country" %}</th>
-                  <th scope="col">{% trans "City" %}</th>
-                  <th scope="col">{% trans "Media File" %}</th>
-                </tr>
-              </thead>
-              <tbody>
+            {% if applicant.diploma_set.all %}
+              <div class="accordion accordion-flush" id="accordionFlushDiplomas">
                 {% for diploma in applicant.diploma_set.all %}
-                <tr>
-                  <td>{% if diploma.type == 'PG' %}
-                    {% trans "Postgraduate" %}
-                  {% else %}
-                    {% trans "Undergraduate" %}
-                  {% endif %}</td>
-                  <td>{{diploma.awarding_institution}}</td>
-                  <td>{{diploma.department}}</td>
-                  <td>{{diploma.specialization}}</td>
-                  <td>{{diploma.date_awarded}}</td>
-                  <td>{{diploma.grade_point_average}}</td>
-                  <td>{{diploma.country}}</td>
-                  <td>{{diploma.city}}</td>
-                  <td><a href="{{diploma.media_file.url}}">{{diploma.media_file}}</a></td>
-                </tr>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                      <button class="accordion-button gray-500 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                        {{diploma.specialization}}
+                      </button>
+                    </h2>
+                    <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushDiplomas">
+                      <div class="accordion-body">
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <p><strong>{% trans "Type" %}: </strong>
+                              {% if diploma.type == 'PG' %}
+                                {% trans "Postgraduate" %}
+                              {% else %}
+                                {% trans "Undergraduate" %}
+                              {% endif %}
+                            </p>
+                            <p><strong>{% trans "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
+                            <p><strong>{% trans "Department" %}: </strong>{{ diploma.department }}</p>
+                            <p><strong>{% trans "Media File" %}: </strong><a href="{{diploma.media_file.url}}">{{diploma.specialization}}</a></p>
+                          </div>
+                          <div class="col-6">
+                              <p><strong>{% trans "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
+                              <p><strong>{% trans "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
+                              <p><strong>{% trans "Country" %}: </strong>{{ diploma.country }}</p>
+                              <p><strong>{% trans "City" %}: </strong>{{ diploma.city }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 {% endfor %}
-              </tbody>
-            </table>
+              </div>
+            {% else %}
+              <div class="row container">
+                <div class="col col-12">
+                    <div class="alert alert-danger">{% trans "No Diplomas found " %}</div>
+                </div>
+              </div>
+            {% endif %}
           </div>
-        </div>
-        <div
+          <div
             class="tab-pane fade"
             id="jobexperiences"
             role="tabpanel"
             aria-labelledby="jobexperiences-tab">
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-              <thead>
-                <tr>
-                  <th scope="col">{% trans "Organization" %}</th>
-                  <th scope="col">{% trans "Job Title" %}</th>
-                  <th scope="col">{% trans "Start Date" %}</th>
-                  <th scope="col">{% trans "End Date" %}</th>
-                  <th scope="col">{% trans "Country" %}</th>
-                  <th scope="col">{% trans "City" %}</th>
-                  <th scope="col">{% trans "Media File" %}</th>
-                </tr>
-              </thead>
-              <tbody>
+            {% if applicant.jobexperience_set.all %}
+              <div class="accordion accordion-flush" id="accordionFlushJobs">
                 {% for job in applicant.jobexperience_set.all %}
-                <tr>
-                  <td>{{job.organization}}</td>
-                  <td>{{job.job_title}}</td>
-                  <td>{{job.start_date}}</td>
-                  <td>{{job.end_date}}</td>
-                  <td>{{job.country}}</td>
-                  <td>{{job.city}}</td>
-                  <td><a href="{{job.media_file.url}}">{{job.media_file}}</a></td>
-                </tr>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                        {{job.job_title}}
+                      </button>
+                    </h2>
+                    <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushJobs">
+                      <div class="accordion-body">
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <p><strong>{% trans "Organization" %}: </strong>
+                              {{job.organization}}
+                            </p>
+                            <p><strong>{% trans "Start Date" %}: </strong>{{ job.start_date }}</p>
+                            <p><strong>{% trans "End Date" %}: </strong>{{ jb.end_date }}</p>
+                          </div>
+                          <div class="col-6">
+                            <p><strong>{% trans "Country" %}: </strong>{{ job.country }}</p>
+                            <p><strong>{% trans "City" %}: </strong>{{ job.city }}</p>
+                            <p><strong>{% trans "Media File" %}: </strong><a href="{{job.media_file.url}}">{{job.job_title}}</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 {% endfor %}
-              </tbody>
-            </table>
-            </div>
-        </div>
-        <div
+              </div>
+            {% else %}
+              <div class="row container">
+                <div class="col col-12">
+                    <div class="alert alert-danger">{% trans "No Job Experiences found " %}</div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          <div
             class="tab-pane fade "
             id="phds"
             role="tabpanel"
             aria-labelledby="phds-tab">
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-              <thead>
-                <tr>
-                  <th scope="col">{% trans "Title" %}</th>
-                  <th scope="col">{% trans "Type" %}</th>
-                  <th scope="col">{% trans "Awarding Institution" %}</th>
-                  <th scope="col">{% trans "Department" %}</th>
-                  <th scope="col">{% trans "Supervisor" %}</th>
-                  <th scope="col">{% trans "Date Awarded" %}</th>
-                  <th scope="col">{% trans "Average Grade" %}</th>
-                  <th scope="col">{% trans "Country" %}</th>
-                  <th scope="col">{% trans "City" %}</th>
-                  <th scope="col">{% trans "Media File" %}</th>
-                </tr>
-              </thead>
-              <tbody>
+            {% if applicant.phd_set.all %}
+              <div class="accordion accordion-flush" id="accordionFlushPhds">
                 {% for phd in applicant.phd_set.all %}
-                <tr>
-                  <td>{{phd.title}}</td>
-                  <td>{% if phd.type == 'PG' %}
-                    {% trans "Postgraduate" %}
-                  {% else %}
-                    {% trans "Undergraduate" %}
-                  {% endif %}</td>
-                  <td>{{phd.awarding_institution}}</td>
-                  <td>{{phd.department}}</td>
-                  <td>{{phd.supervisor}}</td>
-                  <td>{{phd.date_awarded}}</td>
-                  <td>{{phd.grade_point_average}}</td>
-                  <td>{{phd.country}}</td>
-                  <td>{{phd.city}}</td>
-                  <td><a href="{{phd.media_file.url}}">{{phd.media_file}}</a></td>
-                </tr>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                        {{phd.title}}
+                      </button>
+                    </h2>
+                    <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushPhds">
+                      <div class="accordion-body">
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <p><strong>{% trans "Type" %}: </strong>
+                              {% if phd.type == 'PG' %}
+                                {% trans "Postgraduate" %}
+                              {% else %}
+                                {% trans "Undergraduate" %}
+                              {% endif %}
+                            </p>
+                            <p><strong>{% trans "Awarding Institution" %}: </strong>{{ phd.awarding_institution }}</p>
+                            <p><strong>{% trans "Department" %}: </strong>{{ phd.department }}</p>
+                            <p><strong>{% trans "Supervisor" %}: </strong>{{ phd.supervisor }}</p>
+                          </div>
+                          <div class="col-6">
+                              <p><strong>{% trans "Date Awarded" %}: </strong>{{ phd.date_awarded }}</p>
+                              <p><strong>{% trans "Average Grade" %}: </strong>{{ phd.grade_point_average }}</p>
+                              <p><strong>{% trans "Country" %}: </strong>{{ phd.country }}</p>
+                              <p><strong>{% trans "City" %}: </strong>{{ phd.city }}</p>
+                              <p><strong>{% trans "Media File" %}: </strong><a href="{{phd.media_file.url}}">{{phd.title}}</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 {% endfor %}
-              </tbody>
-            </table>
-            </div>
-        </div>
-        <div
+              </div>
+            {% else %}
+              <div class="row container">
+                <div class="col col-12">
+                    <div class="alert alert-danger">{% trans "No Phds found " %}</div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          <div
             class="tab-pane fade"
             id="references"
             role="tabpanel"
             aria-labelledby="references-tab">
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-              <thead>
-                <tr>
-                  <th scope="col">{% trans "Job Title" %}</th>
-                  <th scope="col">{% trans "Organization" %}</th>
-                  <th scope="col">{% trans "First Name" %}</th>
-                  <th scope="col">{% trans "Last Name" %}</th>
-                  <th scope="col">{% trans "Telephone" %}</th>
-                  <th scope="col">{% trans "Reference Date" %}</th>
-                  <th scope="col">{% trans "Country" %}</th>
-                  <th scope="col">{% trans "City" %}</th>
-                  <th scope="col">{% trans "Media File" %}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for ref in applicant.reference_set.all %}
-                <tr>
-                  <td>{{ref.job_title}}</td>
-                  <td>{{ref.organization}}</td>
-                  <td>{{ref.first_name}}</td>
-                  <td>{{ref.last_name}}</td>
-                  <td>{{ref.telephone}}</td>
-                  <td>{{ref.reference_date}}</td>
-                  <td>{{ref.country}}</td>
-                  <td>{{ref.city}}</td>
-                  <td><a href="{{ref.media_file.url}}">{{ref.media_file}}</a></td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            {% if applicant.reference_set.all %}
+            <div class="accordion accordion-flush" id="accordionFlushRefs">
+              {% for ref in applicant.reference_set.all %}
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                      {{ref.job_title}} {% trans 'Reference' %}
+                    </button>
+                  </h2>
+                  <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushRefs">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <p><strong>{% trans "Organization" %}: </strong>{{ ref.organization }}</p>
+                          <p><strong>{% trans "First Name" %}: </strong>{{ ref.first_name }}</p>
+                          <p><strong>{% trans "Last Name" %}: </strong>{{ ref.last_name }}</p>
+                          <p><strong>{% trans "Telephone" %}: </strong>{{ ref.telephone }}</p>
+                        </div>
+                        <div class="col-6">
+                          <p><strong>{% trans "Reference Date" %}: </strong>{{ ref.reference_date }}</p>
+                          <p><strong>{% trans "Country" %}: </strong>{{ ref.country }}</p>
+                          <p><strong>{% trans "City" %}: </strong>{{ ref.city }}</p>
+                          <p><strong>{% trans "Media File" %}: </strong><a href="{{job.media_file.url}}">{{ref.job_title}}</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
+          {% else %}
+            <div class="row container">
+              <div class="col col-12">
+                  <div class="alert alert-danger">{% trans "No References found " %}</div>
+              </div>
             </div>
-            </div>
+          {% endif %}
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
+  </div>
 </div>
+       
 {% endblock content %}

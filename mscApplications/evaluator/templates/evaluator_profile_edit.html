@@ -4,14 +4,14 @@
 {% block title %}{% trans "Edit Profile" %}{% endblock title %}
 {% block content %}
   <div class="card">
-    <div class="card-header text-white bg-info">
+    <div class="card-header text-white msc-color">
       {% trans "Edit Profile" %}
     </div>
     <div class="card-body">
       <form enctype="multipart/form-data" class="form-special" action="." method="post">
         {% csrf_token %}
         {% crispy form  %}
-        <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
+        <button type="submit" class="btn msc-color text-white">{% trans "Submit" %}</button>
       </form>
     </div>
   </div>

@@ -29,43 +29,6 @@ textarea {
   outline: none;
   height:37px;
 }
-input[type="text"],
-input[type="select"],
-select.form-select,
-textarea.form-control,
-input[type="password"],
-input[type="email"],
-input[type="date"],
-input[type="number"]
- {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-select.form-select:focus,
-selectmultiple.form-select:focus,
-textarea.form-control:focus,
-input[type="password"]:focus,
-input[type="select"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus
- {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-color: #439463;
-}
-input[type="text"]:disabled,
-input[type="file"]:disabled,
-select:disabled
-{
-  background: white;
-}
 
 .msc-color{
   background-color: #203d2b;
@@ -75,6 +38,17 @@ select:disabled
   background-color: #2b583d;
   color: white;
 }
+
+
+.accordion-button.collapsed{
+  background:#ccc;
+}
+.accordion-button:not(.collapsed) {
+  background:#689e7e;
+  color: white;
+  background-image: lightgray;
+}
+
 
 .list-group-item.active {
   background-color: #2b583d;
