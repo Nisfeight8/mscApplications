@@ -5,16 +5,20 @@
 
 {% block extra_css %}
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <style>
+    #id_preferences{
+      width: 100% !important;
+    }
+  </style>
 {% endblock %}
 
 {% block title %}{% trans "New Application" %} {% endblock title %}
-
 {% block content %}
   {% get_current_language as LANGUAGE_CODE %}
 
 
   <div class="card">
-    <div class="card-header bg-info text-white">
+    <div class="card-header msc-color text-white">
       {% blocktrans %}New Application for{% endblocktrans %}
         {% if LANGUAGE_CODE == 'el-gr' %}
           {{call.title_el_GR}}
@@ -25,8 +29,8 @@
     <div class="card-body">
       <form name="test" enctype="multipart/form-data"  method="post">
           {% csrf_token %}
-          {{ form |crispy }}
-          <button type="submit" class="btn btn-info">{% trans "Submit" %}</button>
+          {% crispy form %}
+          <button type="submit" class="btn btn msc-color text-white">{% trans "Submit" %}</button>
 
       </form>
     </div>

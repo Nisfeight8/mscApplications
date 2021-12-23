@@ -4,311 +4,196 @@
 {% block content %}
     {% load i18n %}
     {% get_current_language as LANGUAGE_CODE %}
-
-    <h2 style="text-align: center;">
-        {% if LANGUAGE_CODE == 'el-gr' %}
-            {{call.title_el_GR}}
-        {% else %}
-            {{call.title}}
-        {% endif %}
-    </h2>
-    <div class="card text-center">
-        <div class="card-header text-white bg-info">
-        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-            <a class="nav-link active"id="call-tab" data-toggle="tab" href="#call" role="tab" aria-controls="call" aria-selected="false">{% trans "Call" %}</a>
-            </li>
-            <li class="nav-item" >
-            <a class="nav-link" id="programme-tab" data-toggle="tab" href="#programme" role="tab" aria-controls="programme" aria-selected="false">{% trans "Programme" %}</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" id="flows-tab" data-toggle="tab" href="#flows" role="tab" aria-controls="flows" aria-selected="false">{% trans "Flows" %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="department-tab" data-toggle="tab" href="#department" role="tab" aria-controls="department" aria-selected="false">{% trans "Department" %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="department-tab" data-toggle="tab" href="#university" role="tab" aria-controls="university" aria-selected="false">{% trans "Institution" %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="evaluators-tab" data-toggle="tab" href="#evaluators" role="tab" aria-controls="evaluators" aria-selected="false">{% trans "Evaluators" %}</a>
-            </li>
-        </ul>
-        </div>
-        <div class="card-body">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="call" role="tabpanel" aria-labelledby="call-tab">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Title" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.title_el_GR}}
-                            {% else %}
-                                {{call.title}}
-                            {% endif %}
-
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Start Date" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.start_date}}</div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "End Date" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.end_date}}</div>
-                    </div>
-                    <hr>
-
-                </div>
-                <div class="tab-pane fade" id="programme" role="tabpanel" aria-labelledby="programme-tab">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Title" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class=card>
+                <div class="card-header text-white msc-color">
+                    <h6 style="display: inline">
                         {% if LANGUAGE_CODE == 'el-gr' %}
-                            {{call.msc_programme.title_el_GR}}
+                            {{ call.title_el_GR }}
                         {% else %}
-                            {{call.msc_programme.title}}
-                        {% endif %}</div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Country" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.country_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.country}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "City" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.city_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.city}}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Address" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary"> 
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.address_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.address}}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.pobox}} </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.telephone}} </div>
-                    </div>
-                    <hr>
+                            {{ call.title }}
+                        {% endif %}
+                    </h6>
+                    <span class="float-end"><a href="{% url 'applicant:new_application' call.pk %}" class="btn btn-outline-light btn-sm">{% trans "New Application" %}</a></span>
                 </div>
-                <div class="tab-pane fade" id="department" role="tabpanel" aria-labelledby="department-tab">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Title" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary"> 
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.title_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.title}}
-                            {% endif %} 
-                        </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-call-list" data-bs-toggle="list" href="#list-call" role="tab" aria-controls="list-call">{% trans "Call" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-msc-list" data-bs-toggle="list" href="#list-msc" role="tab" aria-controls="list-msc">{% trans "Programme" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-flows-list" data-bs-toggle="list" href="#list-flows" role="tab" aria-controls="list-flows">{% trans "Flows" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-department-list" data-bs-toggle="list" href="#list-department" role="tab" aria-controls="list-department">{% trans "Department" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-institution-list" data-bs-toggle="list" href="#list-institution" role="tab" aria-controls="list-institution">{% trans "Institution" %}</a>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Country" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.country_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.country}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "City" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.city_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.city}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Address" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.address_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.address}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.pobox}} </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.telephone}} </div>
-                    </div>
-                    <hr>
                 </div>
-                <div class="tab-pane fade" id="university" role="tabpanel" aria-labelledby="university-tab">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Title" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.institution.title_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.institution.title}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Country" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.institution.country_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.institution.country}}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "City" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{% if LANGUAGE_CODE == 'el-gr' %}
-                            {{call.msc_programme.department.institution.city_el_GR}}
-                        {% else %}
-                            {{call.msc_programme.department.institution.city}}
-                        {% endif %} </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Address" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{call.msc_programme.department.institution.address_el_GR}}
-                            {% else %}
-                                {{call.msc_programme.department.institution.address}}
-                            {% endif %} 
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Pobox" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.pobox}} </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{% trans "Telephone" %}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">{{call.msc_programme.department.institution.telephone}} </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="tab-pane fade" id="flows" role="tabpanel" aria-labelledby="flows-tab">
-                    {% for flow in msc_flows %}
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h6 class="mb-0">{{forloop.counter}}</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                            {% if LANGUAGE_CODE == 'el-gr' %}
-                                {{flow.title_el_GR}}
-                            {% else %}
-                                {{flow.title}}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <hr>
-                    {% endfor %}
-            </div>
-            <div class="tab-pane fade" id="evaluators" role="tabpanel" aria-labelledby="evaluators-tab">
-                <table class="table table-sm">
-                    <thead class="bg-light">
-                        <tr>
-                            <th>{% trans "Fullname" %}</th>
-                            <th>{% trans "Telephone" %}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for evaluator in evaluators %}
-                        <tr>
-                            <td>{{evaluator.user.first_name}} {{evaluator.user.last_name}}</td>
-                            <td>{{evaluator.telephone}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
         </div>
-        </div>
-        <div class="card-footer text-white bg-info">
-            <a class="btn btn-outline-light float-right" href="{% url 'applicant:new_application' call.pk %}">{% trans "New Application" %}</a>
-        </div>
+        <div class="col-sm-8">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-call" role="tabpanel" aria-labelledby="list-call-list">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                              {% if LANGUAGE_CODE == 'el-gr' %}
+                                {{ call.title_el_GR }}
+                              {% else %}
+                                {{ call.title }}
+                              {% endif %}
+                              </h5>
+                        </div>
+                        <div class="card-body">
+                              <p>{% trans "Start Date" %}: {{ call.start_date }}</p>
+                              <p>{% trans "End Date" %}: {{ call.end_date }}</p>
+                              <p>{% trans "Msc Programme" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                  {{ call.msc_programme.title_el_GR }}
+                                {% else %}
+                                  {{ call.msc_programme }}
+                                {% endif %}
+                              </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-msc" role="tabpanel" aria-labelledby="list-msc-list">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.title_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.title}}
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{% trans "Country" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.country_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.country}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "City" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.city_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.city}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Address" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.address_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.address}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Pobox" %}: {{call.msc_programme.pobox }}</p>
+                            <p>{% trans "Telephone" %}: {{call.msc_programme.telephone }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-flows" role="tabpanel" aria-labelledby="list-flows-list">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.title_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.title}}
+                                {% endif %}
+                                {% trans "Flows" %}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            {% for flow in msc_flows %}
+                                <p>{{forloop.counter}} :
+                                    {% if LANGUAGE_CODE == 'el-gr' %}
+                                        {{flow.title_el_GR}}
+                                    {% else %}
+                                        {{flow.title}}
+                                    {% endif %}
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-department" role="tabpanel" aria-labelledby="list-department-list">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.title_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.title}}
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{% trans "Country" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.country_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.country}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "City" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.city_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.city}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Address" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.address_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.address}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Pobox" %}: {{call.msc_programme.department.pobox }}</p>
+                            <p>{% trans "Telephone" %}: {{call.msc_programme.department.telephone }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-institution" role="tabpanel" aria-labelledby="list-institution-list">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.institution.title_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.institution.title}}
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{% trans "Country" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.institution.country_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.institution.country}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "City" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.institution.city_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.institution.city}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Address" %}:
+                                {% if LANGUAGE_CODE == 'el-gr' %}
+                                    {{call.msc_programme.department.institution.address_el_GR}}
+                                {% else %}
+                                    {{call.msc_programme.department.institution.address}}
+                                {% endif %}
+                            </p>
+                            <p>{% trans "Pobox" %}: {{call.msc_programme.department.institution.pobox }}</p>
+                            <p>{% trans "Telephone" %}: {{call.msc_programme.department.institution.telephone }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

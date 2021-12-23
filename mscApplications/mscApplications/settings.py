@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'allauth.account',  # new
     'allauth.socialaccount',  # new
     'modeltranslation',
-    'crispy_forms',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    'bootstrap5',
     'django_translation_flags',
     'msc',
     'user_account',
@@ -201,7 +203,9 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 LOGIN_REDIRECT_URL = '/users/check'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
 

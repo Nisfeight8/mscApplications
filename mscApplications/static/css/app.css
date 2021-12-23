@@ -24,9 +24,15 @@ a.nav-link:hover{
 .flag li{
     padding-right: 5px;
 }
-
+textarea {
+  box-shadow: none;
+  outline: none;
+  height:37px;
+}
 input[type="text"],
-select.form-control,
+input[type="select"],
+select.form-select,
+textarea.form-control,
 input[type="password"],
 input[type="email"],
 input[type="date"],
@@ -42,14 +48,17 @@ input[type="number"]
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-select.form-control:focus,
-selectmultiple.form-control:focus,
+select.form-select:focus,
+selectmultiple.form-select:focus,
+textarea.form-control:focus,
 input[type="password"]:focus,
+input[type="select"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus
  {
   -webkit-box-shadow: none;
   box-shadow: none;
+  border-color: #439463;
 }
 input[type="text"]:disabled,
 input[type="file"]:disabled,
@@ -58,5 +67,26 @@ select:disabled
   background: white;
 }
 
+.msc-color{
+  background-color: #203d2b;
+}
 
+.header-color{
+  background-color: #2b583d;
+  color: white;
+}
+
+.list-group-item.active {
+  background-color: #2b583d;
+  border-color: #2b583d;
+}
+.nav-pills .nav-item .nav-link.active {
+  color: white;
+  background-color: #2b583d;
+
+}
+.nav-pills .nav-item .nav-link {
+  color: black;
+
+}
 

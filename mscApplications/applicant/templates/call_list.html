@@ -9,49 +9,45 @@
 
 {% block content %}
   {% get_current_language as LANGUAGE_CODE %}
-  
-  <h2 style="text-align: center;">{% trans "Open Calls" %}</h2>
-  <div class="table-responsive">
-    <table id="datatable" class="table align-items-center table-flush">
-      <thead class="text-white bg-info">
-        <tr>
-          <th class="th-sm" scope="col">{% trans "Title" %}</th>
-          <th class="th-sm" scope="col">{% trans "Start Date" %}</th>
-          <th class="th-sm" scope="col">{% trans "End Date" %}</th>
-          <th class="th-sm" scope="col">{% trans "Msc Programme" %}</th>
-          <th class="th-sm" scope="col">{% trans "Actions" %}</th>
-        </tr>
-      </thead>
-      <tbody>
+  {% if calls %}
         {% for call in calls %}
-        <tr>
-          {% if LANGUAGE_CODE == 'el-gr' %}
-            <td >{{ call.title_el_GR }}</td>
-            <td >{{call.start_date}}</td>
-            <td> {{call.end_date}}</td>
-            <td> {{call.msc_programme.title_el_GR}}</td>
-          {% else %}
-            <td >{{ call.title }}</td>
-            <td >{{call.start_date}}</td>
-            <td> {{call.end_date}}</td>
-            <td> {{call.msc_programme}}</td>
-          {% endif %}
-          <td>
-            <a class="btn btn-outline-info" href="{% url 'applicant:call_detail'  call.pk  %}">{% trans "View Call" %}</a>
-            <a class="btn btn-outline-info" href="{% url 'applicant:new_application' call.pk %}">{% trans "New Application" %}</a>
-          </td>
-        </tr>
+            <div class="row">
+                <div class="col col-12">
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                              {% if LANGUAGE_CODE == 'el-gr' %}
+                                {{ call.title_el_GR }}
+                              {% else %}
+                                {{ call.title }}
+                              {% endif %}
+                              </h5>
+                            <span class="float-end"><a href="{% url 'applicant:call_detail'  call.pk  %}" class="btn btn-outline-light">{% trans "View Call" %}</a></span>
+                        </div>
+                        <div class="card-body">
+                          <p>{% trans "Start Date" %}: {{ call.start_date }}</p>
+                          <p>{% trans "End Date" %}: {{ call.end_date }}</p>
+                          <p>{% trans "Msc Programme" %}:
+                            {% if LANGUAGE_CODE == 'el-gr' %}
+                              {{ call.msc_programme.title_el_GR }}
+                            {% else %}
+                              {{ call.msc_programme }}
+                            {% endif %}
+                           </p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+              </div>
+            <div class="spacer-sm"></div>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
+    {% else %}
+        <div class="row">
+            <div class="col col-12">
+                <div class="alert alert-danger">{% trans "No calls found " %}</div>
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock  %}
-{% block javascript %}
-  <script type="text/javascript"
-    src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript"
-    src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-  <script type="text/javascript">
-      $('#datatable').DataTable();
-  </script>
-{% endblock %}
+

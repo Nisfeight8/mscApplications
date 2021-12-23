@@ -6,96 +6,11 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-12 col-md-3 text-center">
     <div class="profile-image">
       <i class="far fa-user-circle big-icon"></i>
     </div>
-  </div>
-  <div class="col-md-9">
-    <div class="profile-head">
-      <br>
-      <h6>{{applicant.user.email}}</h6>
-        <br>
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            id="profile-tab"
-            data-toggle="tab"
-            href="#profile"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="false"
-            >{% trans "About" %}</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="diplomas-tab"
-            data-toggle="tab"
-            href="#diplomas"
-            role="tab"
-            aria-controls="diplomas"
-            aria-selected="false"
-            >{% trans "Diplomas" %}</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="phds-tab"
-            data-toggle="tab"
-            href="#phds"
-            role="tab"
-            aria-controls="phds"
-            aria-selected="true"
-            >{% trans "PHDs" %}</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="jobexperiences-tab"
-            data-toggle="tab"
-            href="#jobexperiences"
-            role="tab"
-            aria-controls="jobexperiences"
-            aria-selected="true"
-            >{% trans "Job Experiences" %}</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="references-tab"
-            data-toggle="tab"
-            href="#references"
-            role="tab"
-            aria-controls="references"
-            aria-selected="true"
-            >{% trans "References" %}</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="applications-tab"
-            data-toggle="tab"
-            href="#applications"
-            role="tab"
-            aria-controls="applications"
-            aria-selected="true"
-            >{% trans "Applications" %}</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-3">
-      <h3>Files</h3>
+     <h3>Files</h3>
       <br>
       <p>{% trans "Diplomas" %}</p>
       {% for diploma in applicant.diploma_set.all %}
@@ -120,8 +35,88 @@
       <br>
       <br>
   </div>
-  <div class="col-md-9">
-    <div class="tab-content" id="myTabContent">
+  <div class="col-12 col-md-9">
+    <div class="profile-head">
+      <br>
+      <div class="container">
+        <div class="row msc-color text-white text-center">
+          <div class="col-12 col-md-6">
+            <h6>{{applicant.user.email}}</h6>
+          </div>
+          <div class="col-12 col-md-3">
+            <a href="{% url 'applicant:applicant_profile_edit'  %}" class="text-white">{% trans "Edit Profile" %}</a>
+          </div>
+          <div class="col-12 col-md-3">
+              <a href="{% url 'user_account:user_change_password'  %}" class="text-white">{% trans "Change Password" %}</a>
+          </div>
+        </div>
+      </div>
+        <br>
+      <ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link active"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            href="#profile"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            >{% trans "About" %}</a
+          >
+        </li>
+        <li class="nav-item " role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link"
+            id="diplomas-tab"
+            data-bs-toggle="tab"
+            href="#diplomas"
+            role="tab"
+            aria-controls="diplomas"
+            aria-selected="false"
+            >{% trans "Diplomas" %}</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link"
+            id="phds-tab"
+            data-bs-toggle="tab"
+            href="#phds"
+            role="tab"
+            aria-controls="phds"
+            aria-selected="true"
+            >{% trans "PHDs" %}</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link"
+            id="jobexperiences-tab"
+            data-bs-toggle="tab"
+            href="#jobexperiences"
+            role="tab"
+            aria-controls="jobexperiences"
+            aria-selected="true"
+            >{% trans "Job Experiences" %}</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link"
+            id="references-tab"
+            data-bs-toggle="tab"
+            href="#references"
+            role="tab"
+            aria-controls="references"
+            aria-selected="true"
+            >{% trans "References" %}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <hr>
+     <div class="tab-content" id="myTabContent">
       <div
         class="tab-pane fade show active"
         id="profile"
@@ -129,78 +124,80 @@
         aria-labelledby="profile-tab"
       >
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "First Name" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.user.first_name}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Last Name" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.user.last_name}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Telephone" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.telephone}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Gender" %}</label>
           </div>
-          <div class="col-md-6">
-            {% if applicant.gender == 'M' %}
-              {% trans "Male" %}
-            {% else %}
-              {% trans "Female" %}
-            {% endif %}
+          <div class="col-6">
+            <p>
+              {% if applicant.gender == 'M' %}
+                {% trans "Male" %}
+              {% else %}
+                {% trans "Female" %}
+              {% endif %}
+            </p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Birth Date" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.birth_date}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Country" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.country}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "City" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.city}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Address" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.address}}</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-6">
             <label>{% trans "Citizenhsip" %}</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-6">
             <p>{{applicant.citizenship}}</p>
           </div>
         </div>
@@ -210,69 +207,74 @@
         id="diplomas"
         role="tabpanel"
         aria-labelledby="diplomas-tab">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col">{% trans "Type" %}</th>
-              <th scope="col">{% trans "Awarding Institution" %}</th>
-              <th scope="col">{% trans "Department" %}</th>
-              <th scope="col">{% trans "Specialization" %}</th>
-              <th scope="col">{% trans "Date Awarded" %}</th>
-              <th scope="col">{% trans "Average Grade" %}</th>
-              <th scope="col">{% trans "Country" %}</th>
-              <th scope="col">{% trans "City" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for diploma in applicant.diploma_set.all %}
-            <tr>
-              <td>
-                {% if diploma.type == 'PG' %}
-              {% trans "Postgraduate" %}
-            {% else %}
-              {% trans "Undergraduate" %}
-            {% endif %}</td>
-              <td>{{diploma.awarding_institution}}</td>
-              <td>{{diploma.department}}</td>
-              <td>{{diploma.specialization}}</td>
-              <td>{{diploma.date_awarded}}</td>
-              <td>{{diploma.grade_point_average}}</td>
-              <td>{{diploma.country}}</td>
-              <td>{{diploma.city}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-    </div>
-    <div
+        <div class="accordion accordion-flush" id="accordionFlushDiplomas">
+          {% for diploma in applicant.diploma_set.all %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                  {{diploma.specialization}}
+                </button>
+              </h2>
+              <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushDiplomas">
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <p><strong>{% trans "Type" %}: </strong>
+                        {% if diploma.type == 'PG' %}
+                          {% trans "Postgraduate" %}
+                        {% else %}
+                          {% trans "Undergraduate" %}
+                        {% endif %}
+                      </p>
+                      <p><strong>{% trans "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
+                      <p><strong>{% trans "Department" %}: </strong>{{ diploma.department }}</p>
+                    </div>
+                    <div class="col-6">
+                        <p><strong>{% trans "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
+                        <p><strong>{% trans "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
+                        <p><strong>{% trans "Country" %}: </strong>{{ diploma.country }}</p>
+                        <p><strong>{% trans "City" %}: </strong>{{ diploma.city }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div
         class="tab-pane fade"
         id="jobexperiences"
         role="tabpanel"
         aria-labelledby="jobexperiences-tab">
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th scope="col">{% trans "Organization" %}</th>
-              <th scope="col">{% trans "Job Title" %}</th>
-              <th scope="col">{% trans "Start Date" %}</th>
-              <th scope="col">{% trans "End Date" %}</th>
-              <th scope="col">{% trans "Country" %}</th>
-              <th scope="col">{% trans "City" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for job in applicant.jobexperience_set.all %}
-            <tr>
-              <td>{{job.organization}}</td>
-              <td>{{job.job_title}}</td>
-              <td>{{job.start_date}}</td>
-              <td>{{job.end_date}}</td>
-              <td>{{job.country}}</td>
-              <td>{{job.city}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        <div class="accordion accordion-flush" id="accordionFlushJobs">
+          {% for job in applicant.jobexperience_set.all %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
+                  {{job.job_title}}
+                </button>
+              </h2>
+              <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushJobs">
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <p><strong>{% trans "Organization" %}: </strong>
+                        {{job.organization}}
+                      </p>
+                      <p><strong>{% trans "Start Date" %}: </strong>{{ job.start_date }}</p>
+                      <p><strong>{% trans "End Date" %}: </strong>{{ jb.end_date }}</p>
+                    </div>
+                    <div class="col-6">
+                      <p><strong>{% trans "Country" %}: </strong>{{ job.country }}</p>
+                      <p><strong>{% trans "City" %}: </strong>{{ job.city }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
     </div>
     <div
         class="tab-pane fade "
@@ -348,7 +350,10 @@
           </tbody>
         </table>
     </div>
-    <div
+  </div>
+</div>
+
+    {# <div
     class="tab-pane fade"
     id="applications"
     role="tabpanel"
@@ -496,7 +501,7 @@
 
               </ul>
           </nav>
-          
+
             </div>
 
     </div>
@@ -504,17 +509,8 @@
   <br>
   <br>
 <br>
-</div>
-<div class="row">
-  <div class="col-md-3">
-  <a href="{% url 'applicant:applicant_profile_edit'  %}" class="btn btn-info">{% trans "Edit Profile" %}</a>
-  </div>
-  <div class="col-md-9">
-    <div class=" float-right">
-  <a href="{% url 'user_account:user_change_password'  %}" class="btn btn-info">{% trans "Change Password" %}</a>
-      </div>
-</div>
-</div>
+</div> #}
+
 
 {% endblock %}
 {% block javascript %}

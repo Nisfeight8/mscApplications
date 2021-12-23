@@ -1,14 +1,15 @@
-{% load static %}
-{% load i18n %}
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
+    {% load i18n %}
+    {% load bootstrap5 %}
     {% block meta_tags %}
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% endblock meta_tags %}
-    {% block stylesheets %}    
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% block stylesheets %}
+      {% bootstrap_css %}
       <link rel="shortcut icon" type="image/png" href="{% static '/img/flavicon.ico' %}"/>
       <link rel="stylesheet" type="text/css" href="{% static '/css/app.css' %}" >
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -17,10 +18,10 @@
     {% endblock %}
     {% block extra_css %}{% endblock extra_css %}
     {% block js %}
+      {% bootstrap_javascript %}
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     {% endblock %}
       <title>{% block title %}{% endblock %}</title>
   </head>
@@ -28,18 +29,7 @@
     {% block navbar %}
         {% include 'navbar.html' %}
     {% endblock %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        {% if message.tags == 'success' %}
-            <i class="fa fa-check-circle"></i> {{ message }}
-        {% else %}
-            <i class="fa fa-exclamation-circle"></i> {{ message }}
-        {% endif %}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-    {% endfor %}
+    {% bootstrap_messages %}
     <div class="container flex-grow-1">
       <br>
       <br>

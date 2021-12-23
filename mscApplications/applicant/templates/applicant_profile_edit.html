@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
 {% block title %}{% trans "Edit Profile" %}{% endblock title %}
 {% block extra_css %}
   <link
 	  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"
-	  rel="stylesheet" 
+	  rel="stylesheet"
   />
 {% endblock %}
 {% block content %}
   <form enctype="multipart/form-data" class="form-special" action="." method="post">
     <div class="card">
-      <div class="card-header text-white bg-info">
+      <div class="card-header text-white msc-color">
         {% trans "Profile" %}
       </div>
       <div class="card-body">
@@ -23,7 +23,7 @@
     <br>
     {% for formset in inlines %}
       <div class="card">
-        <div class="card-header text-white bg-info">
+        <div class="card-header text-white msc-color">
           {% if forloop.counter == 1 %}
             {% trans "Diplomas" %}
           {% elif forloop.counter == 2 %}
