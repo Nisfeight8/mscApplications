@@ -1,5 +1,5 @@
-from applicant. models import *
-from msc. models import MscFlow
+from applicant.models import *
+from msc.models import MscFlow
 from reportlab.platypus import Table
 import PyPDF2
 from django.core.files import File

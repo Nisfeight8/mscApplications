@@ -3,7 +3,7 @@ from msc.models import *
 
 from .forms import *
 from utils import pdf_generator
-
+from utils.mixins import ApplicantCompleteProfileMixin
 import uuid
 from .models import *
 
@@ -25,7 +25,7 @@ from django.db.models import Q
 class ApplicantHomeView(TemplateView):
     template_name = 'applicant_home.html'
 
-class ApplicationCreateView(CreateView):
+class ApplicationCreateView(ApplicantCompleteProfileMixin,CreateView):
     model=Application
     template_name='application_create.html'
     form_class=ApplicationForm

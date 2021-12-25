@@ -13,13 +13,13 @@ from django.conf import settings
 
 class Applicant(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='applicant',primary_key=True)
-    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])
-    address = models.CharField(_('Address'),max_length=50)
-    city = models.CharField(_('City'),max_length=64)
-    country = models.CharField(_('Country'),max_length=50)
-    birth_date=models.DateField()
+    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int], blank=True, null=True)
+    address = models.CharField(_('Address'),max_length=50, blank=True, null=True)
+    city = models.CharField(_('City'),max_length=64, blank=True, null=True)
+    country = models.CharField(_('Country'),max_length=50, blank=True, null=True)
+    birth_date=models.DateField(blank=True, null=True)
     gender = models.CharField(_('Gender'),max_length=1, choices=GENDER_CHOICES, default='M')
-    citizenship = models.CharField(_('Citizenship'),max_length=64)
+    citizenship = models.CharField(_('Citizenship'),max_length=64, blank=True, null=True)
 
     def __str__(self):
         try:
@@ -28,7 +28,7 @@ class Applicant(models.Model):
             return self.telephone
 
 class Diploma (models.Model):
-    type = models.CharField(_('Type'),max_length=2, choices=TYPE_CHOICES,default='UG')
+    type = models.CharField(_('Type'),max_length=2, choices=TYPE_CHOICES)
     awarding_institution=models.CharField(_('Awarding Institution'),max_length=200)
     department=models.CharField(_('Department'),max_length=200)
     specialization=models.CharField(_('Specialization'),max_length=100,blank=True,null=True)
@@ -43,7 +43,7 @@ class Diploma (models.Model):
         return self.awarding_institution
 
 class Phd(models.Model):
-    type = models.CharField(_('Type'),max_length=2, choices=TYPE_CHOICES,default='UG')
+    type = models.CharField(_('Type'),max_length=2, choices=TYPE_CHOICES)
     awarding_institution=models.CharField(_('Awarding Institution'),max_length=200)
     department=models.CharField(_('Department'),max_length=200)
     title = models.CharField(_('Title'),max_length = 200)

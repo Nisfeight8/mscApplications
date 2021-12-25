@@ -35,13 +35,14 @@ class ApplicantForm(forms.ModelForm):
         input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Birth Date"),
         help_text="(dd/mm/yyyy)",
+        required=True
     )
-    telephone = forms.CharField(label=_("Telephone"))
-    address = forms.CharField(label=_("Address"))
-    country = forms.CharField(label=_("Country"))
-    city = forms.CharField(label=_("City"))
-    citizenship = forms.CharField(label=_("Citizenship"))
-    gender = forms.ChoiceField(choices=GENDER_CHOICES,label=_("Gender"))
+    telephone = forms.CharField(label=_("Telephone"),required=True)
+    address = forms.CharField(label=_("Address"),required=True)
+    country = forms.CharField(label=_("Country"),required=True)
+    city = forms.CharField(label=_("City"),required=True)
+    citizenship = forms.CharField(label=_("Citizenship"),required=True)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES,label=_("Gender"),required=True)
 
     class Meta:
         model = Applicant

@@ -15,15 +15,22 @@ from django.utils.translation import ugettext_lazy as _
 class CheckUser(View):
     def get(self,request):
         if self.request.user.is_authenticated:
-            if self.request.user.is_applicant:
-                return redirect('applicant:applicant_home')
-            elif self.request.user.is_evaluator:
+            user=self.request.user
+            if user.is_applicant:
+                applicant=user.applicant
+                if (applicant.telephone and applicant.birth_date and applicant.address and applicant.city and applicant.country and applicant.citizenship):
+                    return redirect('applicant:applicant_home')
+                else:
+                    return redirect('applicant:applicant_profile_edit')
+            elif user.is_evaluator:
                 return redirect('evaluator:evaluator_home')
             else:
-               return redirect('user_account:new_applicant')
+                user.is_applicant=True
+                user.save()
+                return redirect('applicant:applicant_profile_edit')
         return redirect('/accounts/login')
 
-class ChangePasswordView(FormView,LoginRequiredMixin):
+class ChangePasswordView(LoginRequiredMixin,FormView):
     model=User
     form_class = PasswordChangeForm
     template_name = 'user-change-password.html'
@@ -35,8 +42,8 @@ class ChangePasswordView(FormView,LoginRequiredMixin):
         user = form.save()
         update_session_auth_hash(self.request, user)  # Important!
         messages.success(self.request, _('Your password was successfully updated!'))
-        if self.request.user.groups.filter(name='applicant').exists():
+        if self.request.user.is_applicant:
             return redirect('applicant:applicant_profile')
-        if self.request.user.groups.filter(name='evaluator').exists():
+        if self.request.user.is_evaluator:
             return redirect('evaluator:evaluator_profile')
 
