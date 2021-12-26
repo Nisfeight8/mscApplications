@@ -27,9 +27,9 @@
         {% endif %}
     </div>
     <div class="card-body">
-      <form name="test" enctype="multipart/form-data"  method="post">
+      <form method="post">
           {% csrf_token %}
-          {% crispy form %}
+          {{form | crispy}}
           <button type="submit" class="btn btn msc-color text-white">{% trans "Submit" %}</button>
 
       </form>

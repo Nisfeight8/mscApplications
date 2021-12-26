@@ -14,9 +14,10 @@ from evaluator.models import Evaluator
 from extra_views import  UpdateWithInlinesView, InlineFormSetFactory
 
 from django.contrib import messages
+from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView,DetailView, CreateView,TemplateView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404,redirect
 from django.http import FileResponse
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
@@ -98,7 +99,6 @@ class ApplicantProfileUpdateView(UpdateWithInlinesView):
     inlines = [ DiplomaInline,PhdInline, JobExperienceInline,ReferenceInline]
     form_class=ApplicantForm
     template_name = 'applicant_profile_edit.html'
-    success_url = reverse_lazy('applicant:applicant_profile')
 
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
@@ -107,16 +107,20 @@ class ApplicantProfileUpdateView(UpdateWithInlinesView):
         return form
 
     def form_valid(self,form):
-        applicant = form.save(commit=False)
-        applicant.user.first_name=form.cleaned_data['first_name']
-        applicant.user.last_name=form.cleaned_data['last_name']
-        applicant.user.save()
-        applicant.save()
-        messages.success(self.request, (_('Your profile has been updated.')))
+        user=form.instance.user
+        user.first_name=form.cleaned_data['first_name']
+        user.last_name=form.cleaned_data['last_name']
+        user.save()
         return super().form_valid(form)
 
     def get_object(self,queryset=None):
         return self.request.user.applicant
+
+    def get_success_url(self):
+        messages.success(self.request, (_('Your profile has been updated.')))
+        if 'next' in self.request.GET:
+            return self.request.GET['next']
+        return reverse('applicant:applicant_profile')
 
 class OpenCallListView(ListView):
     model = Call
