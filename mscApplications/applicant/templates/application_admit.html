@@ -4,17 +4,19 @@
 {% load i18n %}
 {%block title %} {% trans "Admit application" %}{% endblock title %}
 {% block content%}
-{% get_current_language as LANGUAGE_CODE %}
 
 <form
   enctype="multipart/form-data"
   class="form-special"
-  action="."
   method="post"
 >
   {% csrf_token %}
   <div class="card">
-    <div class="card-header msc-color text-white">{% trans "Admit application" %}</div>
+    <div class="card-header msc-color text-white">
+      <h5 style="display: inline">
+        {% trans "Admit application" %}
+      </h5>
+    </div>
     <div class="card-body">
       <div class="container">
       <div class="row">
@@ -31,11 +33,9 @@
           <label>{% trans "Programme" %}</label>
         </div>
         <div class="col-md-6">
-          <p> {% if LANGUAGE_CODE == 'el-gr' %}
-            {{application.call.msc_programme.title_el_GR}}
-        {% else %}
+          <p>
             {{application.call.msc_programme}}
-        {% endif %}</p>
+          </p>
         </div>
       </div>
       <hr />
@@ -70,11 +70,7 @@
           {% for pref in application.preference_set.all %}
               <tr>
                 <td>{{pref.priority}}</td>
-                <td> {% if LANGUAGE_CODE == 'el-gr' %}
-                  {{pref.flow.title_el_GR}}
-              {% else %}
-                  {{pref.flow}}
-              {% endif %}</td>
+                <td> {{pref.flow}}</td>
               </tr>
            {% endfor %}
         </tbody>

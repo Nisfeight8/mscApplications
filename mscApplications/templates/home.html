@@ -1,7 +1,47 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{%block title %}{% trans "Welcome" %} {% endblock title %}
+{% block title %}{% trans "Welcome" %} {% endblock title %}
+
 {% block content%}
-    <h3>{% trans "Welcome" %}<h3>
+
+    <figure class="text-center card card-body header-color text-white">
+        <blockquote class="blockquote">
+            <h5 style="display: inline">{% trans 'Welcome to' %} MSC Applications</h5>
+        </blockquote>
+    </figure>
+    <div class="card">
+        <div class="card-body ">
+            <p>{% blocktrans %} Welcome to MSC Applications ! Here you can find the MSC Programme wich fits you best. We provide you all the programmes from all the universities of Greece. {% endblocktrans %} </p>
+        </div>
+    </div>
+    <br>
+    <figure class="text-center card card-body header-color text-white">
+        <blockquote class="blockquote">
+            <h5 style="display: inline">{% trans 'Our Services' %}</h5>
+        </blockquote>
+    </figure>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <img src="{% static 'img/msc_programmes.jpg' %}" class="card-img-top" style="height: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "MSC Programmes" %}</h5>
+                    <p class="card-text">{% blocktrans %} Search and find every programme you want ! We provide you all the programmes in Greece ! {% endblocktrans %}</p>
+                    <a href="{% url 'msc:msc_programme_list' %}" class="btn msc-color text-white">{% trans "Open" %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="card">
+                <img src="{% static 'img/open_calls.jpeg' %}" class="card-img-top" style="height: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "Open Calls" %}</h5>
+                    <p class="card-text">{% blocktrans %} View all the open calls to make a new application for the MSC Programme you prefer ! {% endblocktrans %}</p>
+                    <a href="{% url 'msc:call_list' %}" class="btn msc-color text-white">{% trans "Open" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -25,7 +25,7 @@ def generate_applicant_app(applicant,application):
                         topMargin=72,bottomMargin=18)
     Story=[]
     sample_style_sheet = getSampleStyleSheet()
-    logo = "static/img/xarokop_0.png"
+    logo = "static/img/mortarboard.png"
     im = Image(logo, 4*inch, 2*inch)
     Story.append(im)
     Story.append(Spacer(1, 24))
@@ -95,9 +95,6 @@ def generate_applicant_app(applicant,application):
     programme_table = Table([
         ['Msc Programme:', application.call.msc_programme]
     ], [100, 230])
-    reference_table = Table([
-        ['Reference:', application.reference]
-    ], [60, 190])
     app_titleTable = Table([
         ["Application Informations"]
     ], Width)
@@ -106,7 +103,6 @@ def generate_applicant_app(applicant,application):
         [call_table],
         [programme_table],
         [submission_date_table],
-        [reference_table],
     ], hAlign='LEFT')
     app_titleTable.setStyle(titleTableStyle)
     if application.preference_set.all():
@@ -159,7 +155,7 @@ def generate_applicant_app_to_greek(applicant,application):
                         topMargin=72,bottomMargin=18)
     Story=[]
     sample_style_sheet = getSampleStyleSheet()
-    logo = "static/img/xarokop_0.png"
+    logo = "static/img/mortarboard.png"
     im = Image(logo, 4*inch, 2*inch)
     Story.append(im)
     Story.append(Spacer(1, 24))
@@ -240,13 +236,10 @@ def generate_applicant_app_to_greek(applicant,application):
         ['Ημ/νία Υποβολής:', datetime.today().strftime('%d/%m/%Y'),]
     ], [90, 190])
     call_table = Table([
-        ['Πρόσκληση:', application.call.title_el_GR]
+        ['Πρόσκληση:', application.call.title_el]
     ], [60, 190])
     programme_table = Table([
-        ['Πρόγραμμα ΠΜΣ:', application.call.msc_programme.title_el_GR]
-    ], [100, 230])
-    reference_table = Table([
-        ['Συστ. Επιστολή:', application.reference]
+        ['Πρόγραμμα ΠΜΣ:', application.call.msc_programme.title_el]
     ], [100, 230])
     app_titleTable = Table([
         ["Στοιχεία της Αίτησης"]
@@ -256,10 +249,8 @@ def generate_applicant_app_to_greek(applicant,application):
         [call_table],
         [programme_table],
         [submission_date_table],
-        [reference_table],
     ], hAlign='LEFT')
     app_titleTable.setStyle(titleTableStyle)
-    reference_table.setStyle(tableStyle)
     programme_table.setStyle(tableStyle)
     call_table.setStyle(tableStyle)
     submission_date_table.setStyle(tableStyle)
@@ -270,7 +261,7 @@ def generate_applicant_app_to_greek(applicant,application):
         ], Width)
         flows_data=[]
         for flow in application.preference_set.all():
-            flows_data.append([flow.priority,flow.flow.title_el_GR])
+            flows_data.append([flow.priority,flow.flow.title_el])
         flowTable = Table(flows_data)
         prefTable=Table([
             [prefereces_titleTable],

@@ -1,12 +1,12 @@
-from modeltranslation.translator import register, TranslationOptions
+from modeltranslation.translator import translator, TranslationOptions
 from .models import *
 
-@register(Institution)
 class InstitutionTranslationOptions(TranslationOptions):
     fields = ('title', 'address','city','country')
 
-@register(Department)
+translator.register(Institution, InstitutionTranslationOptions)
+
 class DepartmentTranslationOptions(TranslationOptions):
     fields = ('title', 'address','city','country')
 
-
+translator.register(Department, DepartmentTranslationOptions)

@@ -3,6 +3,10 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser,BaseUserManager
 from django.utils.translation import gettext as _
+from institution.models import Department
+from institution.validators import only_int
+
+from django.conf import settings
 
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -47,3 +51,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name','last_name']
     objects = UserManager()
+
+class Secretary(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,related_name='secretary', on_delete=models.CASCADE,primary_key=True)
+    department = models.ForeignKey(Department,on_delete=models.SET_NULL,null=True)
+    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[only_int])

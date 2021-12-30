@@ -1,15 +1,19 @@
-from modeltranslation.translator import register , TranslationOptions
+from modeltranslation.translator import translator, TranslationOptions
 from .models import *
 
-@register(MscProgramme)
 class MscProgrammeTranslationOptions(TranslationOptions):
     fields = ('title', 'address','city','country')
 
-@register(MscFlow)
+translator.register(MscProgramme, MscProgrammeTranslationOptions)
+
+
 class MscFlowTranslationOptions(TranslationOptions):
     fields = ('title',)
 
-@register(Call)
+translator.register(MscFlow, MscFlowTranslationOptions)
+
+
 class CallTranslationOptions(TranslationOptions):
     fields = ('title',)
 
+translator.register(Call, CallTranslationOptions)

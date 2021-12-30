@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {{ programme.title }}{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-md-9">
+
+            <div class="card">
+                <div class="card-header msc-color text-white">
+                    <h5 style="display: inline">
+                        {{programme.title}}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <p><strong>{% trans "Country" %}:</strong>
+                                {{programme.country}}
+                            </p>
+                            <p><strong>{% trans "City" %}:</strong>
+                                {{programme.city}}
+                            </p>
+                            <p><strong>{% trans "Address" %}:</strong>
+                                {{programme.address}}
+                            </p>
+                            <p><strong>{% trans "Pobox" %}:</strong> {{programme.pobox }}</p>
+                            <p><strong>{% trans "Telephone" %}:</strong> {{programme.telephone }}</p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p><strong>{% trans "Department" %}:</strong>
+                                <a href="{% url 'org:department_detail' programme.department.pk %}"> {{programme.department}}</a>
+                            </p>
+                            <p><strong>{% trans "Institution" %}:</strong>
+                                <a href="{% url 'org:institution_detail' programme.department.institution.pk %}"> {{programme.department.institution}}</a>
+                            </p>
+                            <p><strong>{% trans "Flows" %} :</strong></p>
+                            {% for flow in programme.mscflow_set.all %}
+                                <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if programme.call_set.all %}
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-header msc-color text-white">
+                        <h5 style="display: inline">
+                            {% trans "Open Calls" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            {% for call in programme.call_set.all %}
+                                <a href="{% url 'msc:call_detail' call.pk %}" class="list-group-item list-group-item-action" >
+                                    {{call.title}}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,7 +1,8 @@
+{% load static %}
+{% load flags %}
+{% load i18n %}
+
 {% block navbar %}
-    {% load static %}
-    {% load flags %}
-    {% load i18n %}
     <div class="header navbar-expand-lg navbar-dark header-color text-white"	>
         <div class="container">
         <div class="navbar-nav flag"> {% languages %}</div>
@@ -9,35 +10,34 @@
     </div>
     <nav class="navbar navbar-expand-lg d-flex navbar-dark msc-color text-white "	>
         <div class="container">
-            <a class="navbar-brand" >
-                <img src="{% static 'img/logo_hua_full.png' %}" width="300" height="60" alt="">
+            <a href="{% url 'home' %}" class="navbar-brand" >
+                <img src="{% static 'img/sitelogo.png' %}" width="300" height="60" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <div class="navbar-nav ms-auto">
+                    <a  href="{% url 'msc:msc_programme_list' %}"
+                                class="nav-link"><i class="fs-5 bi bi-easel"></i> {% trans "MSC Programmes" %} </a>
                     {% if user.is_authenticated %}
                         {% if user.is_applicant %}
-                            <a  href="{% url 'applicant:calls' %}"
-                                class="nav-link"><i class="far fa-calendar-alt"></i>{% trans "Open Calls" %} </a>
+                            <a  href="{% url 'msc:call_list' %}"
+                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% trans "Open Calls" %} </a>
                             <a
-                                href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a>
+                                href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% trans "Profile" %}</a>
                         {% endif %}
                         {% if user.is_evaluator %}
-                            <a  href="{% url 'evaluator:call_applications' %}"
-                                class="nav-link"><i class="fas fa-clipboard-list"></i> {% trans "Applications" %} </a></li>
+                            <a  href="{% url 'evaluator:evaluator_call' %}"
+                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% trans "My Calls" %} </a></li>
                             <a
-                                href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="far fa-address-card"></i>{% trans "Profile" %}</a>
+                                href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% trans "Profile" %}</a>
                         {% endif %}
                         <a href="{% url 'account_logout' %}"
-                            class="btn btn-outline-light "><i class="fa fa-sign-out"></i>{% trans "Logout" %}</a>
+                            class="btn btn-outline-light "><i class="fs-5 bi bi-box-arrow-left"></i> {% trans "Logout" %}</a>
                     {% else %}
                         <a href="{% url 'account_login' %}"
-                            class="nav-link">{% trans "Login" %}</a>
-
-                        <a href="{% url 'account_signup' %}"
-                            class="nav-link">{% trans "Signup" %}</a>
+                            class="nav-link"><i class="fs-5 bi bi-box-arrow-in-right"></i> {% trans "Login" %}</a>
                     {% endif %}
                 </div>
             </div>

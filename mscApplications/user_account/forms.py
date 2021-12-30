@@ -12,3 +12,4 @@ class SignupForm(forms.Form):
         user.last_name = self.cleaned_data['last_name']
         user.is_applicant=True
         user.save()
+

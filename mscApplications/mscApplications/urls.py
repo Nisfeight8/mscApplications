@@ -15,13 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from decorator_include import decorator_include
-from django.contrib.auth.decorators import login_required
 from utils.decorators import check_user
-from utils.user_types import UserType
 from django.conf.urls.static import static
 from django.conf import settings
-
+from .views import HomeView
 
 
 urlpatterns = [
@@ -29,20 +26,33 @@ urlpatterns = [
     path("users/", include("user_account.urls", namespace="user_account")),
     path(
         "applicant/",
-        decorator_include(
-            [login_required, check_user(UserType.applicant)],
+        include(
             "applicant.urls",
             namespace="applicant",
         ),
     ),
     path(
         "evaluator/",
-        decorator_include(
-            [login_required, check_user(UserType.evaluator)],
-            "evaluator.urls",
-            namespace="evaluator",
+        include("evaluator.urls",
+        namespace="evaluator",
         ),
     ),
+    path(
+        "msc/",
+        include("msc.urls",
+        namespace="msc",
+        ),
+
+    ),
+    path(
+        "org/",
+        include("institution.urls",
+        namespace="org",
+        ),
+
+    ),
+    path("", HomeView.as_view(), name='home'),
+    #path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path("admin/", admin.site.urls),
     path("i18n/", include("django_translation_flags.urls")),
 ]

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-sm-4">
+            <div class="card">
+                <div class="card-header msc-color text-white">
+                    <h5 style="display: inline">
+                        {{institution.title}}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>{% trans "Country" %}:</strong>
+                        {{institution.country}}
+                    </p>
+                    <p><strong>{% trans "City" %}:</strong>
+                        {{institution.city}}
+                    </p>
+                    <p><strong>{% trans "Address" %}:</strong>
+                        {{institution.address}}
+                    </p>
+                    <p><strong>{% trans "Pobox" %}:</strong> {{institution.pobox }}</p>
+                    <p><strong>{% trans "Telephone" %}:</strong> {{institution.telephone }}</p>
+                </div>
+            </div>
+        </div>
+        {% if institution.department_set.all %}
+            <div class="col-12 col-sm-8">
+                <figure class="text-center card card-body header-color text-white">
+                    <blockquote class="blockquote">
+                        <p>{% trans 'Departments' %}</p>
+                    </blockquote>
+                </figure>
+                {% for dep in institution.department_set.all %}
+                    <div class="card">
+                        <div class="card-header msc-color text-white">
+                            <h5 style="display: inline">
+                                {{dep.title}}
+                                <span class="float-end"><a href="{% url 'org:department_detail'  dep.pk  %}" class="btn btn-outline-light">{% trans "View Department" %}</a></span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="cols-12 col-sm-6">
+                                    <p><strong>{% trans "Country" %}:</strong>
+                                        {{institution.country}}
+                                    </p>
+                                    <p><strong>{% trans "City" %}:</strong>
+                                        {{institution.city}}
+                                    </p>
+                                </div>
+                                <div class="cols-12 col-sm-6">
+                                    <p><strong>{% trans "Address" %}:</strong>
+                                        {{institution.address}}
+                                    </p>
+                                    <p><strong>{% trans "Pobox" %}:</strong> {{institution.pobox }}</p>
+                                    <p><strong>{% trans "Telephone" %}:</strong> {{institution.telephone }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

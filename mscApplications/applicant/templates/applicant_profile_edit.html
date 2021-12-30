@@ -118,7 +118,7 @@
                                 {{ hidden }}
                               {% endfor %}
                             {% endif %}
-                            {{field|as_crispy_field}}
+                            {% bootstrap_field field show_label=False %}
                           </td>
                         {% endfor %}
                       </tr>

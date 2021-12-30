@@ -6,13 +6,14 @@
 
 <div class="card ">
     <div class="card-header msc-color text-white">
-        {% trans "Welcome" %}
+        <h5 style="display: inline">{% trans "Welcome" %}</h5>
     </div>
     <div class="card-body ">
         <h4>{% trans "Instructions" %}</h4>
         <br>
         <div class="container">
-        <p>1. {% trans "Click" %} <a href="{% url 'evaluator:call_applications' %}">{% trans "Applications" %}</a> {% trans "to see the applications you have to check about your assigned call ." %}</p>
+        <p>1. {% trans "Click" %} <a href="{% url 'evaluator:evaluator_call' %}">{% trans "My Calls" %}</a> {% trans "to see your assigned call ." %}</p>
+        <p>1. {% trans "Click" %} {% trans "View Applications" %} {% trans "to see the applications you have to check about your assigned call ." %}</p>
         <p>2. {% trans "Click View Application to check if the application is accepted ." %}</p>
         <p>3. {% trans "Select Admitted and Admitted Flow to accept the application." %}</p>
     </div>

@@ -2,6 +2,8 @@ from django.db import models
 from institution.models import Department
 from django.utils.translation import gettext as _
 from .validators import only_int
+from evaluator.models import Evaluator
+
 
 class MscProgramme(models.Model):
     title = models.CharField(_('Title'),max_length = 200)
@@ -29,6 +31,7 @@ class Call(models.Model):
     start_date=models.DateField(_('Start date'))
     end_date=models.DateField(_('End Date'))
     msc_programme=models.ForeignKey(MscProgramme,on_delete=models.CASCADE, verbose_name=_("Msc Programme"))
-
+    evaluators = models.ManyToManyField(
+        Evaluator, blank=False)
     def __str__(self):
         return self.title

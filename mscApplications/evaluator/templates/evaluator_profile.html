@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-3 text-center">
             <div class="profile-image">
-                <i class="far fa-user-circle big-icon"></i>
+                <i class="bi bi-person-circle big-icon"></i>
             </div>
             <h3>{% trans "Actions :" %}</h3>
             <a  href="{% url 'evaluator:evaluator_profile_edit' %}">{% trans "Edit Profile" %}</a>
@@ -17,9 +17,9 @@
         <div class="col-md-9">
             <br>
             <div class="profile-head">
-            
+
                 <h6>{{evaluator.user.email}}</h6>
-            
+
             </div>
             <br><br>
             <div class="row">
@@ -41,6 +41,13 @@
                     <h6 class="mb-0">{% trans "Telephone" %}</h6>
                 </div>
                 <div class="col-sm-8 text-secondary">{{evaluator.telephone}} </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h6 class="mb-0">{% trans "Department" %}</h6>
+                </div>
+                <div class="col-sm-8 text-secondary"><a href="{% url 'org:department_detail' evaluator.department.pk %}">{{evaluator.department}}</a> </div>
             </div>
             <hr>
         </div>

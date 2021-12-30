@@ -14,17 +14,12 @@
 
 {% block title %}{% trans "New Application" %} {% endblock title %}
 {% block content %}
-  {% get_current_language as LANGUAGE_CODE %}
-
 
   <div class="card">
     <div class="card-header msc-color text-white">
-      {% blocktrans %}New Application for{% endblocktrans %}
-        {% if LANGUAGE_CODE == 'el-gr' %}
-          {{call.title_el_GR}}
-        {% else %}
-          {{call}}
-        {% endif %}
+      <h5 style="display: inline">
+        {% blocktrans %}New Application for {{call}}{% endblocktrans %}
+      </h5>
     </div>
     <div class="card-body">
       <form method="post">

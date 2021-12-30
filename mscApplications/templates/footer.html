@@ -1,13 +1,37 @@
 {% load i18n %}
-
+{% load static %}
 {% block footer %}
-    <div class="footer sticky-bottom font-small msc-color text-white mt-auto">
-        <div class="container-fluid text-center ">
-        {% trans "Harokopio University" %} / 70,{% trans "El. Venizelou" %} / {% trans "Kallithea" %} 17671 /{% trans "Athens" %} - {% trans "GREECE" %}
-                    {% trans "Tel" %}. +30 2109549100 / {% trans "Fax" %}. +30 2109577050
+    <div class="footer msc-color">
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-md-4">
+                <h3 class="text-white">Powered By</h3>
+                <p class="text-white">Nisfeight8</p>
+            </div>
+            <div class="col col-12 col-md-4">
+                <h3 class="text-white">Open Calls</h3>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'msc:call_list' %}">List</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col col-12 col-md-4">
+                <h3 class="text-white">MSC Programmes</h3>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'msc:msc_programme_list' %}">{% translate "Search" %}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-copyright text-center py-3">© {% now 'Y' %} Copyright:
-        <a href="https://www.hua.gr/index.php/en/"> HUA</a>
+        <div class="row">
+            <div class="col col-12 text-center">
+                <p><img src="{% static 'img/sitelogo.png' %}" style="width:200px;"></p>
+                <span class="text-muted">MSC Applications &copy; 2021</span>
+            </div>
         </div>
     </div>
+</div>
+
 {% endblock %}

@@ -12,16 +12,8 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
 
 
-class AdmittedFlowModelChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, obj):
-        if get_language() == "en-us":
-            return obj.title_en_us
-        else:
-            return obj.title_el_GR
-
-
 class ApplicationAdmitForm(forms.ModelForm):
-    admitted_flow = AdmittedFlowModelChoiceField(queryset=MscFlow.objects.none())
+    admitted_flow = forms.ModelChoiceField(queryset=MscFlow.objects.none())
 
     class Meta:
         model = Application
@@ -126,16 +118,10 @@ class ReferenceForm(forms.ModelForm):
         self.helper.form_show_labels = False
 
 
-class PreferenceModelChoiceField(forms.ModelMultipleChoiceField):
-    def label_from_instance(self, obj):
-        if get_language() == "en-us":
-            return obj.title_en_us
-        else:
-            return obj.title_el_GR
 
 
 class ApplicationForm(forms.ModelForm):
-    preferences = PreferenceModelChoiceField(queryset=MscFlow.objects.none())
+    preferences = forms.ModelMultipleChoiceField(queryset=MscFlow.objects.none())
 
     class Meta:
         model = Application

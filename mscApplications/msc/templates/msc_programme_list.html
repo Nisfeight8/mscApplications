@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {% trans "MSC Programmes" %} {% endblock title %}
+
+
+{% block content %}
+    <div class="d-grid gap-2 text-center">
+        <div class="card card-body header-color text-white">
+            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fs-4 bi bi-search"></i>{% trans 'Search' %}</button>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <form class="card card-body" action="" method="get">
+                {{ filter.form | crispy }}
+                <input class="btn msc-color text-white" type="submit" />
+            </form>
+        </div>
+    </div>
+
+    <br><br>
+    <figure class="text-center card card-body header-color text-white">
+        <blockquote class="blockquote">
+            <p>{% trans 'MSC Programmes' %}</p>
+        </blockquote>
+    </figure>
+
+    <div class="row">
+        {% for obj in filter.qs %}
+            <div class="col-12 col-md-6">
+                <div class="card hover">
+                    <div class="card-header header-color text-white">
+                        <h5 style="display: inline">
+                            {{obj.title}}
+                        </h5>
+                    </div>
+                    <div class="card-body msc-color text-white">
+                        <div class="row text-center">
+                            <p><strong>{% trans "Institution" %}:</strong>
+                                {{obj.department.institution}}
+                            </p>
+                            <p><strong>{% trans "Department" %}:</strong>
+                                {{obj.department}}
+                            </p>
+                            <p><strong>{% trans "Flows" %} :</strong></p>
+                            {% for flow in obj.mscflow_set.all %}
+                                <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'msc:msc_programme_detail' obj.pk %}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

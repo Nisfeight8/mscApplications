@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
-{% block title %} {{applicant.user.username}} {% endblock title %}
-{% block content %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
+{% block title %} {{applicant.user.first_name}} {{applicant.user.last_name}} {% endblock title %}
+{% block content %}
 
 <div class="row">
     <div class="col-12 col-sm-4">
       <div class="card">
         <div class="card-header text-white msc-color">
-          {% trans "Applicant Informations" %}
+          <h5 style="display: inline">{% trans "Applicant Informations" %}</h5>
         </div>
         <div class="card-body">
         <div class="row">
@@ -84,7 +83,7 @@
     <div class="col-12 col-sm-8">
       <div class="card">
         <div class="card-header text-white msc-color">
-          {% trans "Applicant Degrees and References" %}
+          <h5 style="display: inline">{% trans "Applicant Degrees and References" %}</h5>
         </div>
         <div class="card-body">
           <ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">

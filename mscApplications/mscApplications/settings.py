@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.utils.translation import ugettext_lazy as _
 import os
 from pathlib import Path
 import environ
@@ -38,6 +39,8 @@ ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
 
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
+    'modeltranslation',
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,10 +50,10 @@ INSTALLED_APPS = [
     'allauth',  # new
     'allauth.account',  # new
     'allauth.socialaccount',  # new
-    'modeltranslation',
     "crispy_forms",
     "crispy_bootstrap5",
     'bootstrap5',
+    'django_filters',
     'django_translation_flags',
     'msc',
     'user_account',
@@ -92,6 +95,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mscApplications.wsgi.application'
+
 
 
 # Database
@@ -209,27 +213,30 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
+LANGUAGE_CODE = 'en'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en', _('English')),
+    ('el', _('Greek')),
+]
 
+#MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+
+
+TIME_ZONE = 'Europe/Athens'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
-gettext = lambda s: s
-
-LANGUAGES = [
-  ('en-us', gettext('English')),
-  ('el-GR', gettext('Greek')),
-]
-
-TIME_ZONE = 'Europe/Athens'
 
 
-USE_I18N = True
 
-USE_TZ = True
-
-USE_L10N = False
 
 

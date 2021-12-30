@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{%block title %} {% trans "My Call" %} {% endblock title %}
+{% block content%}
+{% if calls %}
+    {% for call in calls %}
+        <div class="card ">
+            <div class="card-header msc-color text-white">
+                <h5 style="display: inline">
+                        {{ call.title }}
+                </h5>
+                <span class="float-end"><a href="{% url 'msc:call_detail' call.pk %}" class="btn btn-outline-light btn-md">{% trans "View Call" %}</a></span>
+            </div>
+            <div class="card-body ">
+                <p><strong>{% trans "Start Date" %}:</strong> {{ call.start_date }}</p>
+                <p><strong>{% trans "End Date" %}:</strong> {{ call.end_date }}</p>
+                <p><strong>{% trans "Msc Programme" %}:</strong>{{ call.msc_programme }}</p>
+            </div>
+            <div class="card-footer msc-color " >
+                <a href="{% url 'msc:call_application_list' call.pk %}" class="btn btn-outline-light btn-md float-rigth">{% trans "View Applications" %}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="row">
+        <div class="col col-12">
+            <div class="alert alert-danger">{% trans "No calls found " %}</div>
+        </div>
+    </div>
+{% endif %}
+{% endblock content %}
