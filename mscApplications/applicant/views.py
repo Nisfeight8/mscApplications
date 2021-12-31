@@ -145,3 +145,11 @@ class ApplicantDetailView(LoginRequiredMixin,EvaluatorRequiredMixin,DetailView):
     template_name = 'applicant_detail.html'
     context_object_name = 'applicant'
 
+class ApplicantApplicationListView(LoginRequiredMixin,ApplicantRequiredMixin,ListView):
+    model = Application
+    template_name = 'applicant_applications.html'
+    context_object_name = 'applications'
+
+    def get_queryset(self):
+        queryset = Application.objects.filter(applicant=self.request.user.applicant)
+        return queryset

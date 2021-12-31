@@ -24,6 +24,8 @@
                         {% if user.is_applicant %}
                             <a  href="{% url 'msc:call_list' %}"
                                 class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% trans "Open Calls" %} </a>
+                            <a  href="{% url 'applicant:applicant_applications' %}"
+                                class="nav-link"><i class="fs-5 bi bi-card-checklist"></i> {% trans "My Applications" %} </a>
                             <a
                                 href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% trans "Profile" %}</a>
                         {% endif %}

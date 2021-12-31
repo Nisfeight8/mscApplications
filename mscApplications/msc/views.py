@@ -32,7 +32,7 @@ class CallApplicationListView(LoginRequiredMixin,EvaluatorRequiredMixin,ListView
 
     def get_queryset(self):
         call = Call.objects.get(id=self.kwargs['pk'])
-        applications= Application.objects.filter(call=call)
+        applications= Application.objects.filter(call=call).order_by('-submission_date')
         return applications
 
     def get_context_data(self, **kwargs):

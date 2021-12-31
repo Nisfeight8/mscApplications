@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans "My Applications" %} {% endblock title %}
+
+{% block content %}
+
+    {% if applications %}
+        <div class="row">
+            <div class="col-md-4">
+                <div class=card>
+                    <div class="card-header text-white msc-color">
+                        <h6 style="display: inline">
+                                {% trans "My Applications"%}
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                            {% for app in applications %}
+                                <a class="list-group-item list-group-item-action {% if forloop.counter == 1 %} active {% endif %}" id="list-{{forloop.counter}}-list" data-bs-toggle="list" href="#list-{{forloop.counter}}" role="tab" aria-controls="list-{{forloop.counter}}">{% trans "Application for" %} {{ app.call}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content" id="nav-tabContent">
+                    {% for app in applications %}
+                        <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="list-{{forloop.counter}}" role="tabpanel" aria-labelledby="list-{{forloop.counter}}-list">
+                            <div class="card">
+                                <div class="card-header msc-color text-white">
+                                    <h5 style="dispay:inline">{% trans "Application for" %} {{ app.call}}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>{% trans "Submission Date" %}</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{app.submission_date}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>{% trans "Programme" %}</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{app.call.msc_programme}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>{% trans "Reference" %}</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% if app.reference %}
+                                            <p>{{app.reference}}</p>
+                                            {% else %}
+                                            <p>{% trans "None" %}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {% if app.preference_set.all %}
+                                        <h5 >{% trans "Flows by prefered Order" %}</h5>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                <th scope="col">{% trans "Priority" %}</th>
+                                                <th scope="col">{% trans "Flow" %}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for pref in app.preference_set.all %}
+                                                    <tr>
+                                                    <td>{{pref.priority}}</td>
+                                                    <td>
+                                                        {% if LANGUAGE_CODE == 'el-gr' %}
+                                                        {{pref.flow.title_el_GR}}
+                                                    {% else %}
+                                                        {{pref.flow}}
+                                                    {% endif %}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>{% trans "Admitted Flow" %}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if app.admitted_flow %}
+                                                    <p>{{app.admitted_flow}}</p>
+                                                {% else %}
+                                                    <p>{% trans "None" %}</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>{% trans "Admitted" %}</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                {% if app.admitted == None %}
+                                                    {% trans "Pending" %}
+                                                {% elif app.admitted == True %}
+                                                    {% trans "Yes" %}
+                                                {% else %}
+                                                    {% trans "No" %}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col col-12">
+                <div class="alert alert-danger">{% trans "No applications found " %}</div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
