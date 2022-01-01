@@ -1163,7 +1163,7 @@ msgid ""
 "programmes in Greece ! "
 msgstr ""
 "Αναζητήστε και βρείτε το πρόγραμμα που θέλετε ! Σας δίνουμε όλα "
-"ταπρογράμματα στην Ελλάδα !"
+"τα προγράμματα στην Ελλάδα !"
 
 #: templates/home.html:31 templates/home.html:41
 msgid "Open"
