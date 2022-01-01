@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-22 20:04+0300\n"
+"POT-Creation-Date: 2022-01-01 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,456 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: applicant/apps.py:7 applicant/models.py:32
+#: msc/templates/call_applications.html:18
+msgid "Applicant"
+msgstr "Αιτών"
+
+#: applicant/constants.py:7 applicant/templates/applicant_detail.html:39
+#: applicant/templates/applicant_profile.html:156
+msgid "Male"
+msgstr "Αρσενικό"
+
+#: applicant/constants.py:8 applicant/templates/applicant_detail.html:41
+#: applicant/templates/applicant_profile.html:158
+msgid "Female"
+msgstr "Θυληκό"
+
+#: applicant/constants.py:14 applicant/templates/applicant_detail.html:164
+#: applicant/templates/applicant_detail.html:256
+#: applicant/templates/applicant_profile.html:226
+#: applicant/templates/applicant_profile.html:316
+msgid "Undergraduate"
+msgstr "Προπτυχιακό"
+
+#: applicant/constants.py:15 applicant/templates/applicant_detail.html:162
+#: applicant/templates/applicant_detail.html:254
+#: applicant/templates/applicant_profile.html:224
+#: applicant/templates/applicant_profile.html:314
+msgid "Postgraduate"
+msgstr "Μεταπτυχιακό"
+
+#: applicant/forms.py:24 applicant/models.py:99
+#: applicant/templates/applicant_detail.html:303
+#: applicant/templates/applicant_profile.html:127
+#: applicant/templates/applicant_profile.html:362 evaluator/forms.py:12
+#: evaluator/templates/evaluator_profile.html:27 user_account/forms.py:7
+msgid "First Name"
+msgstr "Όνομα"
+
+#: applicant/forms.py:25 applicant/models.py:100
+#: applicant/templates/applicant_detail.html:304
+#: applicant/templates/applicant_profile.html:135
+#: applicant/templates/applicant_profile.html:363 evaluator/forms.py:13
+#: evaluator/templates/evaluator_profile.html:34 user_account/forms.py:8
+msgid "Last Name"
+msgstr "Επώνυμο"
+
+#: applicant/forms.py:28 applicant/templates/applicant_detail.html:47
+#: applicant/templates/applicant_profile.html:165
+msgid "Birth Date"
+msgstr "Ημ/νια Γέννησης"
+
+#: applicant/forms.py:32 applicant/models.py:17 applicant/models.py:101
+#: applicant/templates/applicant_detail.html:29
+#: applicant/templates/applicant_detail.html:305
+#: applicant/templates/applicant_profile.html:143
+#: applicant/templates/applicant_profile.html:364 evaluator/models.py:11
+#: evaluator/templates/evaluator_profile.html:41 institution/models.py:12
+#: institution/models.py:28 institution/templates/department_detail.html:26
+#: institution/templates/department_detail.html:61
+#: institution/templates/institution_detail.html:26
+#: institution/templates/institution_detail.html:60 msc/models.py:14
+#: msc/templates/call_detail.html:64 msc/templates/call_detail.html:104
+#: msc/templates/call_detail.html:127
+#: msc/templates/msc_programme_detail.html:30 user_account/models.py:58
+msgid "Telephone"
+msgstr "Τηλέφωνο"
+
+#: applicant/forms.py:33 applicant/models.py:18
+#: applicant/templates/applicant_detail.html:68
+#: applicant/templates/applicant_profile.html:189 institution/models.py:8
+#: institution/models.py:24 institution/templates/department_detail.html:22
+#: institution/templates/department_detail.html:57
+#: institution/templates/institution_detail.html:22
+#: institution/templates/institution_detail.html:56 msc/models.py:10
+#: msc/templates/call_detail.html:60 msc/templates/call_detail.html:100
+#: msc/templates/call_detail.html:123
+#: msc/templates/msc_programme_detail.html:26
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: applicant/forms.py:34 applicant/models.py:20 applicant/models.py:45
+#: applicant/models.py:66 applicant/models.py:80 applicant/models.py:97
+#: applicant/templates/applicant_detail.html:54
+#: applicant/templates/applicant_detail.html:174
+#: applicant/templates/applicant_detail.html:216
+#: applicant/templates/applicant_detail.html:266
+#: applicant/templates/applicant_detail.html:309
+#: applicant/templates/applicant_profile.html:173
+#: applicant/templates/applicant_profile.html:235
+#: applicant/templates/applicant_profile.html:277
+#: applicant/templates/applicant_profile.html:326
+#: applicant/templates/applicant_profile.html:368 institution/models.py:11
+#: institution/models.py:27 institution/templates/department_detail.html:16
+#: institution/templates/department_detail.html:49
+#: institution/templates/institution_detail.html:16
+#: institution/templates/institution_detail.html:48 msc/models.py:13
+#: msc/templates/call_detail.html:54 msc/templates/call_detail.html:94
+#: msc/templates/call_detail.html:117
+#: msc/templates/msc_programme_detail.html:20
+msgid "Country"
+msgstr "Χώρα"
+
+#: applicant/forms.py:35 applicant/models.py:19 applicant/models.py:44
+#: applicant/models.py:65 applicant/models.py:79 applicant/models.py:96
+#: applicant/templates/applicant_detail.html:61
+#: applicant/templates/applicant_detail.html:175
+#: applicant/templates/applicant_detail.html:217
+#: applicant/templates/applicant_detail.html:267
+#: applicant/templates/applicant_detail.html:310
+#: applicant/templates/applicant_profile.html:181
+#: applicant/templates/applicant_profile.html:236
+#: applicant/templates/applicant_profile.html:278
+#: applicant/templates/applicant_profile.html:327
+#: applicant/templates/applicant_profile.html:369 institution/models.py:10
+#: institution/models.py:26 institution/templates/department_detail.html:19
+#: institution/templates/department_detail.html:52
+#: institution/templates/institution_detail.html:19
+#: institution/templates/institution_detail.html:51 msc/models.py:12
+#: msc/templates/call_detail.html:57 msc/templates/call_detail.html:97
+#: msc/templates/call_detail.html:120
+#: msc/templates/msc_programme_detail.html:23
+msgid "City"
+msgstr "Πόλη"
+
+#: applicant/forms.py:36 applicant/models.py:23
+#: applicant/templates/applicant_detail.html:75
+msgid "Citizenship"
+msgstr "Υποκοότητα"
+
+#: applicant/forms.py:37 applicant/models.py:22
+#: applicant/templates/applicant_detail.html:36
+#: applicant/templates/applicant_profile.html:151
+msgid "Gender"
+msgstr "Γένος"
+
+#: applicant/forms.py:83 applicant/forms.py:108 applicant/forms.py:145
+#: applicant/forms.py:171
+msgid "supported type is pdf"
+msgstr "Δεχόμαστε μόνο pdf"
+
+#: applicant/forms.py:83 applicant/forms.py:108 applicant/forms.py:145
+#: applicant/forms.py:171 applicant/models.py:46 applicant/models.py:67
+#: applicant/models.py:84 applicant/models.py:103 applicant/models.py:121
+#: applicant/templates/applicant_detail.html:169
+#: applicant/templates/applicant_detail.html:218
+#: applicant/templates/applicant_detail.html:268
+#: applicant/templates/applicant_detail.html:311
+#: applicant/templates/application_admit.html:55
+msgid "Media File"
+msgstr "Αρχείο"
+
+#: applicant/forms.py:87 applicant/forms.py:141 applicant/models.py:42
+#: applicant/models.py:63 applicant/templates/applicant_detail.html:172
+#: applicant/templates/applicant_detail.html:264
+#: applicant/templates/applicant_profile.html:233
+#: applicant/templates/applicant_profile.html:324
+msgid "Date Awarded"
+msgstr "Ημ/νία Βράβευσης"
+
+#: applicant/forms.py:104 applicant/models.py:102
+#: applicant/templates/applicant_detail.html:308
+#: applicant/templates/applicant_profile.html:367
+msgid "Reference Date"
+msgstr "Ημ/νια Επιστολής"
+
+#: applicant/forms.py:132 applicant/models.py:110
+#: applicant/templates/applicant_applications.html:54
+#: applicant/templates/applicant_detail.html:295
+#: applicant/templates/applicant_profile.html:354
+#: applicant/templates/application_admit.html:44
+msgid "Reference"
+msgstr "Συστατική Επιστολή"
+
+#: applicant/forms.py:133 applicant/models.py:118
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: applicant/forms.py:162 applicant/models.py:82
+#: applicant/templates/applicant_detail.html:212
+#: applicant/templates/applicant_profile.html:273
+#: evaluator/templates/evaluator_calls.html:16
+#: msc/templates/call_detail.html:40 msc/templates/call_list.html:23
+msgid "Start Date"
+msgstr "Ημ/νια Έναρξης"
+
+#: applicant/forms.py:167 applicant/models.py:83
+#: applicant/templates/applicant_detail.html:213
+#: applicant/templates/applicant_profile.html:274
+#: evaluator/templates/evaluator_calls.html:17 msc/models.py:39
+#: msc/templates/call_detail.html:41 msc/templates/call_list.html:24
+msgid "End Date"
+msgstr "Ημ/νία Ολοκλήρωσης"
+
+#: applicant/models.py:33
+#, fuzzy
+#| msgid "Applicant"
+msgid "Applicants"
+msgstr "Αιτών"
+
+#: applicant/models.py:37 applicant/models.py:58
+#: applicant/templates/applicant_detail.html:160
+#: applicant/templates/applicant_detail.html:252
+#: applicant/templates/applicant_profile.html:222
+#: applicant/templates/applicant_profile.html:312
+msgid "Type"
+msgstr "Τύπος"
+
+#: applicant/models.py:39 applicant/models.py:59
+#: applicant/templates/applicant_detail.html:259
+#: applicant/templates/applicant_profile.html:229
+#: applicant/templates/applicant_profile.html:319
+msgid "Awarding Institution"
+msgstr "Πανεπιστήμιο"
+
+#: applicant/models.py:40 applicant/models.py:60
+#: applicant/templates/applicant_detail.html:168
+#: applicant/templates/applicant_detail.html:260
+#: applicant/templates/applicant_profile.html:230
+#: applicant/templates/applicant_profile.html:320
+#: evaluator/templates/evaluator_profile.html:48 institution/models.py:35
+#: msc/models.py:15 msc/templates/call_detail.html:24
+#: msc/templates/msc_programme_detail.html:33
+#: msc/templates/msc_programme_list.html:43
+msgid "Department"
+msgstr "Τμήμα"
+
+#: applicant/models.py:41 applicant/templates/applicant_detail.html:167
+msgid "Specialization"
+msgstr "Ειδικότητα"
+
+#: applicant/models.py:43 applicant/models.py:64
+#: applicant/templates/applicant_detail.html:173
+#: applicant/templates/applicant_detail.html:265
+#: applicant/templates/applicant_profile.html:234
+#: applicant/templates/applicant_profile.html:325
+msgid "Average Grade"
+msgstr "ΜΟ βαθμού"
+
+#: applicant/models.py:53
+#, fuzzy
+#| msgid "Diplomas"
+msgid "Diploma"
+msgstr "Διπλώματα"
+
+#: applicant/models.py:54 applicant/templates/applicant_detail.html:99
+#: applicant/templates/applicant_profile.html:14
+#: applicant/templates/applicant_profile.html:76
+#: applicant/templates/applicant_profile_edit.html:42
+msgid "Diplomas"
+msgstr "Διπλώματα"
+
+#: applicant/models.py:61 institution/models.py:7 institution/models.py:23
+#: msc/models.py:9 msc/models.py:25 msc/models.py:37
+msgid "Title"
+msgstr "Τίτλος"
+
+#: applicant/models.py:62 applicant/templates/applicant_detail.html:261
+#: applicant/templates/applicant_profile.html:321
+msgid "Supervisor"
+msgstr "Προιστάμενος"
+
+#: applicant/models.py:74
+#, fuzzy
+#| msgid "PHDs"
+msgid "PHD"
+msgstr "Διδακτορικά"
+
+#: applicant/models.py:75 applicant/templates/applicant_detail.html:111
+#: applicant/templates/applicant_profile.html:22
+#: applicant/templates/applicant_profile.html:88
+#: applicant/templates/applicant_profile_edit.html:54
+msgid "PHDs"
+msgstr "Διδακτορικά"
+
+#: applicant/models.py:78 applicant/models.py:95
+#: applicant/templates/applicant_detail.html:209
+#: applicant/templates/applicant_detail.html:302
+#: applicant/templates/applicant_profile.html:270
+#: applicant/templates/applicant_profile.html:361
+msgid "Organization"
+msgstr "Οργανισμός"
+
+#: applicant/models.py:81 applicant/models.py:98
+msgid "Job Title"
+msgstr "Τίτλος Δουλειάς"
+
+#: applicant/models.py:90
+#, fuzzy
+#| msgid "Job Experiences"
+msgid "Job Experience"
+msgstr "Εργασιακή Εμπειρία"
+
+#: applicant/models.py:91 applicant/templates/applicant_detail.html:123
+#: applicant/templates/applicant_profile.html:18
+#: applicant/templates/applicant_profile.html:100
+#: applicant/templates/applicant_profile_edit.html:66
+msgid "Job Experiences"
+msgstr "Εργασιακή Εμπειρία"
+
+#: applicant/models.py:111 applicant/templates/applicant_detail.html:135
+#: applicant/templates/applicant_profile.html:26
+#: applicant/templates/applicant_profile.html:112
+#: applicant/templates/applicant_profile_edit.html:78
+msgid "References"
+msgstr "Συστατικές Επιστολές"
+
+#: applicant/models.py:117 applicant/templates/applicant_applications.html:38
+#: applicant/templates/application_admit.html:24
+#: msc/templates/call_applications.html:19
+msgid "Submission Date"
+msgstr "Ημ/νία Υποβολής"
+
+#: applicant/models.py:119 applicant/templates/applicant_applications.html:105
+#: applicant/templates/application_admit.html:89
+#: msc/templates/call_applications.html:20
+msgid "Admitted"
+msgstr "Αποδεκτή"
+
+#: applicant/models.py:129
+msgid "Application"
+msgstr "Αίτηση"
+
+#: applicant/models.py:130 applicant/templates/applicant_profile.html:30
+#: msc/templates/call_applications.html:4
+#: msc/templates/call_applications.html:12
+msgid "Applications"
+msgstr "Αιτήσεις"
+
+#: applicant/models.py:135 applicant/models.py:139
+#: applicant/templates/applicant_applications.html:70
+#: applicant/templates/application_admit.html:65
+msgid "Priority"
+msgstr "Προτίμηση"
+
+#: applicant/models.py:140
+#, fuzzy
+#| msgid "Priority"
+msgid "Priorities"
+msgstr "Προτιμήσεις"
+
+#: applicant/templates/applicant_applications.html:5
+#: applicant/templates/applicant_applications.html:15 templates/navbar.html:28
+#, fuzzy
+#| msgid "Applications"
+msgid "My Applications"
+msgstr "Οι Αιτήσεις μου"
+
+#: applicant/templates/applicant_applications.html:21
+#: applicant/templates/applicant_applications.html:33
+#, fuzzy
+#| msgid "New Application for"
+msgid "Application for"
+msgstr "Αίτηση για"
+
+#: applicant/templates/applicant_applications.html:46
+#: applicant/templates/application_admit.html:33
+#: msc/templates/call_detail.html:22
+msgid "Programme"
+msgstr "Πρόγραμμα"
+
+#: applicant/templates/applicant_applications.html:60
+#: applicant/templates/applicant_applications.html:97
+#: applicant/templates/application_admit.html:49
+msgid "None"
+msgstr "Καμία"
+
+#: applicant/templates/applicant_applications.html:66
+#: applicant/templates/application_admit.html:61
+msgid "Flows by prefered Order"
+msgstr "Κατευθύνσεις με σειρά προτίμησης"
+
+#: applicant/templates/applicant_applications.html:71
+#: applicant/templates/application_admit.html:66
+msgid "Flow"
+msgstr "Κατεύθυνση"
+
+#: applicant/templates/applicant_applications.html:91
+#: applicant/templates/application_admit.html:81
+msgid "Admitted Flow"
+msgstr "Αποδεκτή Κατεύθυνση"
+
+#: applicant/templates/applicant_applications.html:110
+#: msc/templates/call_applications.html:31
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+#: applicant/templates/applicant_applications.html:112
+#: msc/templates/call_applications.html:33
+msgid "Yes"
+msgstr "Ναι"
+
+#: applicant/templates/applicant_applications.html:114
+#: msc/templates/call_applications.html:35
+msgid "No"
+msgstr "Όχι"
+
+#: applicant/templates/applicant_applications.html:129
+#, fuzzy
+#| msgid "New Application for"
+msgid "No applications found "
+msgstr "Δεν βρέθηκαν αιτήσεις"
+
+#: applicant/templates/applicant_detail.html:10
+msgid "Applicant Informations"
+msgstr "Πληροφορίες Αιτούντα"
+
+#: applicant/templates/applicant_detail.html:15
+msgid "Fullname"
+msgstr "Ον/μο"
+
+#: applicant/templates/applicant_detail.html:22
+msgid "Email"
+msgstr "Email"
+
+#: applicant/templates/applicant_detail.html:86
+msgid "Applicant Degrees and References"
+msgstr "Πτυχία και συστατικές επιστολές Αιτούντα"
+
+#: applicant/templates/applicant_detail.html:186
+#: applicant/templates/applicant_profile.html:247
+#, fuzzy
+#| msgid "Diplomas"
+msgid "No Diplomas found "
+msgstr "Δεν βρέθηκαν Διπλώματα"
+
+#: applicant/templates/applicant_detail.html:229
+#: applicant/templates/applicant_profile.html:289
+#, fuzzy
+#| msgid "Job Experiences"
+msgid "No Job Experiences found "
+msgstr "Δεν βρέθηκε κάποια Εργασιακή Εμπειρία"
+
+#: applicant/templates/applicant_detail.html:279
+#: applicant/templates/applicant_profile.html:338
+msgid "No PHDs found "
+msgstr "Δεν βρέθηκαν Διδακτορικά"
+
+#: applicant/templates/applicant_detail.html:322
+#: applicant/templates/applicant_profile.html:380
+#, fuzzy
+#| msgid "References"
+msgid "No References found "
+msgstr "Δεν βρέθηκαν Συστατικές Επιστολές"
+
 #: applicant/templates/applicant_home.html:4
 #: evaluator/templates/evaluator_home.html:4
 msgid "Home"
 msgstr "Αρχική"
 
 #: applicant/templates/applicant_home.html:9
-#: evaluator/templates/evaluator_home.html:9
+#: evaluator/templates/evaluator_home.html:9 templates/home.html:4
 msgid "Welcome"
 msgstr "Καλώς Ήρθατε"
 
@@ -34,15 +477,17 @@ msgid "Instructions"
 msgstr "Οδηγίες"
 
 #: applicant/templates/applicant_home.html:15
-msgid "1. Click Profile to see your profile and then"
-msgstr "1. Πατήστε Προφίλ για να δείτε το προφίλ σας και μετά"
+#, fuzzy
+#| msgid "1. Click Profile to see your profile and then"
+msgid "Click Profile to see your profile and then"
+msgstr "Πατήστε Προφίλ για να δείτε το προφίλ σας και μετά"
 
 #: applicant/templates/applicant_home.html:15
-#: applicant/templates/applicant_profile.html:539
-#: applicant/templates/applicant_profile_edit.html:5
-#: evaluator/templates/evaluator_profile.html:27
+#: applicant/templates/applicant_profile.html:46
+#: applicant/templates/applicant_profile_edit.html:6
+#: evaluator/templates/evaluator_profile.html:13
 #: evaluator/templates/evaluator_profile_edit.html:4
-#: evaluator/templates/evaluator_profile_edit.html:10
+#: evaluator/templates/evaluator_profile_edit.html:8
 msgid "Edit Profile"
 msgstr "Ενημέρωση Προφίλ"
 
@@ -52,11 +497,13 @@ msgstr "για να εισάγετε πτυχία και συστατικές ε
 
 #: applicant/templates/applicant_home.html:16
 #: evaluator/templates/evaluator_home.html:15
+#: evaluator/templates/evaluator_home.html:16
 msgid "Click"
 msgstr "Πατήστε"
 
 #: applicant/templates/applicant_home.html:16
-#: applicant/templates/call_list.html:9 templates/base.html:37
+#: msc/templates/msc_programme_detail.html:53 templates/footer.html:12
+#: templates/home.html:39 templates/navbar.html:26
 msgid "Open Calls"
 msgstr "Ανοιχτές Προσκλήσεις"
 
@@ -73,1942 +520,951 @@ msgid "Click New Application to make a new application for the detailed call"
 msgstr "Πατήστε Νέα Αίτηση για να κάνετε αίτηση στην αναφερόμενη πρόσκληση"
 
 #: applicant/templates/applicant_profile.html:4
-#: applicant/templates/applicant_profile_edit.html:15
-#: evaluator/templates/evaluator_profile.html:4 templates/base.html:39
-#: templates/base.html:53
+#: applicant/templates/applicant_profile_edit.html:30
+#: evaluator/templates/evaluator_profile.html:4 templates/navbar.html:30
+#: templates/navbar.html:36
 msgid "Profile"
 msgstr "Προφίλ"
 
-#: applicant/templates/applicant_profile.html:31
+#: applicant/templates/applicant_profile.html:49
+#: evaluator/templates/evaluator_profile.html:15
+#: templates/account/password_change.html:5
+#: templates/account/password_change.html:8
+#: templates/account/password_change.html:13
+#: templates/account/password_reset_from_key.html:4
+#: templates/account/password_reset_from_key.html:7
+#: templates/account/password_reset_from_key_done.html:4
+#: templates/account/password_reset_from_key_done.html:7
+#: user_account/templates/user-change-password.html:5
+msgid "Change Password"
+msgstr "Αλλαγή συνθηματικού"
+
+#: applicant/templates/applicant_profile.html:64
 msgid "About"
 msgstr "Εσείς"
 
-#: applicant/templates/applicant_profile.html:43
-#: applicant/templates/applicant_profile.html:102
-#: applicant/templates/applicant_profile_edit.html:27
-#: evaluator/templates/applicant_detail.html:100
-msgid "Diplomas"
-msgstr "Διπλώματα"
-
-#: applicant/templates/applicant_profile.html:55
-#: applicant/templates/applicant_profile.html:110
-#: applicant/templates/applicant_profile_edit.html:29
-#: evaluator/templates/applicant_detail.html:112
-msgid "PHDs"
-msgstr "Διδακτορικά"
-
-#: applicant/templates/applicant_profile.html:67
-#: applicant/templates/applicant_profile.html:106
-#: applicant/templates/applicant_profile_edit.html:31
-#: evaluator/templates/applicant_detail.html:124
-msgid "Job Experiences"
-msgstr "Εργασιακή Εμπειρία"
-
-#: applicant/templates/applicant_profile.html:79
-#: applicant/templates/applicant_profile.html:114
-#: applicant/templates/applicant_profile_edit.html:33
-#: evaluator/templates/applicant_detail.html:136
-msgid "References"
-msgstr "Συστατικές Επιστολές"
-
-#: applicant/templates/applicant_profile.html:91
-#: applicant/templates/applicant_profile.html:118
-#: evaluator/templates/call_applications.html:4
-#: evaluator/templates/call_applications.html:26
-#: evaluator/templates/evaluator_home.html:15 templates/base.html:51
-msgid "Applications"
-msgstr "Αιτήσεις"
-
-#: applicant/templates/applicant_profile.html:135
-#: applicant/templates/applicant_profile.html:329 applicant_degrees/forms.py:34
-#: applicant_degrees/models.py:93 evaluator/templates/applicant_detail.html:272
-#: evaluator/templates/evaluator_profile.html:36 msc/forms.py:14
-#: user_account/forms.py:50
-msgid "First Name"
-msgstr "Όνομα"
-
-#: applicant/templates/applicant_profile.html:143
-#: applicant/templates/applicant_profile.html:330 applicant_degrees/forms.py:35
-#: applicant_degrees/models.py:94 evaluator/templates/applicant_detail.html:273
-#: evaluator/templates/evaluator_profile.html:43 msc/forms.py:15
-#: user_account/forms.py:51
-msgid "Last Name"
-msgstr "Επώνυμο"
-
-#: applicant/templates/applicant_profile.html:151
-#: applicant/templates/applicant_profile.html:331
-#: applicant/templates/call_detail.html:123
-#: applicant/templates/call_detail.html:183
-#: applicant/templates/call_detail.html:210 applicant_degrees/forms.py:37
-#: applicant_degrees/models.py:19 applicant_degrees/models.py:95
-#: evaluator/templates/applicant_detail.html:30
-#: evaluator/templates/applicant_detail.html:274
-#: evaluator/templates/call_applications.html:119
-#: evaluator/templates/call_applications.html:179
-#: evaluator/templates/evaluator_profile.html:50 institution/models.py:16
-#: institution/models.py:25 msc/forms.py:16 msc/models.py:22 msc/models.py:40
-#: user_account/forms.py:53
-msgid "Telephone"
-msgstr "Τηλέφωνο"
-
-#: applicant/templates/applicant_profile.html:159 applicant_degrees/forms.py:48
-#: applicant_degrees/models.py:30 evaluator/templates/applicant_detail.html:37
-#: user_account/forms.py:64
-msgid "Gender"
-msgstr "Γένος"
-
-#: applicant/templates/applicant_profile.html:163 applicant_degrees/forms.py:29
-#: applicant_degrees/models.py:27 evaluator/templates/applicant_detail.html:40
-#: user_account/forms.py:47
-msgid "Male"
-msgstr "Αρσενικό"
-
-#: applicant/templates/applicant_profile.html:165 applicant_degrees/forms.py:30
-#: applicant_degrees/models.py:28 evaluator/templates/applicant_detail.html:42
-#: user_account/forms.py:48
-msgid "Female"
-msgstr "Θυληκό"
-
-#: applicant/templates/applicant_profile.html:171 applicant_degrees/forms.py:36
-#: evaluator/templates/applicant_detail.html:48 user_account/forms.py:52
-msgid "Birth Date"
-msgstr "Ημ/νια Γέννησης"
-
-#: applicant/templates/applicant_profile.html:179
-#: applicant/templates/applicant_profile.html:224
-#: applicant/templates/applicant_profile.html:261
-#: applicant/templates/applicant_profile.html:294
-#: applicant/templates/applicant_profile.html:333
-#: applicant/templates/call_detail.html:82
-#: applicant/templates/call_detail.html:143 applicant_degrees/forms.py:39
-#: applicant_degrees/models.py:22 applicant_degrees/models.py:51
-#: applicant_degrees/models.py:72 applicant_degrees/models.py:80
-#: applicant_degrees/models.py:91 evaluator/templates/applicant_detail.html:55
-#: evaluator/templates/applicant_detail.html:156
-#: evaluator/templates/applicant_detail.html:196
-#: evaluator/templates/applicant_detail.html:233
-#: evaluator/templates/applicant_detail.html:276
-#: evaluator/templates/call_applications.html:78
-#: evaluator/templates/call_applications.html:139 institution/models.py:15
-#: institution/models.py:24 msc/models.py:21 user_account/forms.py:55
-msgid "Country"
-msgstr "Χώρα"
-
-#: applicant/templates/applicant_profile.html:187
-#: applicant/templates/applicant_profile.html:225
-#: applicant/templates/applicant_profile.html:262
-#: applicant/templates/applicant_profile.html:295
-#: applicant/templates/applicant_profile.html:334
-#: applicant/templates/call_detail.html:93
-#: applicant/templates/call_detail.html:154 applicant_degrees/forms.py:40
-#: applicant_degrees/models.py:21 applicant_degrees/models.py:50
-#: applicant_degrees/models.py:71 applicant_degrees/models.py:79
-#: applicant_degrees/models.py:90 evaluator/templates/applicant_detail.html:62
-#: evaluator/templates/applicant_detail.html:157
-#: evaluator/templates/applicant_detail.html:197
-#: evaluator/templates/applicant_detail.html:234
-#: evaluator/templates/applicant_detail.html:277
-#: evaluator/templates/call_applications.html:89
-#: evaluator/templates/call_applications.html:150 institution/models.py:14
-#: institution/models.py:23 msc/models.py:20 user_account/forms.py:56
-msgid "City"
-msgstr "Πόλη"
-
-#: applicant/templates/applicant_profile.html:195
-#: applicant/templates/call_detail.html:105
-#: applicant/templates/call_detail.html:165 applicant_degrees/forms.py:38
-#: applicant_degrees/models.py:20 evaluator/templates/applicant_detail.html:69
-#: evaluator/templates/call_applications.html:101
-#: evaluator/templates/call_applications.html:161 institution/models.py:12
-#: institution/models.py:21 msc/models.py:18 user_account/forms.py:54
-msgid "Address"
-msgstr "Διεύθυνση"
-
-#: applicant/templates/applicant_profile.html:203
+#: applicant/templates/applicant_profile.html:197
 msgid "Citizenhsip"
 msgstr "Ιθαγένεια"
 
-#: applicant/templates/applicant_profile.html:218
-#: applicant/templates/applicant_profile.html:288
-#: applicant_degrees/models.py:44 applicant_degrees/models.py:64
-#: evaluator/templates/applicant_detail.html:150
-#: evaluator/templates/applicant_detail.html:227
-msgid "Type"
-msgstr "Τύπος"
-
-#: applicant/templates/applicant_profile.html:219
-#: applicant/templates/applicant_profile.html:289
-#: applicant_degrees/models.py:45 applicant_degrees/models.py:65
-#: evaluator/templates/applicant_detail.html:151
-#: evaluator/templates/applicant_detail.html:228
-msgid "Awarding Institution"
-msgstr "Πανεπιστήμιο"
-
-#: applicant/templates/applicant_profile.html:220
-#: applicant/templates/applicant_profile.html:290
-#: applicant/templates/call_detail.html:27 applicant_degrees/models.py:46
-#: applicant_degrees/models.py:66 evaluator/templates/applicant_detail.html:152
-#: evaluator/templates/applicant_detail.html:229
-#: evaluator/templates/call_applications.html:23 msc/models.py:23
-msgid "Department"
-msgstr "Τμήμα"
-
-#: applicant/templates/applicant_profile.html:221
-#: applicant_degrees/models.py:47 evaluator/templates/applicant_detail.html:153
-msgid "Specialization"
-msgstr "Ειδικότητα"
-
-#: applicant/templates/applicant_profile.html:222
-#: applicant/templates/applicant_profile.html:292 applicant_degrees/forms.py:89
-#: applicant_degrees/forms.py:134 applicant_degrees/models.py:48
-#: applicant_degrees/models.py:69 evaluator/templates/applicant_detail.html:154
-#: evaluator/templates/applicant_detail.html:231
-msgid "Date Awarded"
-msgstr "Ημ/νία Βράβευσης"
-
-#: applicant/templates/applicant_profile.html:223
-#: applicant/templates/applicant_profile.html:293
-#: applicant_degrees/models.py:49 applicant_degrees/models.py:70
-#: evaluator/templates/applicant_detail.html:155
-#: evaluator/templates/applicant_detail.html:232
-msgid "Average Grade"
-msgstr "ΜΟ βαθμού"
-
-#: applicant/templates/applicant_profile.html:233
-#: applicant/templates/applicant_profile.html:303 applicant_degrees/forms.py:85
-#: applicant_degrees/forms.py:130 applicant_degrees/models.py:42
-#: applicant_degrees/models.py:62 evaluator/templates/applicant_detail.html:165
-#: evaluator/templates/applicant_detail.html:243
-msgid "Postgraduate"
-msgstr "Μεταπτυχιακό"
-
-#: applicant/templates/applicant_profile.html:235
-#: applicant/templates/applicant_profile.html:305 applicant_degrees/forms.py:84
-#: applicant_degrees/forms.py:129 applicant_degrees/models.py:41
-#: applicant_degrees/models.py:61 evaluator/templates/applicant_detail.html:167
-#: evaluator/templates/applicant_detail.html:245
-msgid "Undergraduate"
-msgstr "Προπτυχιακό"
-
-#: applicant/templates/applicant_profile.html:257
-#: applicant/templates/applicant_profile.html:328
-#: applicant_degrees/models.py:78 applicant_degrees/models.py:89
-#: evaluator/templates/applicant_detail.html:192
-#: evaluator/templates/applicant_detail.html:271
-msgid "Organization"
-msgstr "Οργανισμός"
-
-#: applicant/templates/applicant_profile.html:258
-#: applicant/templates/applicant_profile.html:327
-#: applicant_degrees/models.py:81 applicant_degrees/models.py:92
-#: evaluator/templates/applicant_detail.html:193
-#: evaluator/templates/applicant_detail.html:270
-msgid "Job Title"
-msgstr "Τίτλος Δουλειάς"
-
-#: applicant/templates/applicant_profile.html:259
-#: applicant/templates/call_detail.html:53
-#: applicant/templates/call_list.html:15 applicant_degrees/forms.py:145
-#: applicant_degrees/models.py:82 evaluator/templates/applicant_detail.html:194
-#: evaluator/templates/call_applications.html:49
-msgid "Start Date"
-msgstr "Ημ/νια Έναρξης"
-
-#: applicant/templates/applicant_profile.html:260
-#: applicant/templates/call_detail.html:60
-#: applicant/templates/call_list.html:16 applicant_degrees/forms.py:146
-#: applicant_degrees/models.py:83 evaluator/templates/applicant_detail.html:195
-#: evaluator/templates/call_applications.html:56 msc/models.py:34
-msgid "End Date"
-msgstr "Ημ/νία Ολοκλήρωσης"
-
-#: applicant/templates/applicant_profile.html:287
-#: applicant/templates/call_detail.html:39
-#: applicant/templates/call_detail.html:70
-#: applicant/templates/call_detail.html:132
-#: applicant/templates/call_list.html:14 applicant_degrees/models.py:67
-#: evaluator/templates/applicant_detail.html:226
-#: evaluator/templates/call_applications.html:35
-#: evaluator/templates/call_applications.html:66
-#: evaluator/templates/call_applications.html:128 institution/models.py:11
-#: institution/models.py:20 msc/models.py:17 msc/models.py:27 msc/models.py:32
-msgid "Title"
-msgstr "Τίτλος"
-
-#: applicant/templates/applicant_profile.html:291
-#: applicant_degrees/models.py:68 evaluator/templates/applicant_detail.html:230
-msgid "Supervisor"
-msgstr "Προιστάμενος"
-
-#: applicant/templates/applicant_profile.html:332 applicant_degrees/forms.py:99
-#: applicant_degrees/models.py:96 evaluator/templates/applicant_detail.html:275
-msgid "Reference Date"
-msgstr "Ημ/νια Επιστολής"
-
-#: applicant/templates/applicant_profile.html:402
-#: applicant_degrees/models.py:106
-#: evaluator/templates/application_admit.html:22
-#: evaluator/templates/call_applications.html:206
-msgid "Submission Date"
-msgstr "Ημ/νία Υποβολής"
-
-#: applicant/templates/applicant_profile.html:410
-#: applicant/templates/call_detail.html:18
-#: evaluator/templates/application_admit.html:31
-#: evaluator/templates/call_applications.html:14
-msgid "Call"
-msgstr "Πρόσκληση"
-
-#: applicant/templates/applicant_profile.html:422
-#: applicant_degrees/forms.py:123 applicant_degrees/models.py:109
-#: evaluator/templates/application_admit.html:44
-msgid "Reference"
-msgstr "Συστατική Επιστολή"
-
-#: applicant/templates/applicant_profile.html:428
-#: applicant/templates/applicant_profile.html:470
-#: env/lib/python3.9/site-packages/modeltranslation/widgets.py:25
-#: evaluator/templates/application_admit.html:49
-msgid "None"
-msgstr "Καμία"
-
-#: applicant/templates/applicant_profile.html:435
-#: evaluator/templates/application_admit.html:61
-msgid "Flows by prefered Order"
-msgstr "Κατευθύνσεις με σειρά προτίμησης"
-
-#: applicant/templates/applicant_profile.html:439
-#: applicant_degrees/models.py:118
-#: evaluator/templates/application_admit.html:65
-msgid "Priority"
-msgstr "Προτίμηση"
-
-#: applicant/templates/applicant_profile.html:440
-#: applicant_degrees/models.py:117
-#: evaluator/templates/application_admit.html:66
-msgid "Flow"
-msgstr "Κατεύθυνση"
-
-#: applicant/templates/applicant_profile.html:460
-#: evaluator/templates/application_admit.html:85
-msgid "Admitted Flow"
-msgstr "Αποδεκτή Κατεύθυνση"
-
-#: applicant/templates/applicant_profile.html:478
-#: applicant_degrees/models.py:108
-#: evaluator/templates/application_admit.html:93
-#: evaluator/templates/call_applications.html:207
-msgid "Admitted"
-msgstr "Αποδεκτή"
-
-#: applicant/templates/applicant_profile.html:482
-#: evaluator/templates/call_applications.html:218
-msgid "Pending"
-msgstr "Σε αναμονή"
-
-#: applicant/templates/applicant_profile.html:484
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:715
-#: evaluator/templates/call_applications.html:220
-msgid "Yes"
-msgstr "Ναι"
-
-#: applicant/templates/applicant_profile.html:486
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:716
-#: evaluator/templates/call_applications.html:222
-msgid "No"
-msgstr "Όχι"
-
-#: applicant/templates/applicant_profile.html:543
-#: evaluator/templates/evaluator_profile.html:28
-#: user_account/templates/user-change-email.html:5
-msgid "Change Email"
-msgstr "Αλλαγή Email"
-
-#: applicant/templates/applicant_profile.html:544
-#: evaluator/templates/evaluator_profile.html:29
-#: user_account/templates/change-password.html:3
-#: user_account/templates/change-password.html:7
-#: user_account/templates/password-reset/password_reset_confirm.html:11
-#: user_account/templates/user-change-password.html:5
-msgid "Change Password"
-msgstr "Αλλαγή Κωδικού"
-
-#: applicant/templates/applicant_profile_edit.html:74
-#: applicant/templates/application_create.html:24
-#: evaluator/templates/application_admit.html:98
-#: evaluator/templates/evaluator_profile_edit.html:15
-#: user_account/templates/change-password.html:12
-#: user_account/templates/new-applicant.html:15
-#: user_account/templates/password-reset/password_reset.html:11
+#: applicant/templates/applicant_profile_edit.html:131
+#: applicant/templates/application_admit.html:94
+#: applicant/templates/application_create.html:28
+#: evaluator/templates/evaluator_profile_edit.html:14
 msgid "Submit"
 msgstr "Υποβολή"
 
-#: applicant/templates/application_create.html:5
-#: applicant/templates/call_detail.html:226
-#: applicant/templates/call_list.html:38
-msgid "New Application"
-msgstr "Νέα Αίτηση"
-
-#: applicant/templates/application_create.html:13
-msgid "New Application for"
-msgstr "Νέα Αίτηση για"
-
-#: applicant/templates/call_detail.html:21
-#: evaluator/templates/call_applications.html:17
-msgid "Programme"
-msgstr "Πρόγραμμα"
-
-#: applicant/templates/call_detail.html:24
-#: evaluator/templates/call_applications.html:20
-msgid "Flows"
-msgstr "Κατευθύνσεις"
-
-#: applicant/templates/call_detail.html:30
-msgid "Evaluators"
-msgstr "Επιτροπή"
-
-#: applicant/templates/call_detail.html:116
-#: applicant/templates/call_detail.html:176
-#: evaluator/templates/call_applications.html:112
-#: evaluator/templates/call_applications.html:172 institution/models.py:13
-#: institution/models.py:22 msc/models.py:19
-msgid "Pobox"
-msgstr "Ταχ. Κώδικας"
-
-#: applicant/templates/call_detail.html:209
-#: evaluator/templates/applicant_detail.html:16
-msgid "Fullname"
-msgstr "Ον/μο"
-
-#: applicant/templates/call_list.html:4
-msgid "Calls"
-msgstr "Πρoσκλήσεις"
-
-#: applicant/templates/call_list.html:17 msc/models.py:28 msc/models.py:35
-msgid "Msc Programme"
-msgstr "Πρόγραμμα"
-
-#: applicant/templates/call_list.html:18
-#: evaluator/templates/call_applications.html:208
-msgid "Actions"
-msgstr "Ενέργειες"
-
-#: applicant/templates/call_list.html:37
-msgid "View Call"
-msgstr "Προβολή Πρόσκλησης"
-
-#: applicant/views.py:74 evaluator/views.py:80
-msgid "Your profile has been updated."
-msgstr "Το προφίλ σας έχει ενημερωθεί."
-
-#: applicant/views.py:95
-msgid "Select flows by the order you prefer"
-msgstr "Διαλέξτε Κατευθύνσεις με σειρά προτίμησης"
-
-#: applicant_degrees/forms.py:32 msc/forms.py:12
-msgid "This value may contain only letters, numbers, and @/./+/-/_ characters."
-msgstr ""
-"Αυτή η τιμή πρέπει να περιέχει μονο γράμματα,αριθμούς , και  @/./+/-/_ "
-"χαρακτήρες."
-
-#: applicant_degrees/forms.py:41 applicant_degrees/models.py:31
-#: evaluator/templates/applicant_detail.html:76 user_account/forms.py:57
-msgid "Citizenship"
-msgstr "Υποκοότητα"
-
-#: applicant_degrees/forms.py:90 applicant_degrees/forms.py:100
-#: applicant_degrees/forms.py:135 applicant_degrees/forms.py:147
-msgid "supported type is pdf"
-msgstr "Δεχόμαστε μόνο pdf"
-
-#: applicant_degrees/forms.py:90 applicant_degrees/forms.py:100
-#: applicant_degrees/forms.py:135 applicant_degrees/forms.py:147
-#: applicant_degrees/models.py:52 applicant_degrees/models.py:73
-#: applicant_degrees/models.py:84 applicant_degrees/models.py:97
-#: applicant_degrees/models.py:110
-#: evaluator/templates/applicant_detail.html:158
-#: evaluator/templates/applicant_detail.html:198
-#: evaluator/templates/applicant_detail.html:235
-#: evaluator/templates/applicant_detail.html:278
-#: evaluator/templates/application_admit.html:55
-msgid "Media File"
-msgstr "Αρχείο"
-
-#: applicant_degrees/forms.py:124 applicant_degrees/models.py:107
-msgid "Comments"
-msgstr "Σχόλια"
-
-#: applicant_degrees/models.py:12 institution/models.py:6 msc/models.py:12
-msgid "Only digits allowed"
-msgstr "Μόνο ψηφία είναι αποδεκτά"
-
-#: applicant_degrees/models.py:14 institution/models.py:8 msc/models.py:14
-msgid "Telephone must have 10 digits"
-msgstr "Το τηλέφωνο πρέπει να περιέχει ακριβώς 10 ψηφία."
-
-#: applicant_degrees/models.py:18 msc/models.py:39
-msgid "User"
-msgstr "Χρήστης"
-
-#: applicant_degrees/models.py:53 applicant_degrees/models.py:74
-#: applicant_degrees/models.py:85 applicant_degrees/models.py:98
-#: evaluator/templates/call_applications.html:205
-msgid "Applicant"
-msgstr "Αιτών"
-
-#: applicant_degrees/models.py:111
-msgid "Preferences"
-msgstr "Προτιμήσεις"
-
-#: applicant_degrees/models.py:112
-msgid "Admitted FLow"
-msgstr "Αποδεκτή Κατεύθυνση"
-
-#: applicant_degrees/models.py:116
-msgid "Application"
-msgstr "Αίτηση"
-
-#: env/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:129
-#: env/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:139
-#: env/lib/python3.9/site-packages/django/forms/fields.py:54
-msgid "This field is required."
-msgstr "Αυτό το πεδίο είναι απαραίτητο"
-
-#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:391
-msgid "i18n text"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:393
-msgid "i18n legend"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/crispy_forms/tests/test_layout_objects.py:134
-#: env/lib/python3.9/site-packages/django/core/validators.py:22
-msgid "Enter a valid value."
-msgstr "Δώστε μία σωστή τιμή."
-
-#: env/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
-msgid "Messages"
-msgstr "Μυνήματα"
-
-#: env/lib/python3.9/site-packages/django/contrib/sitemaps/apps.py:8
-msgid "Site Maps"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#. Translators: String used to replace omitted page numbers in elided page
-#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: env/lib/python3.9/site-packages/django/core/paginator.py:30
-msgid "…"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/paginator.py:51
-msgid "That page number is not an integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/paginator.py:53
-msgid "That page number is less than 1"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/paginator.py:58
-msgid "That page contains no results"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:93
-#: env/lib/python3.9/site-packages/django/forms/fields.py:664
-msgid "Enter a valid URL."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:150
-msgid "Enter a valid integer."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:161
-msgid "Enter a valid email address."
-msgstr "Δώστε ένα email σωστό"
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: env/lib/python3.9/site-packages/django/core/validators.py:262
-msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:269
-msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:278
-#: env/lib/python3.9/site-packages/django/core/validators.py:298
-msgid "Enter a valid IPv4 address."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:283
-#: env/lib/python3.9/site-packages/django/core/validators.py:299
-msgid "Enter a valid IPv6 address."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:293
-#: env/lib/python3.9/site-packages/django/core/validators.py:297
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:327
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:333
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:366
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:375
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:385
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:400
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:419
-#: env/lib/python3.9/site-packages/django/forms/fields.py:292
-#: env/lib/python3.9/site-packages/django/forms/fields.py:327
-msgid "Enter a number."
-msgstr "Δώστε έναν αριθμό."
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:421
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:426
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:431
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:493
-#, python-format
-msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: "
-"%(allowed_extensions)s."
-msgstr ""
-"Ο τύπος αρχείου “%(extension)s” δεν υποστηρίζεται.Υποστηρίζεται μόνο αρχεία "
-"τύπου %(allowed_extensions)s. "
-
-#: env/lib/python3.9/site-packages/django/core/validators.py:546
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/base.py:1197
-#: env/lib/python3.9/site-packages/django/forms/models.py:768
-msgid "and"
-msgstr "και"
-
-#: env/lib/python3.9/site-packages/django/db/models/base.py:1199
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr "%(model_name)s με %(field_labels)s υπάρχει ήδη"
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:100
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr "Η τίμη %(value)r δεν είναι σωστή."
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:101
-msgid "This field cannot be null."
-msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:102
-msgid "This field cannot be blank."
-msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:103
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-#. Eg: "Title must be unique for pub_date year"
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:107
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:126
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:958
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:959
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:961
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1002
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1096
-msgid "Comma-separated integers"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1145
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1147
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1290
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1150
-msgid "Date (without time)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1288
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1292
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1296
-msgid "Date (with time)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1444
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1446
-msgid "Decimal number"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1585
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1588
-msgid "Duration"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1638
-msgid "Email address"
-msgstr "Email"
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1661
-msgid "File path"
-msgstr "Μονοπάτι αρχείου"
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1727
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1729
-msgid "Floating point number"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1767
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1769
-msgid "Integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1852
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1867
-msgid "Small integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1875
-msgid "IPv4 address"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1906
-msgid "IP address"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1986
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1987
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1989
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2043
-msgid "Positive big integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2056
-msgid "Positive integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2069
-msgid "Positive small integer"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2083
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2115
-msgid "Text"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2181
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2183
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2186
-msgid "Time"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2312
-msgid "URL"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2334
-msgid "Raw binary data"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2399
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2401
-msgid "Universally unique identifier"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/files.py:226
-msgid "File"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/files.py:375
-msgid "Image"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/json.py:18
-msgid "A JSON object"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/json.py:20
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:790
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:792
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1045
-msgid "One-to-one relationship"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1099
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1100
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/db/models/fields/related.py:1142
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: env/lib/python3.9/site-packages/django/forms/boundfield.py:150
-msgid ":?.!"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:247
-msgid "Enter a whole number."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:391
-#: env/lib/python3.9/site-packages/django/forms/fields.py:1132
-msgid "Enter a valid date."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:415
-#: env/lib/python3.9/site-packages/django/forms/fields.py:1133
-msgid "Enter a valid time."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:443
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:477
-msgid "Enter a valid duration."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:478
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:538
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:539
-msgid "No file was submitted."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:540
-msgid "The submitted file is empty."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:542
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:545
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:606
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:768
-#: env/lib/python3.9/site-packages/django/forms/fields.py:858
-#: env/lib/python3.9/site-packages/django/forms/models.py:1309
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:859
-#: env/lib/python3.9/site-packages/django/forms/fields.py:974
-#: env/lib/python3.9/site-packages/django/forms/models.py:1308
-msgid "Enter a list of values."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:975
-msgid "Enter a complete value."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:1191
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/fields.py:1221
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: env/lib/python3.9/site-packages/django/forms/forms.py:76
-msgid ":"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/forms.py:203
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:61
-#, python-format
-msgid ""
-"ManagementForm data is missing or has been tampered with. Missing fields: "
-"%(field_names)s. You may need to file a bug report if the issue persists."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:370
-#, python-format
-msgid "Please submit at most %d form."
-msgid_plural "Please submit at most %d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:377
-#, python-format
-msgid "Please submit at least %d form."
-msgid_plural "Please submit at least %d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:405
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:412
-msgid "Order"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/formsets.py:417
-msgid "Delete"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:763
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:767
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:773
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:782
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:1109
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:1193
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/models.py:1311
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/utils.py:172
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:403
-msgid "Clear"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:404
-msgid "Currently"
-msgstr "Τωρινό"
-
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:405
-msgid "Change"
-msgstr "Αλλαγή"
-
-#: env/lib/python3.9/site-packages/django/forms/widgets.py:714
-msgid "Unknown"
-msgstr "Άγνωστο"
-
-#. Translators: Please do not add spaces around commas.
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:805
-msgid "yes,no,maybe"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:834
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:851
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:853
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:855
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:857
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:859
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/template/defaultfilters.py:861
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:66
-msgid "p.m."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:67
-msgid "a.m."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:72
-msgid "PM"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:73
-msgid "AM"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:146
-msgid "midnight"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dateformat.py:148
-msgid "noon"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:6
-#: env/lib/python3.9/site-packages/extra_views/dates.py:26
-msgid "Monday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:6
-#: env/lib/python3.9/site-packages/extra_views/dates.py:27
-msgid "Tuesday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:6
-#: env/lib/python3.9/site-packages/extra_views/dates.py:28
-msgid "Wednesday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:6
-#: env/lib/python3.9/site-packages/extra_views/dates.py:29
-msgid "Thursday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:6
-#: env/lib/python3.9/site-packages/extra_views/dates.py:30
-msgid "Friday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:7
-#: env/lib/python3.9/site-packages/extra_views/dates.py:31
-msgid "Saturday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:7
-#: env/lib/python3.9/site-packages/extra_views/dates.py:32
-msgid "Sunday"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:10
-msgid "Mon"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:10
-msgid "Tue"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:10
-msgid "Wed"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:10
-msgid "Thu"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:10
-msgid "Fri"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:11
-msgid "Sat"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:11
-msgid "Sun"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "January"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "February"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "March"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "April"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "May"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:14
-msgid "June"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:15
-msgid "July"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:15
-msgid "August"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:15
-msgid "September"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:15
-msgid "October"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:15
-msgid "November"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:16
-msgid "December"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "jan"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "feb"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "mar"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "apr"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "may"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:19
-msgid "jun"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "jul"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "aug"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "sep"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "oct"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "nov"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:20
-msgid "dec"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:23
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:24
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:25
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:26
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:27
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:28
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:29
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:30
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:31
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:32
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:33
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:34
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:37
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:38
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:39
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:40
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:41
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:42
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:43
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:44
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:45
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:46
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:47
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/dates.py:48
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/text.py:71
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/text.py:240
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: env/lib/python3.9/site-packages/django/utils/text.py:259
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:94
-msgid ", "
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/utils/timesince.py:14
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:110
-msgid "Forbidden"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:111
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:115
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your Web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:120
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:124
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:132
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:137
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/csrf.py:142
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:41
-msgid "No year specified"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:61
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:111
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:208
-msgid "Date out of range"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:90
-msgid "No month specified"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:142
-msgid "No day specified"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:188
-msgid "No week specified"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:338
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:367
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:594
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/dates.py:628
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/detail.py:54
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/list.py:67
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/list.py:72
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/generic/list.py:154
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/static.py:40
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/static.py:42
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/static.py:80
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:7
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:221
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:207
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:222
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:230
-msgid "Django Documentation"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:231
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:239
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:240
-msgid "Get started with Django"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:248
-msgid "Django Community"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:249
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/tests/settings.py:44
-#: mscApplications/settings.py:193
-msgid "English"
-msgstr ""
-
-#: env/lib/python3.9/site-packages/tests/settings.py:45
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: evaluator/templates/applicant_detail.html:11
-msgid "Applicant Informations"
-msgstr "Πληροφορίες Αιτούντα"
-
-#: evaluator/templates/applicant_detail.html:23 user_account/forms.py:18
-msgid "Email"
-msgstr "Email"
-
-#: evaluator/templates/applicant_detail.html:87
-msgid "Applicant Degrees and References"
-msgstr "Πτυχία και συστατικές επιστολές Αιτούντα"
-
-#: evaluator/templates/application_admit.html:5
-#: evaluator/templates/application_admit.html:17
+#: applicant/templates/application_admit.html:5
+#: applicant/templates/application_admit.html:17
 msgid "Admit application"
 msgstr "Αποδοχή Αίτησης"
 
-#: evaluator/templates/call_applications.html:226
-msgid "Admit"
-msgstr "Αποδοχή"
+#: applicant/templates/application_create.html:15
+#: msc/templates/call_detail.html:15
+msgid "New Application"
+msgstr "Νέα Αίτηση"
 
-#: evaluator/templates/evaluator_home.html:15
-msgid "to see the applications you have to check about your assigned call ."
-msgstr "για να δείτε τις αιτήσεις προς αποδοχή για την αναφερόμενη πρόσκληση"
+#: applicant/templates/application_create.html:21
+msgid "New Application for"
+msgstr "Νέα Αίτηση για"
 
-#: evaluator/templates/evaluator_home.html:16
-msgid "Click View Application to check if the application is accepted ."
-msgstr "Πατήστε Προβολή Αίτησης για να δείτε εάν η αίτηση είναι αποδεκτή"
+#: applicant/views.py:83 evaluator/views.py:42
+msgid "Your profile has been updated."
+msgstr "Το προφίλ σας έχει ενημερωθεί."
 
-#: evaluator/templates/evaluator_home.html:17
-msgid "Select Admitted and Admitted Flow to accept the application."
-msgstr "Επιλέξτε Αποδοχή και αποδεκτή κατεύθυνση για να αποδεχτείτε την αίτηση"
+#: applicant/views.py:106
+msgid "Select flows by the order you prefer"
+msgstr "Διαλέξτε Κατευθύνσεις με σειρά προτίμησης"
 
-#: evaluator/templates/evaluator_profile.html:25
-msgid "Actions :"
-msgstr "Ενέργειες"
-
-#: evaluator/views.py:38
+#: applicant/views.py:130
 msgid "Application admitted !"
 msgstr "Η αίτηση ελέγχθηκε"
 
-#: institution/models.py:26
+#: evaluator/apps.py:7 evaluator/models.py:21
+#, fuzzy
+#| msgid "Evaluators"
+msgid "Evaluator"
+msgstr "Επιτροπή"
+
+#: evaluator/models.py:22
+msgid "Evaluators"
+msgstr "Επιτροπή"
+
+#: evaluator/templates/evaluator_calls.html:4
+#: evaluator/templates/evaluator_home.html:15 templates/navbar.html:34
+#, fuzzy
+#| msgid "Calls"
+msgid "My Calls"
+msgstr "Οι Πρoσκλήσεις  μου"
+
+#: evaluator/templates/evaluator_calls.html:13 msc/templates/call_list.html:20
+msgid "View Call"
+msgstr "Προβολή Πρόσκλησης"
+
+#: evaluator/templates/evaluator_calls.html:18 msc/models.py:26
+#: msc/models.py:40 msc/templates/call_list.html:25
+msgid "Msc Programme"
+msgstr "Πρόγραμμα"
+
+#: evaluator/templates/evaluator_calls.html:21
+#: evaluator/templates/evaluator_home.html:16
+#, fuzzy
+#| msgid "New Application"
+msgid "View Applications"
+msgstr "Προβολή Αιτήσεων"
+
+#: evaluator/templates/evaluator_calls.html:28 msc/templates/call_list.html:36
+msgid "No calls found "
+msgstr "Δεν βρέθηκαν προσκλήσεις"
+
+#: evaluator/templates/evaluator_home.html:15
+#, fuzzy
+#| msgid "to see available calls"
+msgid "to see your assigned call ."
+msgstr "για να δείτε τις διαθέσιμες προσκλήσεις"
+
+#: evaluator/templates/evaluator_home.html:16
+msgid "to see the applications you have to check about your assigned call ."
+msgstr "για να δείτε τις αιτήσεις προς αποδοχή για την αναφερόμενη πρόσκληση"
+
+#: evaluator/templates/evaluator_home.html:17
+msgid "Click View Application to check if the application is accepted ."
+msgstr "Πατήστε Προβολή Αίτησης για να δείτε εάν η αίτηση είναι αποδεκτή"
+
+#: evaluator/templates/evaluator_home.html:18
+msgid "Select Admitted and Admitted Flow to accept the application."
+msgstr "Επιλέξτε Αποδοχή και αποδεκτή κατεύθυνση για να αποδεχτείτε την αίτηση"
+
+#: evaluator/templates/evaluator_profile.html:12
+#: msc/templates/call_applications.html:21
+msgid "Actions"
+msgstr "Ενέργειες"
+
+#: institution/apps.py:8
+#, fuzzy
+#| msgid "Applicant Informations"
+msgid "Institution Informations"
+msgstr "Πληροφορίες Πανεπιστήμιου"
+
+#: institution/models.py:9 institution/models.py:25
+#: institution/templates/department_detail.html:25
+#: institution/templates/department_detail.html:60
+#: institution/templates/institution_detail.html:25
+#: institution/templates/institution_detail.html:59 msc/models.py:11
+#: msc/templates/call_detail.html:63 msc/templates/call_detail.html:103
+#: msc/templates/call_detail.html:126
+#: msc/templates/msc_programme_detail.html:29
+msgid "Pobox"
+msgstr "Ταχ. Κώδικας"
+
+#: institution/models.py:18 institution/templates/department_detail.html:27
+#: msc/templates/call_detail.html:25 msc/templates/msc_programme_detail.html:36
+#: msc/templates/msc_programme_list.html:40
 msgid "Institution"
 msgstr "Πανεπιστήμιο"
 
+#: institution/models.py:19
+#, fuzzy
+#| msgid "Institution"
+msgid "Institutions"
+msgstr "Πανεπιστήμια"
+
+#: institution/models.py:36 institution/templates/institution_detail.html:34
+#, fuzzy
+#| msgid "Department"
+msgid "Departments"
+msgstr "Τμήματα"
+
+#: institution/templates/department_detail.html:35 msc/models.py:22
+#: msc/templates/msc_programme_list.html:6
+#: msc/templates/msc_programme_list.html:25 templates/footer.html:20
+#: templates/home.html:29 templates/navbar.html:22
+#, fuzzy
+#| msgid "Msc Programme"
+msgid "MSC Programmes"
+msgstr "Πρόγραμματα"
+
+#: institution/templates/department_detail.html:43
+#: msc/templates/call_detail.html:50
+#, fuzzy
+#| msgid "Programme"
+msgid "View Programme"
+msgstr "Προβολή Προγράμματος"
+
+#: institution/templates/institution_detail.html:42
+#: msc/templates/call_detail.html:90
+#, fuzzy
+#| msgid "Department"
+msgid "View Department"
+msgstr "Προβολή Τμήματος"
+
+#: msc/apps.py:7
+#, fuzzy
+#| msgid "Applicant Informations"
+msgid "MSC Informations"
+msgstr "Πληροφορίες MSC"
+
+#: msc/models.py:21
+#, fuzzy
+#| msgid "Msc Programme"
+msgid "MSC Programme"
+msgstr "Πρόγραμμα"
+
+#: msc/models.py:32
+#, fuzzy
+#| msgid "Flow"
+msgid "MSC Flow"
+msgstr "Κατεύθυνση"
+
 #: msc/models.py:33
+#, fuzzy
+#| msgid "Flows"
+msgid "MSC Flows"
+msgstr "Κατευθύνσεις"
+
+#: msc/models.py:38
 msgid "Start date"
 msgstr "Ημ/νία Έναρξης"
 
-#: msc/models.py:41
-msgid "Committe"
-msgstr "Επιτροπή"
+#: msc/models.py:48 msc/templates/call_detail.html:21
+msgid "Call"
+msgstr "Πρόσκληση"
 
-#: mscApplications/settings.py:194
+#: msc/models.py:49 msc/templates/call_list.html:4
+msgid "Calls"
+msgstr "Πρoσκλήσεις"
+
+#: msc/templates/call_applications.html:39
+msgid "Admit"
+msgstr "Αποδοχή"
+
+#: msc/templates/call_detail.html:23 msc/templates/call_detail.html:73
+#: msc/templates/msc_programme_detail.html:39
+#: msc/templates/msc_programme_list.html:46
+msgid "Flows"
+msgstr "Κατευθύνσεις"
+
+#: msc/templates/call_detail.html:113
+#, fuzzy
+#| msgid "Institution"
+msgid "View Institution"
+msgstr "Προβολή Πανεπιστήμιου"
+
+#: msc/templates/msc_programme_list.html:12 templates/footer.html:23
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: mscApplications/settings.py:219
+msgid "English"
+msgstr "Αγγλικά"
+
+#: mscApplications/settings.py:220
 msgid "Greek"
+msgstr "Ελληνικά"
+
+#: templates/account/account_inactive.html:5
+#: templates/account/account_inactive.html:8
+msgid "Account Inactive"
 msgstr ""
 
-#: templates/base.html:41 templates/base.html:55 templates/base.html:66
-msgid "Logout"
-msgstr "Αποσύνδεση"
+#: templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
 
-#: templates/base.html:77 user_account/templates/login.html:4
-#: user_account/templates/login.html:7 user_account/templates/login.html:13
-msgid "Login"
+#: templates/account/email.html:5 templates/account/email.html:8
+#, fuzzy
+#| msgid "Email address"
+msgid "E-mail Addresses"
+msgstr "Διευθύνσεις Email"
+
+#: templates/account/email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: templates/account/email.html:24
+msgid "Verified"
+msgstr ""
+
+#: templates/account/email.html:26
+msgid "Unverified"
+msgstr ""
+
+#: templates/account/email.html:28
+msgid "Primary"
+msgstr ""
+
+#: templates/account/email.html:34
+msgid "Make Primary"
+msgstr ""
+
+#: templates/account/email.html:35
+msgid "Re-send Verification"
+msgstr ""
+
+#: templates/account/email.html:36 templates/socialaccount/connections.html:35
+msgid "Remove"
+msgstr ""
+
+#: templates/account/email.html:43
+msgid "Warning:"
+msgstr ""
+
+#: templates/account/email.html:43
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: templates/account/email.html:48
+#, fuzzy
+#| msgid "Email address"
+msgid "Add E-mail Address"
+msgstr "Email"
+
+#: templates/account/email.html:53
+#, fuzzy
+#| msgid "Email"
+msgid "Add E-mail"
+msgstr "Προσθήκη Email"
+
+#: templates/account/email.html:63
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: templates/account/email/base_message.txt:1
+#, fuzzy, python-format
+#| msgid "Password reset on %(site_name)s"
+msgid "Hello from %(site_name)s!"
+msgstr "Επαναφορά κωδικού στο %(site_name)s"
+
+#: templates/account/email/base_message.txt:5
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/account/email/email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"You're receiving this e-mail because user %(user_display)s has given your e-"
+"mail address to register an account on %(site_domain)s.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s"
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:4
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:9
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: templates/account/email_confirm.html:6
+#: templates/account/email_confirm.html:10
+#, fuzzy
+#| msgid "Confirm email"
+msgid "Confirm E-mail Address"
+msgstr "Επιβεβαίωση email"
+
+#: templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: templates/account/email_confirm.html:20
+#, fuzzy
+#| msgid "Confirm email"
+msgid "Confirm"
+msgstr "Επιβεβαίωση email"
+
+#: templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: templates/account/login.html:10 templates/account/login.html:16
+#: templates/account/login.html:26
+#, fuzzy
+#| msgid "Signup"
+msgid "Sign In"
 msgstr "Σύνδεση"
 
-#: templates/base.html:80 user_account/templates/signup.html:4
-#: user_account/templates/signup.html:8 user_account/templates/signup.html:12
+#: templates/account/login.html:37
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"              of your existing third party accounts. Or, <a href="
+"\"%(signup_url)s\">sign up</a>\n"
+"              for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: templates/account/login.html:45
+msgid "or"
+msgstr ""
+
+#: templates/account/login.html:49
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"            <a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+"Αν δεν έχετε εγγραφεί ακόμη, τότε παρακαλώ\n"
+"            <a href=\"%(signup_url)s\">κάνετε εγγραφή</a> πρώτα."
+
+#: templates/account/logout.html:5 templates/account/logout.html:8
+#: templates/account/logout.html:17
+#, fuzzy
+#| msgid "Signup"
+msgid "Sign Out"
+msgstr "Εγγραφή"
+
+#: templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: templates/account/messages/password_changed.txt:2
+#, fuzzy
+#| msgid "Your password was successfully updated!"
+msgid "Password successfully changed."
+msgstr "Το συνθηματικό σας άλλαξε με επιτυχία !"
+
+#: templates/account/messages/password_set.txt:2
+#, fuzzy
+#| msgid "Your password was successfully updated!"
+msgid "Password successfully set."
+msgstr "Το συνθηματικό σας άλλαξε με επιτυχία !"
+
+#: templates/account/messages/primary_email_set.txt:2
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Primary e-mail address set."
+msgstr "Δώστε ένα email σωστό"
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: templates/account/password_change.html:14
+#, fuzzy
+#| msgid "Forgot Password"
+msgid "Forgot Password?"
+msgstr "Ξέχασα το συνθηματικό"
+
+#: templates/account/password_reset.html:6
+#: templates/account/password_reset.html:10
+#: templates/account/password_reset_done.html:6
+#: templates/account/password_reset_done.html:9
+#, fuzzy
+#| msgid "Reset Password Done"
+msgid "Password Reset"
+msgstr "Επαναφορά κωδικού"
+
+#: templates/account/password_reset.html:15
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:20
+#, fuzzy
+#| msgid "Reset Password"
+msgid "Reset My Password"
+msgstr "Επαναφορά συνθηματικού"
+
+#: templates/account/password_reset.html:23
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:7
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:11
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:17
+#, fuzzy
+#| msgid "Change Password"
+msgid "change password"
+msgstr "Αλλαγή συνθηματικού"
+
+#: templates/account/password_reset_from_key.html:20
+#: templates/account/password_reset_from_key_done.html:8
+#, fuzzy
+#| msgid "Hurray! Your password has been changed."
+msgid "Your password is now changed."
+msgstr "Το συνθηματικό σας άλλαξε."
+
+#: templates/account/password_set.html:5 templates/account/password_set.html:8
+#: templates/account/password_set.html:13
+#, fuzzy
+#| msgid "Reset Password"
+msgid "Set Password"
+msgstr "Επαναφορά συνθηματικού"
+
+#: templates/account/signup.html:6 templates/socialaccount/signup.html:5
 msgid "Signup"
 msgstr "Εγγραφή"
 
-#: templates/base.html:110
-msgid "Harokopio University"
-msgstr "Χαροκόπειο Πανεπιστήμιο"
+#: templates/account/signup.html:12 templates/account/signup.html:22
+#: templates/socialaccount/signup.html:8 templates/socialaccount/signup.html:19
+#, fuzzy
+#| msgid "Signup"
+msgid "Sign Up"
+msgstr "Εγγραφή"
 
-#: templates/base.html:110
-msgid "El. Venizelou"
-msgstr "Ελ. Βενιζέλου"
-
-#: templates/base.html:110
-msgid "Kallithea"
-msgstr "Καλλιθέα"
-
-#: templates/base.html:110
-msgid "Athens"
-msgstr "Αθήνα"
-
-#: templates/base.html:110
-msgid "GREECE"
-msgstr "ΕΛΛΑΔΑ"
-
-#: templates/base.html:111
-msgid "Tel"
-msgstr "Τηλ"
-
-#: templates/base.html:111
-msgid "Fax"
-msgstr "Φαξ"
-
-#: user_account/forms.py:18
-msgid "Existing email"
-msgstr "Τωρινό email"
-
-#: user_account/forms.py:19
-msgid "Enter new email"
-msgstr "Δώστε νέο email"
-
-#: user_account/forms.py:19
-msgid "New email"
-msgstr "Nέο email"
-
-#: user_account/forms.py:20
-msgid "Confirm email"
-msgstr "Επιβεβαίωση email"
-
-#: user_account/forms.py:32
-msgid "New Email and Confirm Email does not match"
-msgstr "Οι κωδικοί δεν ταιριάζουν"
-
-#: user_account/forms.py:36
-msgid "Email already exists"
-msgstr "το email υπάρχει ήδη"
-
-#: user_account/forms.py:40
-msgid "Email is wrong"
-msgstr "Το email είναι λάθος"
-
-#: user_account/templates/activate_account.html:4
-msgid "Hi"
-msgstr "Γειά σου"
-
-#: user_account/templates/activate_account.html:5
-msgid "Please click on the link to confirm your registration"
-msgstr "Παρακαλώ πατήστε στο λινκ για την επιβεβαίωση εγγραφής"
-
-#: user_account/templates/change-password.html:11
-msgid "Back"
-msgstr "Πίσω"
-
-#: user_account/templates/login.html:10
-msgid "Forgot Password"
-msgstr "Ξέχασα τον κωδικό"
-
-#: user_account/templates/new-applicant.html:4
-#: user_account/templates/new-applicant.html:10
-msgid "Complete Signup"
-msgstr "Ολοκλήρωση Εγγραφής"
-
-#: user_account/templates/password-reset/password_reset.html:7
-#: user_account/templates/password-reset/password_reset_done.html:6
-msgid "Reset Password"
-msgstr "Επαναφορά κωδικού"
-
-#: user_account/templates/password-reset/password_reset_complete.html:2
-msgid "Reset Password Complete"
-msgstr "Επαναφορά κωδικού"
-
-#: user_account/templates/password-reset/password_reset_complete.html:6
-msgid "Hurray! Your password has been changed."
-msgstr "Ο κωδικός σας άλλαξε."
-
-#: user_account/templates/password-reset/password_reset_complete.html:7
-msgid "Click here to Login"
-msgstr "Πατήστε έδω για σύνδεση"
-
-#: user_account/templates/password-reset/password_reset_confirm.html:4
-msgid "Reset Password Confirm"
-msgstr "Επαναφορά κωδικού"
-
-#: user_account/templates/password-reset/password_reset_confirm.html:7
-msgid "Enter your new password"
-msgstr "Δώστε νέο κωδικό"
-
-#: user_account/templates/password-reset/password_reset_done.html:3
-msgid "Reset Password Done"
-msgstr "Επαναφορά κωδικού"
-
-#: user_account/templates/password-reset/password_reset_done.html:7
+#: templates/account/signup.html:31
+#, python-format
 msgid ""
-"We have sended you reset password link on your email. Please Check Your "
-"Email."
-msgstr "Σας έχουμε στείλει λινκ για Επαναφορά κωδικού στο email σας."
-
-#: user_account/templates/password-reset/password_reset_done.html:8
-msgid "Back to Login Page"
-msgstr "Πίσω"
-
-#: user_account/templates/password-reset/password_reset_email.html:3
-msgid ""
-"Hey You're receiving this email because you requested a password reset for "
-"your user account at"
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
-"Λαμβάνετε αυτό το email επειδή ζητήσατε επαναφορά κωδικού για τον λογαριασμό "
-"σας στο"
 
-#: user_account/templates/password-reset/password_reset_email.html:5
-msgid "Please go to the following page and choose a new password:"
-msgstr "Παρακαλώ πηγαίνετε στην ακόλουθη σελίδα και εισάγετε νέο κωδικό:"
+#: templates/account/signup_closed.html:5
+#: templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
 
-#: user_account/templates/password-reset/password_reset_email.html:9
-msgid "Your username, in case you've forgotten:"
-msgstr "Το username σας σε περίπτωση που το ξεχάσατε:"
+#: templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
 
-#: user_account/templates/password-reset/password_reset_email.html:11
-msgid "Thanks for using our site!"
-msgstr "Ευχαριστούμε!"
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
 
-#: user_account/templates/password-reset/password_reset_email.html:13
+#: templates/account/snippets/already_logged_in.html:5
 #, python-format
-msgid "The %(site_name)s team"
-msgstr "Η %(site_name)s ομάδα"
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
 
-#: user_account/templates/password-reset/password_reset_subject.txt:2
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:8
+#: templates/account/verified_email_required.html:5
+#: templates/account/verified_email_required.html:8
+#, fuzzy
+#| msgid "Email address"
+msgid "Verify Your E-mail Address"
+msgstr "Email"
+
+#: templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: templates/account/verified_email_required.html:20
 #, python-format
-msgid "Password reset on %(site_name)s"
-msgstr "Επαναφορά κωδικού στο %(site_name)s"
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
 
-#: user_account/templates/user-change-email.html:11
+#: templates/footer.html:15
+msgid "List"
+msgstr "Λίστα"
+
+#: templates/home.html:10
+#, fuzzy
+#| msgid "Welcome"
+msgid "Welcome to"
+msgstr "Καλώς Ήρθατε στο"
+
+#: templates/home.html:15
+msgid ""
+" Welcome to MSC Applications ! Here you can find the MSC Programme wich fits "
+"you best. We provide you all the programmes from all the universities of "
+"Greece. "
+msgstr ""
+"Καλώς Ήρθατε στο MSC Applications ! Εδώ μπορείτε να βρείτε το μεταπτυχιακό "
+"πρόγραμμα που σας ταιριάζεικαλύτερα. Σας δίνουμε όλα τα προγράμματα από όλα "
+"τα πανεπιστήμια στηνΕλλάδα. "
+
+#: templates/home.html:21
+msgid "Our Services"
+msgstr "Οι υπηρεσίες μας"
+
+#: templates/home.html:30
+msgid ""
+" Search and find every programme you want ! We provide you all the "
+"programmes in Greece ! "
+msgstr ""
+"Αναζητήστε και βρείτε το πρόγραμμα που θέλετε ! Σας δίνουμε όλα "
+"ταπρογράμματα στην Ελλάδα !"
+
+#: templates/home.html:31 templates/home.html:41
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: templates/home.html:40
+msgid ""
+" View all the open calls to make a new application for the MSC Programme you "
+"prefer ! "
+msgstr ""
+"Προβολή όλων των ανοιχτών προσκλήσεων για να κάνετε νέα αίτηση για το "
+"μεταπτυχιακό πρόγραμμαπου προτιμάτε !"
+
+#: templates/navbar.html:39
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: templates/navbar.html:42
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: templates/socialaccount/authentication_error.html:5
+#: templates/socialaccount/authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr ""
+
+#: templates/socialaccount/authentication_error.html:10
+msgid ""
+"An error occurred while attempting to login via your social network account."
+msgstr ""
+
+#: templates/socialaccount/connections.html:5
+#: templates/socialaccount/connections.html:8
+msgid "Account Connections"
+msgstr ""
+
+#: templates/socialaccount/connections.html:11
+msgid ""
+"You can sign in to your account using any of the following third party "
+"accounts:"
+msgstr ""
+
+#: templates/socialaccount/connections.html:43
+msgid ""
+"You currently have no social network accounts connected to this account."
+msgstr ""
+
+#: templates/socialaccount/connections.html:46
+msgid "Add a 3rd Party Account"
+msgstr ""
+
+#: templates/socialaccount/login_cancelled.html:5
+#: templates/socialaccount/login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr ""
+
+#: templates/socialaccount/login_cancelled.html:13
+#, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+"\">sign in</a>."
+msgstr ""
+
+#: templates/socialaccount/messages/account_connected.txt:2
+msgid "The social account has been connected."
+msgstr ""
+
+#: templates/socialaccount/messages/account_connected_other.txt:2
+msgid "The social account is already connected to a different account."
+msgstr ""
+
+#: templates/socialaccount/messages/account_disconnected.txt:2
+msgid "The social account has been disconnected."
+msgstr ""
+
+#: templates/socialaccount/signup.html:10
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: user_account/apps.py:8
+msgid "User Account"
+msgstr "Λογαριασμός Χρήστη"
+
+#: user_account/models.py:47
+#, fuzzy
+#| msgid "First Name"
+msgid "first name"
+msgstr "Όνομα"
+
+#: user_account/models.py:48
+#, fuzzy
+#| msgid "Last Name"
+msgid "last name"
+msgstr "Επώνυμο"
+
+#: user_account/models.py:61
+msgid "Secretary"
+msgstr "Γραμματεία"
+
+#: user_account/models.py:62
+msgid "Secretaries"
+msgstr "Γραμματείες"
+
 #: user_account/templates/user-change-password.html:11
 msgid "Save changes"
 msgstr "Αποθήκευση Αλλαγών"
 
-#: user_account/views.py:98
+#: user_account/views.py:44
 msgid "Your password was successfully updated!"
-msgstr "Ο κωδικός σας άλλαξε με επιτυχία !"
+msgstr "Το συνθηματικό σας άλλαξε με επιτυχία !"
 
-#: user_account/views.py:113
-msgid "Your email was successfully updated!"
-msgstr "Το email σας άλλαξε με επιτυχία !."
+#: utils/mixins.py:15
+msgid ""
+"You need to update your profile first ! We need some extra informations "
+"about you !"
+msgstr ""
+"Πρέπει πρώτα να ενημερώσετε το προφίλ σας ! Χρειαζόμαστε επιπλέονπληροφορίες "
+"για εσάς !"
+
+#: utils/mixins.py:18
+msgid "You need to add some documents to your profile first !"
+msgstr "Πρέπει πρώτα να προσθέσετε κάποια επιπλέον δικαιολογητικά !"
+
+#: utils/validators.py:7
+msgid "Only digits allowed"
+msgstr "Μόνο ψηφία είναι αποδεκτά"
+
+#: utils/validators.py:9
+msgid "Telephone must have 10 digits"
+msgstr "Το τηλέφωνο πρέπει να περιέχει ακριβώς 10 ψηφία."
+
+#~ msgid "Change Email"
+#~ msgstr "Αλλαγή Email"
+
+#~ msgid ""
+#~ "This value may contain only letters, numbers, and @/./+/-/_ characters."
+#~ msgstr ""
+#~ "Αυτή η τιμή πρέπει να περιέχει μονο γράμματα,αριθμούς , και  @/./+/-/_ "
+#~ "χαρακτήρες."
+
+#~ msgid "User"
+#~ msgstr "Χρήστης"
+
+#~ msgid "Preferences"
+#~ msgstr "Προτιμήσεις"
+
+#~ msgid "Admitted FLow"
+#~ msgstr "Αποδεκτή Κατεύθυνση"
+
+#~ msgid "This field is required."
+#~ msgstr "Αυτό το πεδίο είναι απαραίτητο"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Δώστε μία σωστή τιμή."
+
+#~ msgid "Messages"
+#~ msgstr "Μυνήματα"
+
+#~ msgid "Enter a number."
+#~ msgstr "Δώστε έναν αριθμό."
+
+#, python-format
+#~ msgid ""
+#~ "File extension “%(extension)s” is not allowed. Allowed extensions are: "
+#~ "%(allowed_extensions)s."
+#~ msgstr ""
+#~ "Ο τύπος αρχείου “%(extension)s” δεν υποστηρίζεται.Υποστηρίζεται μόνο "
+#~ "αρχεία τύπου %(allowed_extensions)s. "
+
+#~ msgid "and"
+#~ msgstr "και"
+
+#, python-format
+#~ msgid "%(model_name)s with this %(field_labels)s already exists."
+#~ msgstr "%(model_name)s με %(field_labels)s υπάρχει ήδη"
+
+#, python-format
+#~ msgid "Value %(value)r is not a valid choice."
+#~ msgstr "Η τίμη %(value)r δεν είναι σωστή."
+
+#~ msgid "This field cannot be null."
+#~ msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
+
+#~ msgid "This field cannot be blank."
+#~ msgstr "Το πεδίο δεν μπορεί να είναι άδειο."
+
+#~ msgid "File path"
+#~ msgstr "Μονοπάτι αρχείου"
+
+#~ msgid "Currently"
+#~ msgstr "Τωρινό"
+
+#~ msgid "Change"
+#~ msgstr "Αλλαγή"
+
+#~ msgid "Unknown"
+#~ msgstr "Άγνωστο"
+
+#~ msgid "Actions :"
+#~ msgstr "Ενέργειες"
+
+#~ msgid "Committe"
+#~ msgstr "Επιτροπή"
+
+#~ msgid "Harokopio University"
+#~ msgstr "Χαροκόπειο Πανεπιστήμιο"
+
+#~ msgid "El. Venizelou"
+#~ msgstr "Ελ. Βενιζέλου"
+
+#~ msgid "Kallithea"
+#~ msgstr "Καλλιθέα"
+
+#~ msgid "Athens"
+#~ msgstr "Αθήνα"
+
+#~ msgid "GREECE"
+#~ msgstr "ΕΛΛΑΔΑ"
+
+#~ msgid "Tel"
+#~ msgstr "Τηλ"
+
+#~ msgid "Fax"
+#~ msgstr "Φαξ"
+
+#~ msgid "Existing email"
+#~ msgstr "Τωρινό email"
+
+#~ msgid "Enter new email"
+#~ msgstr "Δώστε νέο email"
+
+#~ msgid "New email"
+#~ msgstr "Nέο email"
+
+#~ msgid "New Email and Confirm Email does not match"
+#~ msgstr "Οι κωδικοί δεν ταιριάζουν"
+
+#~ msgid "Email already exists"
+#~ msgstr "το email υπάρχει ήδη"
+
+#~ msgid "Email is wrong"
+#~ msgstr "Το email είναι λάθος"
+
+#~ msgid "Hi"
+#~ msgstr "Γειά σου"
+
+#~ msgid "Please click on the link to confirm your registration"
+#~ msgstr "Παρακαλώ πατήστε στο λινκ για την επιβεβαίωση εγγραφής"
+
+#~ msgid "Back"
+#~ msgstr "Πίσω"
+
+#~ msgid "Complete Signup"
+#~ msgstr "Ολοκλήρωση Εγγραφής"
+
+#~ msgid "Reset Password Complete"
+#~ msgstr "Επαναφορά κωδικού"
+
+#~ msgid "Click here to Login"
+#~ msgstr "Πατήστε έδω για σύνδεση"
+
+#~ msgid "Reset Password Confirm"
+#~ msgstr "Επαναφορά κωδικού"
+
+#~ msgid "Enter your new password"
+#~ msgstr "Δώστε νέο κωδικό"
+
+#~ msgid ""
+#~ "We have sended you reset password link on your email. Please Check Your "
+#~ "Email."
+#~ msgstr "Σας έχουμε στείλει λινκ για Επαναφορά κωδικού στο email σας."
+
+#~ msgid "Back to Login Page"
+#~ msgstr "Πίσω"
+
+#~ msgid ""
+#~ "Hey You're receiving this email because you requested a password reset "
+#~ "for your user account at"
+#~ msgstr ""
+#~ "Λαμβάνετε αυτό το email επειδή ζητήσατε επαναφορά κωδικού για τον "
+#~ "λογαριασμό σας στο"
+
+#~ msgid "Please go to the following page and choose a new password:"
+#~ msgstr "Παρακαλώ πηγαίνετε στην ακόλουθη σελίδα και εισάγετε νέο κωδικό:"
+
+#~ msgid "Your username, in case you've forgotten:"
+#~ msgstr "Το username σας σε περίπτωση που το ξεχάσατε:"
+
+#~ msgid "Thanks for using our site!"
+#~ msgstr "Ευχαριστούμε!"
+
+#, python-format
+#~ msgid "The %(site_name)s team"
+#~ msgstr "Η %(site_name)s ομάδα"
+
+#~ msgid "Your email was successfully updated!"
+#~ msgstr "Το email σας άλλαξε με επιτυχία !."
 
 #~ msgid "Undregraduate"
 #~ msgstr "Προπτυχιακό"

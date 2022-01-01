@@ -12,20 +12,20 @@
   </style>
 {% endblock %}
 
-{% block title %}{% trans "New Application" %} {% endblock title %}
+{% block title %}{% translate "New Application" %} {% endblock title %}
 {% block content %}
 
   <div class="card">
     <div class="card-header msc-color text-white">
       <h5 style="display: inline">
-        {% blocktrans %}New Application for {{call}}{% endblocktrans %}
+        {% translate "New Application for" %} {{call}}
       </h5>
     </div>
     <div class="card-body">
       <form method="post">
           {% csrf_token %}
           {{form | crispy}}
-          <button type="submit" class="btn btn msc-color text-white">{% trans "Submit" %}</button>
+          <button type="submit" class="btn btn msc-color text-white">{% translate "Submit" %}</button>
 
       </form>
     </div>

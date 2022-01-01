@@ -3,7 +3,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load bootstrap5 %}
-{% block title %}{% trans "Edit Profile" %}{% endblock title %}
+{% block title %}{% translate "Edit Profile" %}{% endblock title %}
 {% block extra_css %}
   <link
 	  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"
@@ -27,7 +27,7 @@
           role="tab"
           aria-controls="profile"
           aria-selected="false"
-          >{% trans "Profile" %}</a
+          >{% translate "Profile" %}</a
         >
       </li>
       <li class="nav-item " role="presentation">
@@ -39,7 +39,7 @@
           role="tab"
           aria-controls="diplomas"
           aria-selected="false"
-          >{% trans "Diplomas" %}</a
+          >{% translate "Diplomas" %}</a
         >
       </li>
       <li class="nav-item" role="presentation">
@@ -51,7 +51,7 @@
           role="tab"
           aria-controls="phds"
           aria-selected="true"
-          >{% trans "PHDs" %}</a
+          >{% translate "PHDs" %}</a
         >
       </li>
       <li class="nav-item" role="presentation">
@@ -63,7 +63,7 @@
           role="tab"
           aria-controls="jobexperiences"
           aria-selected="true"
-          >{% trans "Job Experiences" %}</a
+          >{% translate "Job Experiences" %}</a
         >
       </li>
       <li class="nav-item" role="presentation">
@@ -75,7 +75,7 @@
           role="tab"
           aria-controls="references"
           aria-selected="true"
-          >{% trans "References" %}</a
+          >{% translate "References" %}</a
         >
       </li>
     </ul>
@@ -103,7 +103,7 @@
                 <thead>
                   <tr>
                       {% for field in formset.forms.0.visible_fields %}
-                        <th >{% trans field.label %}</th>
+                        <th >{% translate field.label %}</th>
                       {% endfor %}
                   </tr>
                 </thead>
@@ -128,7 +128,7 @@
             </div>
           </div>
         {% endfor%}
-        <button type="submit" class="btn msc-color text-white">{% trans "Submit" %}</button>
+        <button type="submit" class="btn msc-color text-white">{% translate "Submit" %}</button>
       </form>
     <br>
     <br>

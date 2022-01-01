@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from utils.decorators import check_user
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import HomeView
@@ -52,7 +51,6 @@ urlpatterns = [
 
     ),
     path("", HomeView.as_view(), name='home'),
-    #path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path("admin/", admin.site.urls),
     path("i18n/", include("django_translation_flags.urls")),
 ]

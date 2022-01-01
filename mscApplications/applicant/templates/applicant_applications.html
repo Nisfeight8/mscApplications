@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
 
-{% block title %} {% trans "My Applications" %} {% endblock title %}
+{% block title %} {% translate "My Applications" %} {% endblock title %}
 
 {% block content %}
 
@@ -12,13 +12,13 @@
                 <div class=card>
                     <div class="card-header text-white msc-color">
                         <h6 style="display: inline">
-                                {% trans "My Applications"%}
+                                {% translate "My Applications"%}
                         </h6>
                     </div>
                     <div class="card-body">
                         <div class="list-group list-group-flush" id="list-tab" role="tablist">
                             {% for app in applications %}
-                                <a class="list-group-item list-group-item-action {% if forloop.counter == 1 %} active {% endif %}" id="list-{{forloop.counter}}-list" data-bs-toggle="list" href="#list-{{forloop.counter}}" role="tab" aria-controls="list-{{forloop.counter}}">{% trans "Application for" %} {{ app.call}}</a>
+                                <a class="list-group-item list-group-item-action {% if forloop.counter == 1 %} active {% endif %}" id="list-{{forloop.counter}}-list" data-bs-toggle="list" href="#list-{{forloop.counter}}" role="tab" aria-controls="list-{{forloop.counter}}">{% translate "Application for" %} {{ app.call}}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -30,12 +30,12 @@
                         <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="list-{{forloop.counter}}" role="tabpanel" aria-labelledby="list-{{forloop.counter}}-list">
                             <div class="card">
                                 <div class="card-header msc-color text-white">
-                                    <h5 style="dispay:inline">{% trans "Application for" %} {{ app.call}}</h5>
+                                    <h5 style="dispay:inline">{% translate "Application for" %} {{ app.call}}</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>{% trans "Submission Date" %}</label>
+                                            <label>{% translate "Submission Date" %}</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{{app.submission_date}}</p>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>{% trans "Programme" %}</label>
+                                            <label>{% translate "Programme" %}</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{{app.call.msc_programme}}</p>
@@ -51,24 +51,24 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>{% trans "Reference" %}</label>
+                                            <label>{% translate "Reference" %}</label>
                                         </div>
                                         <div class="col-md-6">
                                             {% if app.reference %}
                                             <p>{{app.reference}}</p>
                                             {% else %}
-                                            <p>{% trans "None" %}</p>
+                                            <p>{% translate "None" %}</p>
                                             {% endif %}
                                         </div>
                                     </div>
                                     <hr>
                                     {% if app.preference_set.all %}
-                                        <h5 >{% trans "Flows by prefered Order" %}</h5>
+                                        <h5 >{% translate "Flows by prefered Order" %}</h5>
                                         <table>
                                             <thead>
                                                 <tr>
-                                                <th scope="col">{% trans "Priority" %}</th>
-                                                <th scope="col">{% trans "Flow" %}</th>
+                                                <th scope="col">{% translate "Priority" %}</th>
+                                                <th scope="col">{% translate "Flow" %}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,13 +88,13 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>{% trans "Admitted Flow" %}</label>
+                                                <label>{% translate "Admitted Flow" %}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 {% if app.admitted_flow %}
                                                     <p>{{app.admitted_flow}}</p>
                                                 {% else %}
-                                                    <p>{% trans "None" %}</p>
+                                                    <p>{% translate "None" %}</p>
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -102,16 +102,16 @@
                                     {% endif %}
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>{% trans "Admitted" %}</label>
+                                            <label>{% translate "Admitted" %}</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>
                                                 {% if app.admitted == None %}
-                                                    {% trans "Pending" %}
+                                                    {% translate "Pending" %}
                                                 {% elif app.admitted == True %}
-                                                    {% trans "Yes" %}
+                                                    {% translate "Yes" %}
                                                 {% else %}
-                                                    {% trans "No" %}
+                                                    {% translate "No" %}
                                                 {% endif %}
                                             </p>
                                         </div>
@@ -126,7 +126,7 @@
     {% else %}
         <div class="row">
             <div class="col col-12">
-                <div class="alert alert-danger">{% trans "No applications found " %}</div>
+                <div class="alert alert-danger">{% translate "No applications found " %}</div>
             </div>
         </div>
     {% endif %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}{% trans "Profile" %} {% endblock title %}
+{% block title %}{% translate "Profile" %} {% endblock title %}
 {% block content %}
 
     <div class="row">
@@ -9,10 +9,10 @@
             <div class="profile-image">
                 <i class="bi bi-person-circle big-icon"></i>
             </div>
-            <h3>{% trans "Actions :" %}</h3>
-            <a  href="{% url 'evaluator:evaluator_profile_edit' %}">{% trans "Edit Profile" %}</a>
+            <h3>{% translate "Actions" %} :</h3>
+            <a  href="{% url 'evaluator:evaluator_profile_edit' %}">{% translate "Edit Profile" %}</a>
             <br>
-            <a  href="{% url 'user_account:user_change_password' %}">{% trans "Change Password" %}</a>
+            <a  href="{% url 'user_account:user_change_password' %}">{% translate "Change Password" %}</a>
         </div>
         <div class="col-md-9">
             <br>
@@ -24,28 +24,28 @@
             <br><br>
             <div class="row">
                 <div class="col-sm-4">
-                    <h6 class="mb-0">{% trans "First Name" %}</h6>
+                    <h6 class="mb-0">{% translate "First Name" %}</h6>
                 </div>
                 <div class="col-sm-8 text-secondary">{{evaluator.user.first_name}}  </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-4">
-                    <h6 class="mb-0">{% trans "Last Name" %}</h6>
+                    <h6 class="mb-0">{% translate "Last Name" %}</h6>
                 </div>
                 <div class="col-sm-8 text-secondary">{{evaluator.user.last_name}}  </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-4">
-                    <h6 class="mb-0">{% trans "Telephone" %}</h6>
+                    <h6 class="mb-0">{% translate "Telephone" %}</h6>
                 </div>
                 <div class="col-sm-8 text-secondary">{{evaluator.telephone}} </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-4">
-                    <h6 class="mb-0">{% trans "Department" %}</h6>
+                    <h6 class="mb-0">{% translate "Department" %}</h6>
                 </div>
                 <div class="col-sm-8 text-secondary"><a href="{% url 'org:department_detail' evaluator.department.pk %}">{{evaluator.department}}</a> </div>
             </div>

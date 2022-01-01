@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}{% trans "Profile" %} {% endblock title %}
+{% block title %}{% translate "Profile" %} {% endblock title %}
 {% block content %}
 
 <div class="row">
@@ -11,23 +11,23 @@
     </div>
      <h3>Files</h3>
       <br>
-      <p>{% trans "Diplomas" %}</p>
+      <p>{% translate "Diplomas" %}</p>
       {% for diploma in applicant.diploma_set.all %}
-      <a href="{{diploma.media_file.url}}">{{diploma.specialization}}</a>
+      <a href="{{diploma.media_file.url}}">{{diploma.awarding_institution}}</a>
       {% endfor %}
-      <p>{% trans "Job Experiences" %}</p>
+      <p>{% translate "Job Experiences" %}</p>
       {% for job in applicant.jobexperience_set.all %}
       <a href="{{job.media_file.url}}">{{job.job_title}}</a>
       {% endfor %}
-      <p>{% trans "PHDs" %}</p>
+      <p>{% translate "PHDs" %}</p>
       {% for phd in applicant.phd_set.all %}
       <a href="{{phd.media_file.url}}">{{phd.title}}</a>
       {% endfor %}
-      <p>{% trans "References" %}</p>
+      <p>{% translate "References" %}</p>
       {% for ref in applicant.reference_set.all %}
       <a href="{{ref.media_file.url}}">{{ref.job_title}}</a>
       {% endfor %}
-      <p>{% trans "Applications" %}</p>
+      <p>{% translate "Applications" %}</p>
       {% for app in applicant.application_set.all %}
       <a href="{{app.media_file.url}}">{{app.call.msc_programme}}</a>
       {% endfor %}
@@ -43,10 +43,10 @@
             <h6>{{applicant.user.email}}</h6>
           </div>
           <div class="col-12 col-md-3">
-            <a href="{% url 'applicant:applicant_profile_edit'  %}" class="text-white">{% trans "Edit Profile" %}</a>
+            <a href="{% url 'applicant:applicant_profile_edit'  %}" class="text-white">{% translate "Edit Profile" %}</a>
           </div>
           <div class="col-12 col-md-3">
-              <a href="{% url 'user_account:user_change_password'  %}" class="text-white">{% trans "Change Password" %}</a>
+              <a href="{% url 'user_account:user_change_password'  %}" class="text-white">{% translate "Change Password" %}</a>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
             role="tab"
             aria-controls="profile"
             aria-selected="false"
-            >{% trans "About" %}</a
+            >{% translate "About" %}</a
           >
         </li>
         <li class="nav-item " role="presentation">
@@ -73,7 +73,7 @@
             role="tab"
             aria-controls="diplomas"
             aria-selected="false"
-            >{% trans "Diplomas" %}</a
+            >{% translate "Diplomas" %}</a
           >
         </li>
         <li class="nav-item" role="presentation">
@@ -85,7 +85,7 @@
             role="tab"
             aria-controls="phds"
             aria-selected="true"
-            >{% trans "PHDs" %}</a
+            >{% translate "PHDs" %}</a
           >
         </li>
         <li class="nav-item" role="presentation">
@@ -97,7 +97,7 @@
             role="tab"
             aria-controls="jobexperiences"
             aria-selected="true"
-            >{% trans "Job Experiences" %}</a
+            >{% translate "Job Experiences" %}</a
           >
         </li>
         <li class="nav-item" role="presentation">
@@ -109,7 +109,7 @@
             role="tab"
             aria-controls="references"
             aria-selected="true"
-            >{% trans "References" %}</a
+            >{% translate "References" %}</a
           >
         </li>
       </ul>
@@ -124,7 +124,7 @@
       >
         <div class="row">
           <div class="col-6">
-            <label>{% trans "First Name" %}</label>
+            <label>{% translate "First Name" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.user.first_name}}</p>
@@ -132,7 +132,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Last Name" %}</label>
+            <label>{% translate "Last Name" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.user.last_name}}</p>
@@ -140,7 +140,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Telephone" %}</label>
+            <label>{% translate "Telephone" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.telephone}}</p>
@@ -148,21 +148,21 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Gender" %}</label>
+            <label>{% translate "Gender" %}</label>
           </div>
           <div class="col-6">
             <p>
               {% if applicant.gender == 'M' %}
-                {% trans "Male" %}
+                {% translate "Male" %}
               {% else %}
-                {% trans "Female" %}
+                {% translate "Female" %}
               {% endif %}
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Birth Date" %}</label>
+            <label>{% translate "Birth Date" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.birth_date}}</p>
@@ -170,7 +170,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Country" %}</label>
+            <label>{% translate "Country" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.country}}</p>
@@ -178,7 +178,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "City" %}</label>
+            <label>{% translate "City" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.city}}</p>
@@ -186,7 +186,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Address" %}</label>
+            <label>{% translate "Address" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.address}}</p>
@@ -194,7 +194,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <label>{% trans "Citizenhsip" %}</label>
+            <label>{% translate "Citizenhsip" %}</label>
           </div>
           <div class="col-6">
             <p>{{applicant.citizenship}}</p>
@@ -219,21 +219,21 @@
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-12 col-md-6">
-                        <p><strong>{% trans "Type" %}: </strong>
+                        <p><strong>{% translate "Type" %}: </strong>
                           {% if diploma.type == 'PG' %}
-                            {% trans "Postgraduate" %}
+                            {% translate "Postgraduate" %}
                           {% else %}
-                            {% trans "Undergraduate" %}
+                            {% translate "Undergraduate" %}
                           {% endif %}
                         </p>
-                        <p><strong>{% trans "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
-                        <p><strong>{% trans "Department" %}: </strong>{{ diploma.department }}</p>
+                        <p><strong>{% translate "Awarding Institution" %}: </strong>{{ diploma.awarding_institution }}</p>
+                        <p><strong>{% translate "Department" %}: </strong>{{ diploma.department }}</p>
                       </div>
                       <div class="col-6">
-                          <p><strong>{% trans "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
-                          <p><strong>{% trans "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
-                          <p><strong>{% trans "Country" %}: </strong>{{ diploma.country }}</p>
-                          <p><strong>{% trans "City" %}: </strong>{{ diploma.city }}</p>
+                          <p><strong>{% translate "Date Awarded" %}: </strong>{{ diploma.date_awarded }}</p>
+                          <p><strong>{% translate "Average Grade" %}: </strong>{{ diploma.grade_point_average }}</p>
+                          <p><strong>{% translate "Country" %}: </strong>{{ diploma.country }}</p>
+                          <p><strong>{% translate "City" %}: </strong>{{ diploma.city }}</p>
                       </div>
                     </div>
                   </div>
@@ -244,7 +244,7 @@
         {% else %}
           <div class="row">
             <div class="col col-12">
-                <div class="alert alert-danger">{% trans "No Diplomas found " %}</div>
+                <div class="alert alert-danger">{% translate "No Diplomas found " %}</div>
             </div>
           </div>
         {% endif %}
@@ -267,15 +267,15 @@
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-12 col-md-6">
-                        <p><strong>{% trans "Organization" %}: </strong>
+                        <p><strong>{% translate "Organization" %}: </strong>
                           {{job.organization}}
                         </p>
-                        <p><strong>{% trans "Start Date" %}: </strong>{{ job.start_date }}</p>
-                        <p><strong>{% trans "End Date" %}: </strong>{{ job.end_date }}</p>
+                        <p><strong>{% translate "Start Date" %}: </strong>{{ job.start_date }}</p>
+                        <p><strong>{% translate "End Date" %}: </strong>{{ job.end_date }}</p>
                       </div>
                       <div class="col-6">
-                        <p><strong>{% trans "Country" %}: </strong>{{ job.country }}</p>
-                        <p><strong>{% trans "City" %}: </strong>{{ job.city }}</p>
+                        <p><strong>{% translate "Country" %}: </strong>{{ job.country }}</p>
+                        <p><strong>{% translate "City" %}: </strong>{{ job.city }}</p>
                       </div>
                     </div>
                   </div>
@@ -286,7 +286,7 @@
         {% else %}
           <div class="row">
             <div class="col col-12">
-                <div class="alert alert-danger">{% trans "No Job Experiences found " %}</div>
+                <div class="alert alert-danger">{% translate "No Job Experiences found " %}</div>
             </div>
           </div>
         {% endif %}
@@ -309,22 +309,22 @@
                   <div class="accordion-body">
                     <div class="row">
                       <div class="col-12 col-md-6">
-                        <p><strong>{% trans "Type" %}: </strong>
+                        <p><strong>{% translate "Type" %}: </strong>
                           {% if phd.type == 'PG' %}
-                            {% trans "Postgraduate" %}
+                            {% translate "Postgraduate" %}
                           {% else %}
-                            {% trans "Undergraduate" %}
+                            {% translate "Undergraduate" %}
                           {% endif %}
                         </p>
-                        <p><strong>{% trans "Awarding Institution" %}: </strong>{{ phd.awarding_institution }}</p>
-                        <p><strong>{% trans "Department" %}: </strong>{{ phd.department }}</p>
-                        <p><strong>{% trans "Supervisor" %}: </strong>{{ phd.supervisor }}</p>
+                        <p><strong>{% translate "Awarding Institution" %}: </strong>{{ phd.awarding_institution }}</p>
+                        <p><strong>{% translate "Department" %}: </strong>{{ phd.department }}</p>
+                        <p><strong>{% translate "Supervisor" %}: </strong>{{ phd.supervisor }}</p>
                       </div>
                       <div class="col-6">
-                          <p><strong>{% trans "Date Awarded" %}: </strong>{{ phd.date_awarded }}</p>
-                          <p><strong>{% trans "Average Grade" %}: </strong>{{ phd.grade_point_average }}</p>
-                          <p><strong>{% trans "Country" %}: </strong>{{ phd.country }}</p>
-                          <p><strong>{% trans "City" %}: </strong>{{ phd.city }}</p>
+                          <p><strong>{% translate "Date Awarded" %}: </strong>{{ phd.date_awarded }}</p>
+                          <p><strong>{% translate "Average Grade" %}: </strong>{{ phd.grade_point_average }}</p>
+                          <p><strong>{% translate "Country" %}: </strong>{{ phd.country }}</p>
+                          <p><strong>{% translate "City" %}: </strong>{{ phd.city }}</p>
                       </div>
                     </div>
                   </div>
@@ -335,7 +335,7 @@
         {% else %}
           <div class="row">
             <div class="col col-12">
-                <div class="alert alert-danger">{% trans "No Phds found " %}</div>
+                <div class="alert alert-danger">{% translate "No PHDs found " %}</div>
             </div>
           </div>
         {% endif %}
@@ -351,22 +351,22 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
-                  {{ref.job_title}} {% trans 'Reference' %}
+                  {{ref.job_title}} {% translate 'Reference' %}
                 </button>
               </h2>
               <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushRefs">
                 <div class="accordion-body">
                   <div class="row">
                     <div class="col-12 col-md-6">
-                      <p><strong>{% trans "Organization" %}: </strong>{{ ref.organization }}</p>
-                      <p><strong>{% trans "First Name" %}: </strong>{{ ref.first_name }}</p>
-                      <p><strong>{% trans "Last Name" %}: </strong>{{ ref.last_name }}</p>
-                      <p><strong>{% trans "Telephone" %}: </strong>{{ ref.telephone }}</p>
+                      <p><strong>{% translate "Organization" %}: </strong>{{ ref.organization }}</p>
+                      <p><strong>{% translate "First Name" %}: </strong>{{ ref.first_name }}</p>
+                      <p><strong>{% translate "Last Name" %}: </strong>{{ ref.last_name }}</p>
+                      <p><strong>{% translate "Telephone" %}: </strong>{{ ref.telephone }}</p>
                     </div>
                     <div class="col-6">
-                      <p><strong>{% trans "Reference Date" %}: </strong>{{ ref.reference_date }}</p>
-                      <p><strong>{% trans "Country" %}: </strong>{{ ref.country }}</p>
-                      <p><strong>{% trans "City" %}: </strong>{{ ref.city }}</p>
+                      <p><strong>{% translate "Reference Date" %}: </strong>{{ ref.reference_date }}</p>
+                      <p><strong>{% translate "Country" %}: </strong>{{ ref.country }}</p>
+                      <p><strong>{% translate "City" %}: </strong>{{ ref.city }}</p>
                     </div>
                   </div>
                 </div>
@@ -377,7 +377,7 @@
       {% else %}
         <div class="row">
           <div class="col col-12">
-              <div class="alert alert-danger">{% trans "No References found " %}</div>
+              <div class="alert alert-danger">{% translate "No References found " %}</div>
           </div>
         </div>
       {% endif %}

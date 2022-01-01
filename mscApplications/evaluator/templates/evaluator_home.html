@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{%block title %} {% trans "Home" %} {% endblock title %}
+{%block title %} {% translate "Home" %} {% endblock title %}
 {% block content%}
 
 <div class="card ">
     <div class="card-header msc-color text-white">
-        <h5 style="display: inline">{% trans "Welcome" %}</h5>
+        <h5 style="display: inline">{% translate "Welcome" %}</h5>
     </div>
     <div class="card-body ">
-        <h4>{% trans "Instructions" %}</h4>
+        <h4>{% translate "Instructions" %}</h4>
         <br>
         <div class="container">
-        <p>1. {% trans "Click" %} <a href="{% url 'evaluator:evaluator_call' %}">{% trans "My Calls" %}</a> {% trans "to see your assigned call ." %}</p>
-        <p>1. {% trans "Click" %} {% trans "View Applications" %} {% trans "to see the applications you have to check about your assigned call ." %}</p>
-        <p>2. {% trans "Click View Application to check if the application is accepted ." %}</p>
-        <p>3. {% trans "Select Admitted and Admitted Flow to accept the application." %}</p>
+        <p>1. {% translate "Click" %} <a href="{% url 'evaluator:evaluator_call' %}">{% translate "My Calls" %}</a> {% translate "to see your assigned call ." %}</p>
+        <p>1. {% translate "Click" %} {% translate "View Applications" %} {% translate "to see the applications you have to check about your assigned call ." %}</p>
+        <p>2. {% translate "Click View Application to check if the application is accepted ." %}</p>
+        <p>3. {% translate "Select Admitted and Admitted Flow to accept the application." %}</p>
     </div>
     </div>
 </div>

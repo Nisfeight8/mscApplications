@@ -12,17 +12,17 @@
                     </h6>
                     {% if user.is_authenticated %}
                         {% if user.is_applicant %}
-                            <span class="float-end"><a href="{% url 'applicant:new_application' call.pk %}" class="btn btn-outline-light btn-md">{% trans "New Application" %}</a></span>
+                            <span class="float-end"><a href="{% url 'applicant:new_application' call.pk %}" class="btn btn-outline-light btn-md">{% translate "New Application" %}</a></span>
                         {% endif %}
                     {% endif %}
                 </div>
                 <div class="card-body">
                     <div class="list-group list-group-flush" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-call-list" data-bs-toggle="list" href="#list-call" role="tab" aria-controls="list-call">{% trans "Call" %}</a>
-                        <a class="list-group-item list-group-item-action" id="list-msc-list" data-bs-toggle="list" href="#list-msc" role="tab" aria-controls="list-msc">{% trans "Programme" %}</a>
-                        <a class="list-group-item list-group-item-action" id="list-flows-list" data-bs-toggle="list" href="#list-flows" role="tab" aria-controls="list-flows">{% trans "Flows" %}</a>
-                        <a class="list-group-item list-group-item-action" id="list-department-list" data-bs-toggle="list" href="#list-department" role="tab" aria-controls="list-department">{% trans "Department" %}</a>
-                        <a class="list-group-item list-group-item-action" id="list-institution-list" data-bs-toggle="list" href="#list-institution" role="tab" aria-controls="list-institution">{% trans "Institution" %}</a>
+                        <a class="list-group-item list-group-item-action active" id="list-call-list" data-bs-toggle="list" href="#list-call" role="tab" aria-controls="list-call">{% translate "Call" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-msc-list" data-bs-toggle="list" href="#list-msc" role="tab" aria-controls="list-msc">{% translate "Programme" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-flows-list" data-bs-toggle="list" href="#list-flows" role="tab" aria-controls="list-flows">{% translate "Flows" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-department-list" data-bs-toggle="list" href="#list-department" role="tab" aria-controls="list-department">{% translate "Department" %}</a>
+                        <a class="list-group-item list-group-item-action" id="list-institution-list" data-bs-toggle="list" href="#list-institution" role="tab" aria-controls="list-institution">{% translate "Institution" %}</a>
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@
                               </h5>
                         </div>
                         <div class="card-body">
-                              <p><strong>{% trans "Start Date" %}:</strong> {{ call.start_date }}</p>
-                              <p><strong>{% trans "End Date" %}:</strong> {{ call.end_date }}</p>
+                              <p><strong>{% translate "Start Date" %}:</strong> {{ call.start_date }}</p>
+                              <p><strong>{% translate "End Date" %}:</strong> {{ call.end_date }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,21 +47,21 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.title}}
-                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  call.msc_programme.pk  %}" class="btn btn-outline-light">{% trans "View Programme" %}</a></span>
+                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  call.msc_programme.pk  %}" class="btn btn-outline-light">{% translate "View Programme" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p><strong>{% trans "Country" %}:</strong>
+                            <p><strong>{% translate "Country" %}:</strong>
                                 {{call.msc_programme.country}}
                             </p>
-                            <p><strong>{% trans "City" %}:</strong>
+                            <p><strong>{% translate "City" %}:</strong>
                                 {{call.msc_programme.city}}
                             </p>
-                            <p><strong>{% trans "Address" %}:</strong>
+                            <p><strong>{% translate "Address" %}:</strong>
                                 {{call.msc_programme.address}}
                             </p>
-                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.pobox }}</p>
-                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.telephone }}</p>
+                            <p><strong>{% translate "Pobox" %}:</strong> {{call.msc_programme.pobox }}</p>
+                            <p><strong>{% translate "Telephone" %}:</strong> {{call.msc_programme.telephone }}</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                     {{call.msc_programme.title}}
-                                {% trans "Flows" %}
+                                {% translate "Flows" %}
                             </h5>
                         </div>
                         <div class="card-body">
@@ -87,21 +87,21 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.department.title}}
-                                <span class="float-end"><a href="{% url 'org:department_detail'  call.msc_programme.department.pk  %}" class="btn btn-outline-light">{% trans "View Department" %}</a></span>
+                                <span class="float-end"><a href="{% url 'org:department_detail'  call.msc_programme.department.pk  %}" class="btn btn-outline-light">{% translate "View Department" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p><strong>{% trans "Country" %}:</strong>
+                            <p><strong>{% translate "Country" %}:</strong>
                                 {{call.msc_programme.department.country}}
                             </p>
-                            <p><strong>{% trans "City" %}:</strong>
+                            <p><strong>{% translate "City" %}:</strong>
                                 {{call.msc_programme.department.city}}
                             </p>
-                            <p><strong>{% trans "Address" %}:</strong>
+                            <p><strong>{% translate "Address" %}:</strong>
                                 {{call.msc_programme.department.address}}
                             </p>
-                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.department.pobox }}</p>
-                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.department.telephone }}</p>
+                            <p><strong>{% translate "Pobox" %}:</strong> {{call.msc_programme.department.pobox }}</p>
+                            <p><strong>{% translate "Telephone" %}:</strong> {{call.msc_programme.department.telephone }}</p>
                         </div>
                     </div>
                 </div>
@@ -110,21 +110,21 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.department.institution.title}}
-                                <span class="float-end"><a href="{% url 'org:institution_detail'  call.msc_programme.department.institution.pk  %}" class="btn btn-outline-light">{% trans "View Institution" %}</a></span>
+                                <span class="float-end"><a href="{% url 'org:institution_detail'  call.msc_programme.department.institution.pk  %}" class="btn btn-outline-light">{% translate "View Institution" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p><strong>{% trans "Country" %}:</strong>
+                            <p><strong>{% translate "Country" %}:</strong>
                                 {{call.msc_programme.department.institution.country}}
                             </p>
-                            <p><strong>{% trans "City" %}:</strong>
+                            <p><strong>{% translate "City" %}:</strong>
                                 {{call.msc_programme.department.institution.city}}
                             </p>
-                            <p><strong>{% trans "Address" %}:</strong>
+                            <p><strong>{% translate "Address" %}:</strong>
                                 {{call.msc_programme.department.institution.address}}
                             </p>
-                            <p><strong>{% trans "Pobox" %}:</strong> {{call.msc_programme.department.institution.pobox }}</p>
-                            <p><strong>{% trans "Telephone" %}:</strong> {{call.msc_programme.department.institution.telephone }}</p>
+                            <p><strong>{% translate "Pobox" %}:</strong> {{call.msc_programme.department.institution.pobox }}</p>
+                            <p><strong>{% translate "Telephone" %}:</strong> {{call.msc_programme.department.institution.telephone }}</p>
                         </div>
                     </div>
                 </div>

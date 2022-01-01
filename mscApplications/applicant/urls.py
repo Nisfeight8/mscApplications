@@ -8,6 +8,6 @@ urlpatterns = [
     path('profile/edit/', ApplicantProfileUpdateView.as_view(), name='applicant_profile_edit'),
     path('<int:pk>/new-application/', ApplicationCreateView.as_view(), name='new_application'),
     path('<int:pk>/detail/', ApplicantDetailView.as_view(), name='applicant_detail'),
-    path('<int:call_id>/applications/<int:pk>/admit/', ApplicationAdmitView.as_view(), name='application_admit'),
+    path('applications/<int:pk>/admit/', ApplicationAdmitView.as_view(), name='application_admit'),
     path('applications/', ApplicantApplicationListView.as_view(), name='applicant_applications'),
 ]

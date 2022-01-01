@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext as _
 
 
-def only_int(value):
+def telephone_validator(value):
     if value.isdigit()==False:
         raise ValidationError(_('Only digits allowed'))
     elif len(value)<10:

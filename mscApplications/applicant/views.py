@@ -138,7 +138,7 @@ class ApplicationAdmitView(LoginRequiredMixin,EvaluatorRequiredMixin,SuccessMess
         return form
 
     def get_success_url(self):
-        return reverse('msc:call_application_list',kwargs={'pk':self.kwargs['call_id']} )
+        return reverse('msc:call_application_list',kwargs={'pk':self.get_object().call.id} )
 
 class ApplicantDetailView(LoginRequiredMixin,EvaluatorRequiredMixin,DetailView):
     model = Applicant

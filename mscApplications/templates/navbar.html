@@ -19,27 +19,27 @@
             <div class="collapse navbar-collapse" id="mynavbar">
                 <div class="navbar-nav ms-auto">
                     <a  href="{% url 'msc:msc_programme_list' %}"
-                                class="nav-link"><i class="fs-5 bi bi-easel"></i> {% trans "MSC Programmes" %} </a>
+                                class="nav-link"><i class="fs-5 bi bi-easel"></i> {% translate "MSC Programmes" %} </a>
                     {% if user.is_authenticated %}
                         {% if user.is_applicant %}
                             <a  href="{% url 'msc:call_list' %}"
-                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% trans "Open Calls" %} </a>
+                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% translate "Open Calls" %} </a>
                             <a  href="{% url 'applicant:applicant_applications' %}"
-                                class="nav-link"><i class="fs-5 bi bi-card-checklist"></i> {% trans "My Applications" %} </a>
+                                class="nav-link"><i class="fs-5 bi bi-card-checklist"></i> {% translate "My Applications" %} </a>
                             <a
-                                href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% trans "Profile" %}</a>
+                                href="{% url 'applicant:applicant_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% translate "Profile" %}</a>
                         {% endif %}
                         {% if user.is_evaluator %}
                             <a  href="{% url 'evaluator:evaluator_call' %}"
-                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% trans "My Calls" %} </a></li>
+                                class="nav-link"><i class="fs-5 bi bi-calendar2-range"></i> {% translate "My Calls" %} </a></li>
                             <a
-                                href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% trans "Profile" %}</a>
+                                href="{% url 'evaluator:evaluator_profile' %}" class="nav-link "><i class="fs-5 bi bi-file-person"></i>{% translate "Profile" %}</a>
                         {% endif %}
                         <a href="{% url 'account_logout' %}"
-                            class="btn btn-outline-light "><i class="fs-5 bi bi-box-arrow-left"></i> {% trans "Logout" %}</a>
+                            class="btn btn-outline-light "><i class="fs-5 bi bi-box-arrow-left"></i> {% translate "Logout" %}</a>
                     {% else %}
                         <a href="{% url 'account_login' %}"
-                            class="nav-link"><i class="fs-5 bi bi-box-arrow-in-right"></i> {% trans "Login" %}</a>
+                            class="nav-link"><i class="fs-5 bi bi-box-arrow-in-right"></i> {% translate "Login" %}</a>
                     {% endif %}
                 </div>
             </div>

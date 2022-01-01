@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}{% trans "Calls" %}{% endblock title %}
+{% block title %}{% translate "Calls" %}{% endblock title %}
 {% block extra_css %}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
 {% endblock %}
 
 {% block content %}
-  {% get_current_language as LANGUAGE_CODE %}
   {% if calls %}
         {% for call in calls %}
             <div class="row">
@@ -18,12 +17,12 @@
                             <h5 style="display: inline">
                                 {{ call.title }}
                             </h5>
-                            <span class="float-end"><a href="{% url 'msc:call_detail'  call.pk  %}" class="btn btn-outline-light">{% trans "View Call" %}</a></span>
+                            <span class="float-end"><a href="{% url 'msc:call_detail'  call.pk  %}" class="btn btn-outline-light">{% translate "View Call" %}</a></span>
                         </div>
                         <div class="card-body">
-                          <p><strong>{% trans "Start Date" %}:</strong> {{ call.start_date }}</p>
-                          <p><strong>{% trans "End Date" %}:</strong> {{ call.end_date }}</p>
-                          <p><strong>{% trans "Msc Programme" %}:</strong> <a href="{% url 'msc:msc_programme_detail' call.msc_programme.pk %}"> {{ call.msc_programme }}</a></p>
+                          <p><strong>{% translate "Start Date" %}:</strong> {{ call.start_date }}</p>
+                          <p><strong>{% translate "End Date" %}:</strong> {{ call.end_date }}</p>
+                          <p><strong>{% translate "Msc Programme" %}:</strong> <a href="{% url 'msc:msc_programme_detail' call.msc_programme.pk %}"> {{ call.msc_programme }}</a></p>
                         </div>
                     </div>
                     <br>
@@ -34,7 +33,7 @@
     {% else %}
         <div class="row">
             <div class="col col-12">
-                <div class="alert alert-danger">{% trans "No calls found " %}</div>
+                <div class="alert alert-danger">{% translate "No calls found " %}</div>
             </div>
         </div>
     {% endif %}

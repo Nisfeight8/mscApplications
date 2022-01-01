@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% load i18n %}
-{%block title %} {% trans "Admit application" %}{% endblock title %}
+{%block title %} {% translate "Admit application" %}{% endblock title %}
 {% block content%}
 
 <form
@@ -14,14 +14,14 @@
   <div class="card">
     <div class="card-header msc-color text-white">
       <h5 style="display: inline">
-        {% trans "Admit application" %}
+        {% translate "Admit application" %}
       </h5>
     </div>
     <div class="card-body">
       <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Submission Date" %}</label>
+          <label>{% translate "Submission Date" %}</label>
         </div>
         <div class="col-md-6">
           <p>{{application.submission_date}}</p>
@@ -30,7 +30,7 @@
       <hr />
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Programme" %}</label>
+          <label>{% translate "Programme" %}</label>
         </div>
         <div class="col-md-6">
           <p>
@@ -41,29 +41,29 @@
       <hr />
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Reference" %}</label>
+          <label>{% translate "Reference" %}</label>
         </div>
         {% if application.reference %}
         <div class="col-md-6"><a href="{{application.reference.media_file.url}}">{{application.reference}}</a></div>
         {% else %}
-        <div class="col-md-6">{% trans "None" %}</div>
+        <div class="col-md-6">{% translate "None" %}</div>
         {% endif %}
       </div>
       <hr />
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Media File" %}</label>
+          <label>{% translate "Media File" %}</label>
         </div>
         <div class="col-md-6"><a href="{{application.media_file.url}}">{{application.media_file}}</a></div>
       </div>
       <hr />
       {% if application.preference_set.all %}
-      <h5 >{% trans "Flows by prefered Order" %}</h5>
+      <h5 >{% translate "Flows by prefered Order" %}</h5>
       <table style="width:40%">
         <thead>
           <tr>
-            <th>{% trans "Priority" %}</th>
-            <th >{% trans "Flow" %}</th>
+            <th>{% translate "Priority" %}</th>
+            <th >{% translate "Flow" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -78,7 +78,7 @@
       <br>
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Admitted Flow" %}</label>
+          <label>{% translate "Admitted Flow" %}</label>
         </div>
         <div class="col-md-6">{{ form.admitted_flow |as_crispy_field }}</div>
       </div>
@@ -86,12 +86,12 @@
       {% endif %}
       <div class="row">
         <div class="col-md-6">
-          <label>{% trans "Admitted" %}</label>
+          <label>{% translate "Admitted" %}</label>
         </div>
         <div class="col-md-6">{{ form.admitted |as_crispy_field }}</div>
       </div>
       <hr />
-      <button type="submit" class="btn msc-color text-white">{% trans "Submit" %}</button>
+      <button type="submit" class="btn msc-color text-white">{% translate "Submit" %}</button>
     </div>
     </div>
   </div>

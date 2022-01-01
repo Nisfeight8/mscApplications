@@ -3,13 +3,13 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %} {% trans "MSC Programmes" %} {% endblock title %}
+{% block title %} {% translate "MSC Programmes" %} {% endblock title %}
 
 
 {% block content %}
     <div class="d-grid gap-2 text-center">
         <div class="card card-body header-color text-white">
-            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fs-4 bi bi-search"></i>{% trans 'Search' %}</button>
+            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fs-4 bi bi-search"></i>{% translate 'Search' %}</button>
         </div>
         <div class="collapse" id="collapseExample">
             <form class="card card-body" action="" method="get">
@@ -22,7 +22,7 @@
     <br><br>
     <figure class="text-center card card-body header-color text-white">
         <blockquote class="blockquote">
-            <p>{% trans 'MSC Programmes' %}</p>
+            <p>{% translate 'MSC Programmes' %}</p>
         </blockquote>
     </figure>
 
@@ -37,13 +37,13 @@
                     </div>
                     <div class="card-body msc-color text-white">
                         <div class="row text-center">
-                            <p><strong>{% trans "Institution" %}:</strong>
+                            <p><strong>{% translate "Institution" %}:</strong>
                                 {{obj.department.institution}}
                             </p>
-                            <p><strong>{% trans "Department" %}:</strong>
+                            <p><strong>{% translate "Department" %}:</strong>
                                 {{obj.department}}
                             </p>
-                            <p><strong>{% trans "Flows" %} :</strong></p>
+                            <p><strong>{% translate "Flows" %} :</strong></p>
                             {% for flow in obj.mscflow_set.all %}
                                 <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
                             {% endfor %}

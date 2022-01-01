@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% block title %}{{department.title}} {% endblock title %}
 
 {% block content %}
     <div class="row">
@@ -12,18 +13,18 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p><strong>{% trans "Country" %}:</strong>
+                    <p><strong>{% translate "Country" %}:</strong>
                         {{department.country}}
                     </p>
-                    <p><strong>{% trans "City" %}:</strong>
+                    <p><strong>{% translate "City" %}:</strong>
                         {{department.city}}
                     </p>
-                    <p><strong>{% trans "Address" %}:</strong>
+                    <p><strong>{% translate "Address" %}:</strong>
                         {{department.address}}
                     </p>
-                    <p><strong>{% trans "Pobox" %}:</strong> {{department.pobox }}</p>
-                    <p><strong>{% trans "Telephone" %}:</strong> {{department.telephone }}</p>
-                    <p><strong>{% trans "Institution" %}:</strong> <a href="{% url 'org:institution_detail' department.institution.pk %}" >{{department.institution }}</a></p>
+                    <p><strong>{% translate "Pobox" %}:</strong> {{department.pobox }}</p>
+                    <p><strong>{% translate "Telephone" %}:</strong> {{department.telephone }}</p>
+                    <p><strong>{% translate "Institution" %}:</strong> <a href="{% url 'org:institution_detail' department.institution.pk %}" >{{department.institution }}</a></p>
                 </div>
             </div>
         </div>
@@ -31,7 +32,7 @@
             <div class="col-12 col-sm-8">
                 <figure class="text-center card card-body header-color text-white">
                     <blockquote class="blockquote">
-                        <p>{% trans 'MSC Programmes' %}</p>
+                        <p>{% translate 'MSC Programmes' %}</p>
                     </blockquote>
                 </figure>
                 {% for msc in department.mscprogramme_set.all %}
@@ -39,25 +40,25 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{msc.title}}
-                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  msc.pk  %}" class="btn btn-outline-light">{% trans "View Programme" %}</a></span>
+                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  msc.pk  %}" class="btn btn-outline-light">{% translate "View Programme" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="cols-12 col-sm-6">
-                                    <p><strong>{% trans "Country" %}:</strong>
+                                    <p><strong>{% translate "Country" %}:</strong>
                                         {{msc.country}}
                                     </p>
-                                    <p><strong>{% trans "City" %}:</strong>
+                                    <p><strong>{% translate "City" %}:</strong>
                                         {{msc.city}}
                                     </p>
                                 </div>
                                 <div class="cols-12 col-sm-6">
-                                    <p><strong>{% trans "Address" %}:</strong>
+                                    <p><strong>{% translate "Address" %}:</strong>
                                         {{msc.address}}
                                     </p>
-                                    <p><strong>{% trans "Pobox" %}:</strong> {{msc.pobox }}</p>
-                                    <p><strong>{% trans "Telephone" %}:</strong> {{msc.telephone }}</p>
+                                    <p><strong>{% translate "Pobox" %}:</strong> {{msc.pobox }}</p>
+                                    <p><strong>{% translate "Telephone" %}:</strong> {{msc.telephone }}</p>
                                 </div>
                             </div>
                         </div>
