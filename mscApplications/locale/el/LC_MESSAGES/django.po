@@ -682,7 +682,7 @@ msgstr "Τμήματα"
 #, fuzzy
 #| msgid "Msc Programme"
 msgid "MSC Programmes"
-msgstr "Πρόγραμματα"
+msgstr "Προγράμματα"
 
 #: institution/templates/department_detail.html:43
 #: msc/templates/call_detail.html:50
