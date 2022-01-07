@@ -79,6 +79,7 @@
         >
       </li>
     </ul>
+      <br>
       <form enctype="multipart/form-data" class="tab-content" id="myTabContent" method="post">
         <div
           class="tab-pane fade show active"
@@ -96,72 +97,36 @@
           role="tabpanel"
           aria-labelledby="{% if forloop.counter == 1 %}diplomas-tab{% elif forloop.counter == 2 %}phds-tab{% elif forloop.counter == 3 %}jobexperiences-tab{% elif forloop.counter == 4 %}references-tab{% endif %}"
           >
-            <div class="table-responsive">
-              <table class="table table-sm" cellpadding="0" cellspacing="5">
-                {{ formset.management_form }}
-                {{formset.fk.related.get_accessor_name}}
-                <thead>
-                  <tr>
-                      {% for field in formset.forms.0.visible_fields %}
-                        <th >{% translate field.label %}</th>
-                      {% endfor %}
-                  </tr>
-                </thead>
-                <tbody>
-                    {% for form in formset.forms %}
-                      <tr class="{{formset.prefix}}">
-                        {% for field in form.visible_fields %}
-                          <td>
-                            {# Include the hidden fields in the form #}
-                            {% if forloop.first %}
-                              {% for hidden in form.hidden_fields %}
-                                {{ hidden }}
-                              {% endfor %}
-                            {% endif %}
-                            {% bootstrap_field field show_label=False %}
-                          </td>
-                        {% endfor %}
-                      </tr>
-                    {% endfor %}
-                </tbody>
-              </table>
+            {{ formset.management_form }}
+            <div class="row" id="{{formset.prefix}}">
+              {% for form in formset.forms %}
+                <div class="col-12">
+                  {% bootstrap_form form layout='horizontal' %}
+                </div>
+              {% endfor %}
+            </div>
+            <br>
+            <input type="button" value="Add More" onclick = "add_more({% if forloop.counter == 1 %}'diploma_set'{% elif forloop.counter == 2 %}'phd_set'{% elif forloop.counter == 3 %}'jobexperience_set'{% elif forloop.counter == 4 %}'reference_set'{% endif %});" >
+            <div id="empty_form" style="display:none">
+              <div class="col-12">
+              {% bootstrap_form formset.empty_form layout='horizontal' %}
+              </div>
             </div>
           </div>
         {% endfor%}
+        <br>
         <button type="submit" class="btn msc-color text-white">{% translate "Submit" %}</button>
       </form>
     <br>
     <br>
 {% endblock %}
 {% block javascript %}
-  <script src="{% static '/js/query.formset.js' %}"></script>
   <script type="text/javascript">
-    $('.diploma_set').formset({
-        addText: 'add another',
-        deleteText: 'remove',
-        prefix: 'diploma_set',
-    });
-    $('.phd_set').formset({
-        addText: 'add another',
-        deleteText: 'remove',
-        prefix: 'phd_set',
-    });
-    $('.jobexperience_set').formset({
-        addText: 'add another',
-        deleteText: 'remove',
-        prefix: 'jobexperience_set',
-    });
-    $('.reference_set').formset({
-        addText: 'add another',
-        deleteText: 'remove',
-        prefix: 'reference_set',
-    });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-  <script>
-    $(".dateinput").datepicker({
-      format: 'dd/mm/yyyy',
-    });
+    function add_more(form) {
+      var form_idx = $('#id_'+form+'-TOTAL_FORMS').val();
+      $('#'+form).append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+      $('#id_'+form+'-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    }
   </script>
 {% endblock %}
 
