@@ -24,10 +24,11 @@ class ApplicantForm(forms.ModelForm):
     first_name = forms.CharField(label=_("First Name"), max_length=30)
     last_name = forms.CharField(label=_("Last Name"), max_length=30)
     birth_date = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Birth Date"),
-        help_text="(dd/mm/yyyy)",
-        required=True
+        required=True,
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
     telephone = forms.CharField(label=_("Telephone"),required=True)
     address = forms.CharField(label=_("Address"),required=True)
@@ -83,9 +84,10 @@ class DiplomaForm(forms.ModelForm):
         help_text=_("supported type is pdf"), label=_("Media File")
     )
     date_awarded = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Date Awarded"),
-        help_text="(dd/mm/yyyy)",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
 
     class Meta:
@@ -100,9 +102,10 @@ class DiplomaForm(forms.ModelForm):
 
 class ReferenceForm(forms.ModelForm):
     reference_date = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Reference Date"),
-        help_text="(dd/mm/yyyy)",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
     media_file = forms.FileField(
         help_text=_("supported type is pdf"), label=_("Media File")
@@ -137,9 +140,10 @@ class PhdForm(forms.ModelForm):
     #TYPE_CHOICES.insert(0, ("", ""))
     type = forms.ChoiceField(choices=TYPE_CHOICES)
     date_awarded = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Date Awarded"),
-        help_text="(dd/mm/yyyy)",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
     media_file = forms.FileField(
         help_text=_("supported type is pdf"), label=_("Media File")
@@ -158,14 +162,16 @@ class PhdForm(forms.ModelForm):
 
 class JobExperienceForm(forms.ModelForm):
     start_date = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("Start Date"),
-        help_text="(dd/mm/yyyy)",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
     end_date = forms.DateField(
-        input_formats=settings.DATE_INPUT_FORMATS,
         label=_("End Date"),
-        help_text="(dd/mm/yyyy)",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
     )
     media_file = forms.FileField(
         help_text=_("supported type is pdf"), label=_("Media File")

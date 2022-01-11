@@ -5,10 +5,6 @@
 {% load bootstrap5 %}
 {% block title %}{% translate "Edit Profile" %}{% endblock title %}
 {% block extra_css %}
-  <link
-	  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css"
-	  rel="stylesheet"
-  />
   <style>
     .table td, .table th {
     min-width: 150px;
@@ -106,7 +102,7 @@
               {% endfor %}
             </div>
             <br>
-            <input type="button" value="Add More" onclick = "add_more({% if forloop.counter == 1 %}'diploma_set'{% elif forloop.counter == 2 %}'phd_set'{% elif forloop.counter == 3 %}'jobexperience_set'{% elif forloop.counter == 4 %}'reference_set'{% endif %});" >
+            <input class="btn-sm btn-dark " type="button" value="Add More" onclick = "add_more({% if forloop.counter == 1 %}'diploma_set'{% elif forloop.counter == 2 %}'phd_set'{% elif forloop.counter == 3 %}'jobexperience_set'{% elif forloop.counter == 4 %}'reference_set'{% endif %});" >
             <div id="empty_form" style="display:none">
               <div class="col-12">
               {% bootstrap_form formset.empty_form layout='horizontal' %}
