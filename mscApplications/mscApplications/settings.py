@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'institution',
     'applicant',
     'evaluator',
+    'secretary'
 ]
 
 MIDDLEWARE = [

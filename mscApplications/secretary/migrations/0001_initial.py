@@ -16,15 +16,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Evaluator',
+            name='Secretary',
             fields=[
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='evaluator', serialize=False, to='user_account.user')),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='secretary', serialize=False, to='user_account.user')),
                 ('telephone', models.CharField(max_length=10, validators=[utils.validators.telephone_validator], verbose_name='Telephone')),
                 ('department', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='institution.department')),
             ],
             options={
-                'verbose_name': 'Evaluator',
-                'verbose_name_plural': 'Evaluators',
+                'verbose_name': 'Secretary',
+                'verbose_name_plural': 'Secretaries',
             },
         ),
     ]

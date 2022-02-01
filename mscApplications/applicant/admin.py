@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from msc.models import Preference,Application
 
 class DiplomaInline(admin.StackedInline):
     model = Diploma

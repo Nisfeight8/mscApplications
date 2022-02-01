@@ -37,6 +37,12 @@ urlpatterns = [
         ),
     ),
     path(
+        "secretary/",
+        include("secretary.urls",
+        namespace="secretary",
+        ),
+    ),
+    path(
         "msc/",
         include("msc.urls",
         namespace="msc",

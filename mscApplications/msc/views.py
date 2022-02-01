@@ -1,13 +1,25 @@
-from .models import *
 from django.db.models import Q
-from django.views.generic import ListView,DetailView
-from applicant.models import Application
-import datetime
-from utils.mixins import *
+from django.views.generic import ListView,DetailView,CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django_filters.views import FilterView
+from django.urls import reverse
+from django.shortcuts import get_object_or_404
+from django.http import FileResponse
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.messages.views import SuccessMessageMixin
+
+from extra_views import  CreateWithInlinesView, InlineFormSetFactory
+
+from .models import *
+
 from .filters import MscProgrammeFilter
-from django.utils.translation import get_language
+from .forms import *
+
+from utils.mixins import *
+from utils import pdf_generator
+
+import uuid
+import datetime
+
 
 class CallListView(ListView):
     model = Call
@@ -41,6 +53,59 @@ class CallApplicationListView(LoginRequiredMixin,EvaluatorRequiredMixin,ListView
         return context
 
 
+class CallApplicationCreateView(LoginRequiredMixin,ApplicantRequiredMixin,ApplicantCompleteProfileMixin,CreateView):
+    model=Application
+    template_name='application_create.html'
+    form_class=ApplicationForm
+
+    def get_context_data(self, **kwargs):
+        context = super(CallApplicationCreateView, self).get_context_data(**kwargs)
+        context['call'] =Call.objects.get(id=self.kwargs['pk'])
+        return context
+
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        call=Call.objects.get(id=self.kwargs['pk'])
+        if call.msc_programme.mscflow_set.all:
+            form.fields['preferences'].required = True
+        form.fields['preferences'].queryset = MscFlow.objects.filter(msc_programme=call.msc_programme)
+        form.fields['reference'].queryset = Reference.objects.filter(applicant=self.request.user.applicant)
+        form.fields['preferences'].label = _("Select flows by the order you prefer")
+        return form
+
+    def form_valid(self, form):
+        application = form.save(commit=False)
+        application.applicant=self.request.user.applicant
+        application.call= get_object_or_404(Call, id=self.kwargs['pk'])
+        application.save()
+        for index,flow_id in enumerate(self.request.POST.getlist('preferences')):
+            application.preferences.add(int(flow_id), through_defaults={'priority': index+1})
+        file_data=None
+        if self.request.LANGUAGE_CODE =='en':
+            file_data= pdf_generator.generate_applicant_app(self.request.user.applicant,application)
+        else:
+            file_data= pdf_generator.generate_applicant_app_to_greek(self.request.user.applicant,application)
+        application.media_file.save(self.request.user.email+uuid.uuid4().hex[:6].upper()+".pdf", file_data, save=False)
+        application.save()
+        return FileResponse(application.media_file)
+
+
+class CallApplicationAdmitView(LoginRequiredMixin,EvaluatorRequiredMixin,SuccessMessageMixin,UpdateView):
+    model=Application
+    form_class=ApplicationAdmitForm
+    template_name = 'application_admit.html'
+    success_message = _('Application admitted !')
+
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        form.fields['admitted'].label = ""
+        form.fields['admitted_flow'].queryset = self.object.preferences.all()
+        form.fields['admitted_flow'].label = ""
+        return form
+
+    def get_success_url(self):
+        return reverse('msc:call_application_list',kwargs={'pk':self.get_object().call.id} )
+
 class MscProgrammeListView(ListView):
     model=MscProgramme
     template_name='msc_programme_list.html'
@@ -67,3 +132,17 @@ class MscProgrammeDetailView(DetailView):
         context['calls']=calls
         return context
 
+class MSCFlowInline(InlineFormSetFactory):
+    model = MscFlow
+    fields=['title','title_el']
+    factory_kwargs = {'extra': 1}
+
+class MscProgrammeCreateView(CreateWithInlinesView):
+    model=MscProgramme
+    template_name='msc_programme_create.html'
+    inlines = [ MSCFlowInline,]
+    fields=['title','title_el','country','country_el','city','city_el','address','address_el','pobox','telephone']
+    success_url='/secretary/dashboard'
+    def form_valid(self, form):
+        form.instance.department=self.request.user.secretary.department
+        return super().form_valid(form)

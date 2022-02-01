@@ -12,7 +12,7 @@
                     </h6>
                     {% if user.is_authenticated %}
                         {% if user.is_applicant %}
-                            <span class="float-end"><a href="{% url 'applicant:new_application' call.pk %}" class="btn btn-outline-light btn-md">{% translate "New Application" %}</a></span>
+                            <span class="float-end"><a href="{% url 'msc:call_new_application' call.pk %}" class="btn btn-outline-light btn-md">{% translate "New Application" %}</a></span>
                         {% endif %}
                     {% endif %}
                 </div>

@@ -22,12 +22,10 @@ class CheckUser(View):
                     return redirect('applicant:applicant_home')
                 else:
                     return redirect('applicant:applicant_profile_edit')
-            elif user.is_evaluator:
+            if user.is_evaluator:
                 return redirect('evaluator:evaluator_home')
-            else:
-                user.is_applicant=True
-                user.save()
-                return redirect('applicant:applicant_profile_edit')
+            if user.is_secretary:
+                return redirect('secretary:secretary_dashboard')
         return redirect('/accounts/login')
 
 class ChangePasswordView(LoginRequiredMixin,FormView):

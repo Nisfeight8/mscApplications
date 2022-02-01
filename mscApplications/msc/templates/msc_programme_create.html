@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block title %}{% translate "New MSC Programme " %} {% endblock title %}
+{% block content %}
+
+  <div class="card">
+    <div class="card-header msc-color text-white">
+      <h5 style="display: inline">
+        {% translate "New MSC Programme " %}
+      </h5>
+    </div>
+    <div class="card-body">
+      <ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link active"
+            id="programme-tab"
+            data-bs-toggle="tab"
+            href="#programme"
+            role="tab"
+            aria-controls="programme"
+            aria-selected="false"
+            >{% translate "MSC Programme" %}</a
+          >
+        </li>
+        <li class="nav-item " role="presentation">
+          <a
+            class="flex-sm-fill text-sm-center nav-link"
+            id="flows-tab"
+            data-bs-toggle="tab"
+            href="#flows"
+            role="tab"
+            aria-controls="flows"
+            aria-selected="false"
+            >{% translate "Msc Flows" %}</a
+          >
+        </li>
+      </ul>
+      <br>
+      <form method="post">
+        <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="programme"
+          role="tabpanel"
+          aria-labelledby="programme-tab"
+        >
+          <div class="container">
+            {% csrf_token %}
+            {% bootstrap_form form layout='horizontal' %}
+          </div>
+        </div>
+        <div  
+          class="tab-pane fade "
+          id="flows"
+          role="tabpanel"
+          aria-labelledby="flows-tab"
+        >
+          {% for formset in inlines %}
+            {{ formset.management_form }}
+            <div class="row" id="{{formset.prefix}}">
+              {% for form in formset.forms %}
+                <div class="col-12">
+                  {% bootstrap_form form layout='horizontal' %}
+                </div>
+                
+              {% endfor %}
+            </div>
+            <br>
+            <input class="btn-sm btn-outline " type="button" value="Add More" onclick = "add_more('mscflow_set');" >
+            <div id="empty_form" style="display:none">
+              <div class="col-12">
+                {% bootstrap_form formset.empty_form layout='horizontal' %}
+              </div>
+            </div>
+            <hr>
+          {% endfor%}
+        </div>
+          <button type="submit" class="btn btn msc-color text-white">{% translate "Submit" %}</button>
+        </div>
+        </form>
+    </div>
+  </div>
+{% endblock %}
+{% block javascript %}
+  <script type="text/javascript">
+    function add_more(form) {
+      var form_idx = $('#id_'+form+'-TOTAL_FORMS').val();
+      $('#'+form).append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+      $('#id_'+form+'-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    }
+  </script>
+{% endblock %}

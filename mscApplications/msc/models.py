@@ -3,7 +3,10 @@ from institution.models import Department
 from django.utils.translation import gettext as _
 from utils.validators import telephone_validator
 from evaluator.models import Evaluator
-
+from django.db import models
+from applicant.models import Applicant,Reference
+from .utils import application_upload
+from django.core.validators import FileExtensionValidator
 
 class MscProgramme(models.Model):
     title = models.CharField(_('Title'),max_length = 200)
@@ -47,3 +50,34 @@ class Call(models.Model):
     class Meta:
         verbose_name = _("Call")
         verbose_name_plural = _("Calls")
+
+class Application (models.Model):
+    applicant=models.ForeignKey(Applicant,on_delete=models.CASCADE)
+    call=models.ForeignKey(Call,on_delete=models.CASCADE)
+    submission_date=models.DateField(_('Submission Date'),auto_now_add=True)
+    comments=models.TextField(_('Comments'),null=True,blank=True)
+    admitted=models.BooleanField(_('Admitted'),default=None,null=True,blank=True)
+    reference=models.ForeignKey(Reference,on_delete=models.SET_NULL,null=True,blank=True)
+    media_file = models.FileField(_('Media File'),upload_to=application_upload,validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    preferences = models.ManyToManyField(MscFlow,through='Preference',blank=True,related_name="waiting_applications")
+    admitted_flow=models.ForeignKey(MscFlow,on_delete=models.CASCADE,blank=True,null=True,related_name="admitted_application")
+
+    def __str__(self):
+        return self.applicant.user.email+" application"
+
+    class Meta:
+        verbose_name = _("Application")
+        verbose_name_plural = _("Applications")
+
+class Preference(models.Model):
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
+    flow = models.ForeignKey(MscFlow,on_delete=models.CASCADE)
+    priority = models.PositiveIntegerField(_('Priority'),)
+
+    class Meta:
+        ordering = ["priority"]
+        verbose_name = _("Priority")
+        verbose_name_plural = _("Priorities")
+
+    def __str__(self):
+        return  self.flow.title

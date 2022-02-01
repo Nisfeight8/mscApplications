@@ -1,23 +1,10 @@
 from django import forms
-from django.contrib.auth.models import User
 from .models import *
 from .constants import GENDER_CHOICES, TYPE_CHOICES
-from msc.models import MscFlow
-from django.core.exceptions import ValidationError
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column, Div, Field
-from django.conf import settings
-from django.utils.translation import get_language
-from django.contrib.auth.validators import UnicodeUsernameValidator
+from crispy_forms.layout import Layout, Row, Column
 from django.utils.translation import gettext_lazy as _
 
-
-class ApplicationAdmitForm(forms.ModelForm):
-    admitted_flow = forms.ModelChoiceField(queryset=MscFlow.objects.none())
-
-    class Meta:
-        model = Application
-        fields = ("admitted", "admitted_flow")
 
 
 class ApplicantForm(forms.ModelForm):
@@ -119,21 +106,6 @@ class ReferenceForm(forms.ModelForm):
         super(ReferenceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False
-
-
-
-
-class ApplicationForm(forms.ModelForm):
-    preferences = forms.ModelMultipleChoiceField(queryset=MscFlow.objects.none())
-
-    class Meta:
-        model = Application
-        fields = ("preferences", "reference", "comments")
-
-    def __init__(self, *args, **kwargs):
-        super(ApplicationForm, self).__init__(*args, **kwargs)
-        self.fields["reference"].label = _("Reference")
-        self.fields["comments"].label = _("Comments")
 
 
 class PhdForm(forms.ModelForm):

@@ -4,7 +4,6 @@ from django.utils.text import slugify
 import string
 import random
 import os
-from django import template
 
 
 def create_random_string(length=30):
@@ -49,16 +48,6 @@ def reference_upload(instance, filename):
     now = datetime.now()
     filename_base, filename_ext = os.path.splitext(filename)
     return 'reference/{}/{}_{}{}'.format(
-        slugify(instance.applicant.user.email),
-        now.strftime('%Y%m%d%H%M%S'),
-        create_random_string(),
-        filename_ext.lower()
-    )
-
-def application_upload(instance, filename):
-    now = datetime.now()
-    filename_base, filename_ext = os.path.splitext(filename)
-    return 'application/{}/{}_{}{}'.format(
         slugify(instance.applicant.user.email),
         now.strftime('%Y%m%d%H%M%S'),
         create_random_string(),
