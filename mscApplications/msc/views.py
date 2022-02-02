@@ -1,13 +1,14 @@
 from django.db.models import Q
-from django.views.generic import ListView,DetailView,CreateView, UpdateView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from django.http import FileResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 
-from extra_views import  CreateWithInlinesView, InlineFormSetFactory
+from extra_views import  CreateWithInlinesView,UpdateWithInlinesView, InlineFormSetFactory
 
 from .models import *
 
@@ -134,15 +135,55 @@ class MscProgrammeDetailView(DetailView):
 
 class MSCFlowInline(InlineFormSetFactory):
     model = MscFlow
-    fields=['title','title_el']
+    fields=['title_en','title_el']
     factory_kwargs = {'extra': 1}
 
-class MscProgrammeCreateView(CreateWithInlinesView):
+
+class MscProgrammeCreateView(SuccessMessageMixin,CreateWithInlinesView):
     model=MscProgramme
-    template_name='msc_programme_create.html'
+    fields=['title_en','title_el','country_en','country_el','city_en','city_el','address_en','address_el','pobox','telephone']
     inlines = [ MSCFlowInline,]
-    fields=['title','title_el','country','country_el','city','city_el','address','address_el','pobox','telephone']
+    template_name='msc_programme_create.html'
+    success_message = _('MSC Programme created !')
     success_url='/secretary/dashboard'
+
     def form_valid(self, form):
         form.instance.department=self.request.user.secretary.department
         return super().form_valid(form)
+
+
+class MscProgrammeUpdateView(SuccessMessageMixin,UpdateWithInlinesView):
+    model=MscProgramme
+    fields=['title_en','title_el','country_en','country_el','city_en','city_el','address_en','address_el','pobox','telephone']
+    inlines = [ MSCFlowInline,]
+    template_name='msc_programme_create.html'
+    success_message = _('MSC Programme updated !')
+    success_url='/secretary/dashboard'
+
+    def form_valid(self, form):
+        form.instance.department=self.request.user.secretary.department
+        return super().form_valid(form)
+
+
+class MscProgrammeDeleteView(DeleteView):
+    model=MscProgramme
+
+    def get_success_url(self):
+        messages.success(self.request, (_('MSC Programme deleted.')))
+        return reverse('secretary:secretary_dashboard')
+
+class MscProgrammeCallListView(ListView):
+    model=Call
+    template_name='msc_programme_call_list.html'
+    context_object_name='calls'
+
+    def get_queryset(self):
+        programme=MscProgramme.objects.get(id=self.kwargs.get('pk'))
+        return Call.objects.filter(msc_programme=programme)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calls=Call.objects.filter(msc_programme__id=self.kwargs['pk'])
+        context['programme']=MscProgramme.objects.get(id=self.kwargs.get('pk'))
+        context['calls']= self.get_queryset()
+        return context

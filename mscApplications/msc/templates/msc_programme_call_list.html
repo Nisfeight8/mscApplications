@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{programme}} {% translate "calls" %}{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
+{% endblock %}
+{% block content %}
+        <div class="card">
+            <div class="card-header msc-color text-white">
+                <h5 style="display: inline">
+                    {{programme}} {% translate "calls" %}
+                    <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  programme.pk  %}" class="btn btn-outline-light">{% translate "View Programme" %}</a></span>
+                </h5>
+            </div>
+            <div class="card-body table-responsive">
+                <table id="datatable" class="table align-items-center table-flush">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col">{% translate "Title" %}</th>
+                            <th scope="col">{% translate "Start Date" %}</th>
+                            <th scope="col">{% translate "End Date" %}</th>
+                            <th scope="col">{% translate "Actions" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for call in calls %}
+                            <tr>
+                                <td><a href="{% url 'msc:call_detail'  call.pk  %}">{{call.title}}</a></td>
+                                <td>{{call.start_date}}</td>
+                                <td>{{call.end_date}}</td>
+                                <td>
+                                    <a class="btn msc-color text-white" href="#">{% translate "Admit" %}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+{% endblock content %}
+{% block javascript %}
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $('#datatable').DataTable({
+            "ordering" : false,
+        });
+    </script>
+{% endblock%}

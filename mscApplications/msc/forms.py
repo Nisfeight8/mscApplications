@@ -1,7 +1,8 @@
 from msc.models import MscFlow
 from django import forms
-from .models import Application
+from .models import *
 from django.utils.translation import gettext_lazy as _
+from modeltranslation.forms import TranslationModelForm
 
 class ApplicationAdmitForm(forms.ModelForm):
     admitted_flow = forms.ModelChoiceField(queryset=MscFlow.objects.none())
@@ -21,3 +22,4 @@ class ApplicationForm(forms.ModelForm):
         super(ApplicationForm, self).__init__(*args, **kwargs)
         self.fields["reference"].label = _("Reference")
         self.fields["comments"].label = _("Comments")
+

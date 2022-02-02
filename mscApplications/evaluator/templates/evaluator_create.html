@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %}{% translate "Create Evaluator" %}{% endblock title %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-header text-white msc-color">
+      <h5 style="display: inline">{% translate "Create Evaluator" %}</h5>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{form | crispy }}
+        <button type="submit" class="btn msc-color text-white">{% translate "Submit" %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
