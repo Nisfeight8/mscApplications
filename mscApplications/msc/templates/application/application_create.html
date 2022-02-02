@@ -24,7 +24,7 @@
     <div class="card-body">
       <form method="post">
           {% csrf_token %}
-          {{form | crispy}}
+          {% crispy form %}
           <button type="submit" class="btn btn msc-color text-white">{% translate "Submit" %}</button>
 
       </form>

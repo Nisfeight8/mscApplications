@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-from .constants import GENDER_CHOICES, TYPE_CHOICES
+from .constants import GENDER_CHOICES
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column
 from django.utils.translation import gettext_lazy as _
@@ -65,17 +65,6 @@ class ApplicantForm(forms.ModelForm):
 
 
 class DiplomaForm(forms.ModelForm):
-    TYPE_CHOICES.insert(0, ("", ""))
-    type = forms.ChoiceField(choices=TYPE_CHOICES, initial=None)
-    media_file = forms.FileField(
-        help_text=_("supported type is pdf"), label=_("Media File")
-    )
-    date_awarded = forms.DateField(
-        label=_("Date Awarded"),
-        widget=forms.TextInput(
-            attrs={'type': 'date'}
-        )
-    )
 
     class Meta:
         model = Diploma
@@ -83,20 +72,15 @@ class DiplomaForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(DiplomaForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_show_labels = False
-
+        self.helper = FormHelper()  
+        self.fields['date_awarded'].widget=forms.TextInput(attrs={'type': 'date'})
+        self.fields['media_file'].help_text=_("supported type is pdf")
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'
 
 class ReferenceForm(forms.ModelForm):
-    reference_date = forms.DateField(
-        label=_("Reference Date"),
-        widget=forms.TextInput(
-            attrs={'type': 'date'}
-        )
-    )
-    media_file = forms.FileField(
-        help_text=_("supported type is pdf"), label=_("Media File")
-    )
 
     class Meta:
         model = Reference
@@ -104,22 +88,16 @@ class ReferenceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ReferenceForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_show_labels = False
+        self.helper = FormHelper()  
+        self.fields['reference_date'].widget=forms.TextInput(attrs={'type': 'date'})
+        self.fields['media_file'].help_text=_("supported type is pdf")
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'
 
 
 class PhdForm(forms.ModelForm):
-    #TYPE_CHOICES.insert(0, ("", ""))
-    type = forms.ChoiceField(choices=TYPE_CHOICES)
-    date_awarded = forms.DateField(
-        label=_("Date Awarded"),
-        widget=forms.TextInput(
-            attrs={'type': 'date'}
-        )
-    )
-    media_file = forms.FileField(
-        help_text=_("supported type is pdf"), label=_("Media File")
-    )
 
     class Meta:
         model = Phd
@@ -127,27 +105,16 @@ class PhdForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PhdForm, self).__init__(*args, **kwargs)
-        self.fields["type"].initial = None
-        self.helper = FormHelper()
-        self.helper.form_show_labels = False
+        self.fields['date_awarded'].widget=forms.TextInput(attrs={'type': 'date'})
+        self.fields['media_file'].help_text=_("supported type is pdf")
+        self.helper = FormHelper()  
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'
 
 
 class JobExperienceForm(forms.ModelForm):
-    start_date = forms.DateField(
-        label=_("Start Date"),
-        widget=forms.TextInput(
-            attrs={'type': 'date'}
-        )
-    )
-    end_date = forms.DateField(
-        label=_("End Date"),
-        widget=forms.TextInput(
-            attrs={'type': 'date'}
-        )
-    )
-    media_file = forms.FileField(
-        help_text=_("supported type is pdf"), label=_("Media File")
-    )
 
     class Meta:
         model = JobExperience
@@ -155,5 +122,11 @@ class JobExperienceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(JobExperienceForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_show_labels = False
+        self.fields['start_date'].widget=forms.TextInput(attrs={'type': 'date'})
+        self.fields['end_date'].widget=forms.TextInput(attrs={'type': 'date'})
+        self.fields['media_file'].help_text=_("supported type is pdf")
+        self.helper = FormHelper()  
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'

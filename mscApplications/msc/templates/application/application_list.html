@@ -13,7 +13,7 @@
             </div>
             <div class="card-body table-responsive">
                 <table id="datatable" class="table align-items-center table-flush">
-                    <thead class="bg-light">
+                    <thead class="bg-light msc-text-color">
                         <tr>
                             <th scope="col">{% translate "Applicant" %}</th>
                             <th scope="col">{% translate "Submission Date" %}</th>
@@ -36,7 +36,7 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <a class="btn msc-color text-white" href="{% url 'msc:call_application_admit' app.pk  %}">{% translate "Admit" %}</a>
+                                    <a class="btn msc-color text-white" href="{% url 'msc:call_application_admit' call.pk app.pk  %}">{% translate "Admit" %}</a>
                                 </td>
                             </tr>
                         {% endfor %}

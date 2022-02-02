@@ -43,10 +43,12 @@
                             <p><strong>{% translate "Department" %}:</strong>
                                 {{obj.department}}
                             </p>
-                            <p><strong>{% translate "Flows" %} :</strong></p>
-                            {% for flow in obj.mscflow_set.all %}
-                                <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
-                            {% endfor %}
+                            {% if obj.mscflow_set.all %}
+                                <p><strong>{% translate "Flows" %} :</strong></p>
+                                {% for flow in obj.mscflow_set.all %}
+                                    <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                         <a href="{% url 'msc:msc_programme_detail' obj.pk %}" class="stretched-link"></a>
                     </div>

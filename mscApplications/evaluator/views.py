@@ -61,7 +61,7 @@ class EvaluatorCreateView(SuccessMessageMixin,CreateView):
     template_name='evaluator_create.html'
     form_class=EvaluatorCreateForm
     success_message = _('Evaluator created !')
-    success_url = reverse_lazy('secretary:secretary_dashboard')
+    success_url = reverse_lazy('secretary:secretary_evaluators')
 
     def get_form_kwargs(self):
         kwargs = super(EvaluatorCreateView, self).get_form_kwargs()
@@ -73,7 +73,7 @@ class EvaluatorUpdateView(SuccessMessageMixin,UpdateView):
     model=Evaluator
     form_class=EvaluatorUpdateForm
     success_message = _('Evaluator updated !')
-    success_url = reverse_lazy('secretary:secretary_dashboard')
+    success_url = reverse_lazy('secretary:secretary_evaluators')
 
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
@@ -91,4 +91,4 @@ class EvaluatorDeleteView(DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, (_('Evaluator deleted.')))
-        return reverse('secretary:secretary_dashboard')
+        return reverse('secretary:secretary_evaluators')

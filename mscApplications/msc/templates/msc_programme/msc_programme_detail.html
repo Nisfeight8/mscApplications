@@ -36,16 +36,18 @@
                             <p><strong>{% translate "Institution" %}:</strong>
                                 <a href="{% url 'org:institution_detail' programme.department.institution.pk %}"> {{programme.department.institution}}</a>
                             </p>
-                            <p><strong>{% translate "Flows" %} :</strong></p>
-                            {% for flow in programme.mscflow_set.all %}
-                                <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
-                            {% endfor %}
+                            {% if programme.mscflow_set.all %}
+                                <p><strong>{% translate "Flows" %} :</strong></p>
+                                {% for flow in programme.mscflow_set.all %}
+                                    <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% if programme.call_set.all %}
+        {% if calls %}
             <div class="col-12 col-md-3">
                 <div class="card">
                     <div class="card-header msc-color text-white">
@@ -55,7 +57,7 @@
                     </div>
                     <div class="card-body">
                         <div class="list-group">
-                            {% for call in programme.call_set.all %}
+                            {% for call in calls %}
                                 <a href="{% url 'msc:call_detail' call.pk %}" class="list-group-item list-group-item-action" >
                                     {{call.title}}
                                 </a>

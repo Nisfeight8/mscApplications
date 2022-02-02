@@ -1,19 +1,12 @@
 from django import forms
 from user_account.models import User
 from .models import Evaluator
-from django.core.exceptions import ValidationError
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column
-from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import UserChangeForm
-
-from django import forms
-
-from django.conf import settings
-
+from utils.validators import telephone_validator
 
 class EvaluatorForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30, label=_('First Name'))
@@ -36,7 +29,7 @@ class EvaluatorForm(forms.ModelForm):
         )
 
 class EvaluatorCreateForm(UserCreationForm):
-    telephone = forms.CharField(max_length=10, label=_('Telephone'))
+    telephone = forms.CharField(max_length=10, label=_('Telephone'),validators=[telephone_validator])
 
     class Meta:
         model = User
@@ -45,7 +38,12 @@ class EvaluatorCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
         super(EvaluatorCreateForm, self).__init__(*args, **kwargs)
-
+        self.helper = FormHelper()  
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'
+        
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -66,6 +64,11 @@ class EvaluatorUpdateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
         super(EvaluatorUpdateForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()  
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-4'
+        self.helper.field_class = 'col-lg-8'
 
     def save(self, commit=True):
         evaluator = super().save(commit=False)

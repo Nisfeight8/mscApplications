@@ -35,7 +35,12 @@ a.nav-link:hover{
 .msc-color{
   background-color: #203d2b;
 }
-
+.msc-text-color{
+  color: #2b583d;
+}
+a {
+  color: #2b583d;
+}
 .header-color{
   background-color: #2b583d;
   color: white;

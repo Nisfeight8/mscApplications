@@ -8,5 +8,5 @@ app_name = "user_account"
 
 urlpatterns = [
     path("check", CheckUser.as_view(), name="check-user"),
-    path("change-password/", ChangePasswordView.as_view(), name="user_change_password"),
+    path("change-password", ChangePasswordView.as_view(), name="user_change_password"),
 ]

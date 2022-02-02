@@ -1,6 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.views.generic import CreateView,View,FormView
+
+from django.views.generic import View,FormView
 from django.shortcuts import redirect
 from .forms import *
 from applicant.models import *
@@ -25,7 +24,7 @@ class CheckUser(View):
             if user.is_evaluator:
                 return redirect('evaluator:evaluator_home')
             if user.is_secretary:
-                return redirect('secretary:secretary_dashboard')
+                return redirect('secretary:secretary_home')
         return redirect('/accounts/login')
 
 class ChangePasswordView(LoginRequiredMixin,FormView):
@@ -44,4 +43,6 @@ class ChangePasswordView(LoginRequiredMixin,FormView):
             return redirect('applicant:applicant_profile')
         if self.request.user.is_evaluator:
             return redirect('evaluator:evaluator_profile')
+        if self.request.user.is_secretary:
+            return redirect('secretary:secretary_profile')
 

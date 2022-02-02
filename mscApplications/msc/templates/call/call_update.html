@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load i18n %}
-{% block title %}{% translate "Update Evaluator" %}{% endblock title %}
+{% load crispy_forms_tags %}
+{% load static %}
 
+{% block title %}{% translate "Update Call" %} {% endblock title %}
 {% block content %}
+
   <div class="card">
     <form method="post">
       <div class="card-header msc-color text-white">
         <h5 style="display: inline">
-          {% translate "Update Evaluator" %}
+          {% translate "Update Call" %}
         </h5>
       </div>
       <div class="card-body">
-        {% csrf_token %}
-        {% crispy form %}
+        
+            {% csrf_token %}
+            {% crispy form %}
       </div>
       <div class="card-footer msc-color">
         <button type="submit" class="btn btn-outline-light">{% translate "Submit" %}</button>

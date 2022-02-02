@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 {% load static %}
-{% load bootstrap5 %}
 
-{% block title %}{% translate "New MSC Programme " %} {% endblock title %}
+{% block title %}{% translate "Update MSC Programme " %} {% endblock title %}
 {% block content %}
 
   <form method="post">
     <div class="card">
       <div class="card-header msc-color text-white">
         <h5 style="display: inline">
-          {% translate "New MSC Programme " %}
+          {% translate "Edit" %} {{object.title}}
         </h5>
       </div>
       <div class="card-body">
@@ -50,7 +50,7 @@
           >
             <div class="container">
               {% csrf_token %}
-              {% bootstrap_form form layout='horizontal' %}
+              {% crispy form %}
             </div>
           </div>
           <div
@@ -64,7 +64,7 @@
               <div class="row" id="{{formset.prefix}}">
                 {% for form in formset.forms %}
                   <div class="col-12">
-                    {% bootstrap_form form layout='horizontal' %}
+                    {% crispy form %}
                   </div>
 
                 {% endfor %}
@@ -72,7 +72,7 @@
               <input class="btn btn-link" type="button" value="Add More" onclick = "add_more('mscflow_set');" >
               <div id="empty_form" style="display:none">
                 <div class="col-12">
-                  {% bootstrap_form formset.empty_form layout='horizontal' %}
+                  {% crispy formset.empty_form %}
                 </div>
               </div>
             {% endfor%}

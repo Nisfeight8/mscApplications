@@ -80,14 +80,14 @@ class ApplicantProfileUpdateView(LoginRequiredMixin,ApplicantRequiredMixin,Updat
         return reverse('applicant:applicant_profile')
 
 
-class ApplicantDetailView(LoginRequiredMixin,EvaluatorRequiredMixin,DetailView):
+class ApplicantDetailView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,DetailView):
     model = Applicant
     template_name = 'applicant_detail.html'
     context_object_name = 'applicant'
 
 class ApplicantApplicationListView(LoginRequiredMixin,ApplicantRequiredMixin,ListView):
     model = Application
-    template_name = 'applicant_applications.html'
+    template_name = 'applicant_application_list.html'
     context_object_name = 'applications'
 
     def get_queryset(self):

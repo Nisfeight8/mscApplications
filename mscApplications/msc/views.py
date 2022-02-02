@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.http import FileResponse
 from django.utils.translation import ugettext_lazy as _
@@ -21,26 +21,10 @@ from utils import pdf_generator
 import uuid
 import datetime
 
-
-class CallListView(ListView):
-    model = Call
-    template_name = 'call_list.html'
-    context_object_name = 'calls'
-
-    def get_queryset(self) :
-        queryset = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now()))
-        return queryset
-
-
-class CallDetailView(DetailView):
-    model = Call
-    template_name = 'call_detail.html'
-    context_object_name = 'call'
-
-
-class CallApplicationListView(LoginRequiredMixin,EvaluatorRequiredMixin,ListView):
+# Applications
+class ApplicationListView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,UserPassesTestMixin,ListView):
     model=Application
-    template_name= 'call_applications.html'
+    template_name= 'application/application_list.html'
     context_object_name='applications'
 
     def get_queryset(self):
@@ -48,19 +32,31 @@ class CallApplicationListView(LoginRequiredMixin,EvaluatorRequiredMixin,ListView
         applications= Application.objects.filter(call=call).order_by('-submission_date')
         return applications
 
+    def test_func(self):
+        call = Call.objects.get(id=self.kwargs['pk'])
+        user = self.request.user
+        if user.is_evaluator:
+            evaluator=user.evaluator
+            if evaluator in call.evaluators.all():
+                return True
+        if user.is_secretary:
+            if call.msc_programme.department==user.secretary.department:
+                return True
+        return False
+
     def get_context_data(self, **kwargs):
-        context = super(CallApplicationListView, self).get_context_data(**kwargs)
+        context = super(ApplicationListView, self).get_context_data(**kwargs)
         context['call']=Call.objects.get(id=self.kwargs['pk'])
         return context
 
 
-class CallApplicationCreateView(LoginRequiredMixin,ApplicantRequiredMixin,ApplicantCompleteProfileMixin,CreateView):
+class ApplicationCreateView(LoginRequiredMixin,ApplicantRequiredMixin,ApplicantCompleteProfileMixin,CreateView):
     model=Application
-    template_name='application_create.html'
+    template_name='application/application_create.html'
     form_class=ApplicationForm
 
     def get_context_data(self, **kwargs):
-        context = super(CallApplicationCreateView, self).get_context_data(**kwargs)
+        context = super(ApplicationCreateView, self).get_context_data(**kwargs)
         context['call'] =Call.objects.get(id=self.kwargs['pk'])
         return context
 
@@ -91,11 +87,23 @@ class CallApplicationCreateView(LoginRequiredMixin,ApplicantRequiredMixin,Applic
         return FileResponse(application.media_file)
 
 
-class CallApplicationAdmitView(LoginRequiredMixin,EvaluatorRequiredMixin,SuccessMessageMixin,UpdateView):
+class ApplicationAdmitView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,UserPassesTestMixin,SuccessMessageMixin,UpdateView):
     model=Application
     form_class=ApplicationAdmitForm
-    template_name = 'application_admit.html'
+    template_name = 'application/application_admit.html'
     success_message = _('Application admitted !')
+
+    def test_func(self):
+        call = Call.objects.get(id=self.kwargs['call_pk'])
+        user = self.request.user
+        if user.is_evaluator:
+            evaluator=user.evaluator
+            if evaluator in call.evaluators.all():
+                return True
+        if user.is_secretary:
+            if call.msc_programme.department==user.secretary.department:
+                return True
+        return False
 
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
@@ -107,14 +115,18 @@ class CallApplicationAdmitView(LoginRequiredMixin,EvaluatorRequiredMixin,Success
     def get_success_url(self):
         return reverse('msc:call_application_list',kwargs={'pk':self.get_object().call.id} )
 
+
+# MSC Programmes
 class MscProgrammeListView(ListView):
     model=MscProgramme
-    template_name='msc_programme_list.html'
+    template_name='msc_programme/msc_programme_list.html'
     context_object_name='programmes'
+
     def get_queryset(self):
         qs = self.model.objects.all()
         programme_filtered_list = MscProgrammeFilter(self.request.GET, queryset=qs)
         return programme_filtered_list.qs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         queryset = self.get_queryset()
@@ -124,66 +136,127 @@ class MscProgrammeListView(ListView):
 
 class MscProgrammeDetailView(DetailView):
     model=MscProgramme
-    template_name='msc_programme_detail.html'
+    template_name='msc_programme/msc_programme_detail.html'
     context_object_name='programme'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        calls=Call.objects.filter(msc_programme__id=self.kwargs['pk'])
+        calls = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now())).filter(msc_programme__id=self.kwargs['pk'])
         context['calls']=calls
         return context
 
 class MSCFlowInline(InlineFormSetFactory):
     model = MscFlow
-    fields=['title_en','title_el']
+    form_class=MscFlowForm
     factory_kwargs = {'extra': 1}
 
 
-class MscProgrammeCreateView(SuccessMessageMixin,CreateWithInlinesView):
+class MscProgrammeCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateWithInlinesView):
     model=MscProgramme
-    fields=['title_en','title_el','country_en','country_el','city_en','city_el','address_en','address_el','pobox','telephone']
+    form_class=MscProgrammeForm
     inlines = [ MSCFlowInline,]
-    template_name='msc_programme_create.html'
+    template_name='msc_programme/msc_programme_create.html'
     success_message = _('MSC Programme created !')
-    success_url='/secretary/dashboard'
+    success_url=reverse_lazy('secretary:secretary_programmes')
 
     def form_valid(self, form):
         form.instance.department=self.request.user.secretary.department
         return super().form_valid(form)
 
 
-class MscProgrammeUpdateView(SuccessMessageMixin,UpdateWithInlinesView):
+class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UpdateWithInlinesView):
     model=MscProgramme
-    fields=['title_en','title_el','country_en','country_el','city_en','city_el','address_en','address_el','pobox','telephone']
+    form_class=MscProgrammeForm
     inlines = [ MSCFlowInline,]
-    template_name='msc_programme_create.html'
+    template_name='msc_programme/msc_programme_update.html'
     success_message = _('MSC Programme updated !')
-    success_url='/secretary/dashboard'
+    success_url=reverse_lazy('secretary:secretary_programmes')
+
+    def test_func(self):
+        user = self.request.user
+        if user.secretary:
+            if self.get_object().department==user.secretary.department:
+                return True
+        return False
 
     def form_valid(self, form):
         form.instance.department=self.request.user.secretary.department
         return super().form_valid(form)
 
 
-class MscProgrammeDeleteView(DeleteView):
+class MscProgrammeDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPassesTestMixin,DeleteView):
     model=MscProgramme
+
+    def test_func(self):
+        user = self.request.user
+        if user.secretary:
+            if self.get_object().department==user.secretary.department:
+                return True
+        return False
 
     def get_success_url(self):
         messages.success(self.request, (_('MSC Programme deleted.')))
-        return reverse('secretary:secretary_dashboard')
+        return reverse('secretary:secretary_programmes')
 
-class MscProgrammeCallListView(ListView):
+#Calls
+class CallListView(ListView):
+    model = Call
+    template_name = 'call/call_list.html'
+    context_object_name = 'calls'
+
+    def get_queryset(self) :
+        queryset = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now()))
+        return queryset
+
+
+class CallDetailView(DetailView):
+    model = Call
+    template_name = 'call/call_detail.html'
+    context_object_name = 'call'
+
+class CallCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
+    template_name='call/call_create.html'
+    success_message = _('Call created !')
+    success_url=reverse_lazy('secretary:secretary_calls')
+    form_class=CallForm
+
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        form.fields['evaluators'].queryset = Evaluator.objects.filter(department=self.request.user.secretary.department)
+        form.fields['msc_programme'].queryset = MscProgramme.objects.filter(department=self.request.user.secretary.department)
+        return form
+
+class CallUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Call
-    template_name='msc_programme_call_list.html'
-    context_object_name='calls'
+    form_class=CallForm
+    template_name='call/call_update.html'
+    success_message = _('Call updated !')
+    success_url=reverse_lazy('secretary:secretary_calls')
 
-    def get_queryset(self):
-        programme=MscProgramme.objects.get(id=self.kwargs.get('pk'))
-        return Call.objects.filter(msc_programme=programme)
+    def test_func(self):
+        user = self.request.user
+        if user.secretary:
+            if self.get_object().msc_programme.department==user.secretary.department:
+                return True
+        return False
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        calls=Call.objects.filter(msc_programme__id=self.kwargs['pk'])
-        context['programme']=MscProgramme.objects.get(id=self.kwargs.get('pk'))
-        context['calls']= self.get_queryset()
-        return context
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        form.fields['evaluators'].queryset = Evaluator.objects.filter(department=self.request.user.secretary.department)
+        form.fields['msc_programme'].queryset = MscProgramme.objects.filter(department=self.request.user.secretary.department)
+        return form
+
+
+class CallDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Call
+
+    def test_func(self):
+        user = self.request.user
+        if user.secretary:
+            if self.get_object().msc_programme.department==user.secretary.department:
+                return True
+        return False
+
+    def get_success_url(self):
+        messages.success(self.request, (_('Call deleted.')))
+        return reverse('secretary:secretary_calls')
