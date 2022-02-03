@@ -36,7 +36,7 @@
               role="tab"
               aria-controls="flows"
               aria-selected="false"
-              >{% translate "Msc Flows" %}</a
+              >{% translate "Flows" %}</a
             >
           </li>
         </ul>
@@ -63,7 +63,7 @@
               {{ formset.management_form }}
               <div class="row" id="{{formset.prefix}}">
                 {% for form in formset.forms %}
-                  <div class="col-12">
+                  <div class="col-12 container">
                     {% crispy form %}
                   </div>
 

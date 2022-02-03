@@ -27,33 +27,75 @@
     </figure>
 
     <div class="row">
-        {% for obj in filter.qs %}
-            <div class="col-12 col-md-6">
-                <div class="card hover">
-                    <div class="card-header header-color text-white">
-                        <h5 style="display: inline">
-                            {{obj.title}}
-                        </h5>
-                    </div>
-                    <div class="card-body msc-color text-white">
-                        <div class="row text-center">
-                            <p><strong>{% translate "Institution" %}:</strong>
-                                {{obj.department.institution}}
-                            </p>
-                            <p><strong>{% translate "Department" %}:</strong>
-                                {{obj.department}}
-                            </p>
-                            {% if obj.mscflow_set.all %}
-                                <p><strong>{% translate "Flows" %} :</strong></p>
-                                {% for flow in obj.mscflow_set.all %}
-                                    <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
-                                {% endfor %}
-                            {% endif %}
+        {% if programmes %}
+            {% for obj in programmes %}
+                <div class="col-12 col-md-6">
+                    <div class="card hover">
+                        <div class="card-header header-color text-white">
+                            <h5 style="display: inline">
+                                {{obj.title}}
+                            </h5>
                         </div>
-                        <a href="{% url 'msc:msc_programme_detail' obj.pk %}" class="stretched-link"></a>
+                        <div class="card-body msc-color text-white">
+                            <div class="row text-center">
+                                <p><strong>{% translate "Institution" %}:</strong>
+                                    {{obj.department.institution}}
+                                </p>
+                                <p><strong>{% translate "Department" %}:</strong>
+                                    {{obj.department}}
+                                </p>
+                                {% if obj.mscflow_set.all %}
+                                    <p><strong>{% translate "Flows" %} :</strong></p>
+                                    {% for flow in obj.mscflow_set.all %}
+                                        <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'msc:msc_programme_detail' obj.pk %}" class="stretched-link"></a>
+                        </div>
                     </div>
                 </div>
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col col-12">
+                    <div class="alert alert-danger">{% translate "No MSC Programmes found " %}</div>
+                </div>
             </div>
-        {% endfor %}
+        {% endif %}
+        <div>
+        <br>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="active page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link disabled" href="#">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+        </div>
     </div>
 {% endblock %}

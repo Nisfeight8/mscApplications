@@ -25,6 +25,15 @@
                     <p><strong>{% translate "Pobox" %}:</strong> {{department.pobox }}</p>
                     <p><strong>{% translate "Telephone" %}:</strong> {{department.telephone }}</p>
                     <p><strong>{% translate "Institution" %}:</strong> <a href="{% url 'org:institution_detail' department.institution.pk %}" >{{department.institution }}</a></p>
+                    {% if department.secretary_set.all %}
+                        <h5>{% translate "Secretary" %}</h5>
+                        {% for sec in department.secretary_set.all %}
+                            <hr>
+                            <p><strong>{% translate "Email" %}:</strong> {{sec.user.email }}</p>
+                            <p><strong>{% translate "Full name" %}:</strong> {{sec.user.first_name }} {{sec.user.last_name }}</p>
+                            <p><strong>{% translate "Telephone" %}:</strong> {{sec.telephone }} </p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

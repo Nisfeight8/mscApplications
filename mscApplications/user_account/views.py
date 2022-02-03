@@ -25,6 +25,8 @@ class CheckUser(View):
                 return redirect('evaluator:evaluator_home')
             if user.is_secretary:
                 return redirect('secretary:secretary_home')
+            else:
+                return redirect('/')
         return redirect('/accounts/login')
 
 class ChangePasswordView(LoginRequiredMixin,FormView):

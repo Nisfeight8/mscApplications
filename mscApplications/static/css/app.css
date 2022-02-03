@@ -9,15 +9,32 @@
     color: white;
 }
 a.nav-link:link{
-    color:black;
+    color:#203d2b;
 }
 a.nav-link:visited{
-    color:blue;
+    color:#2b583d;
 }
 a.nav-link:hover{
     color:gray;
 }
-
+.page-link{
+  color:#2b583d;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #2b583d;
+    background-color: #eee;
+    border-color: #ddd;
+}
+.pagination > .active > a
+{
+    color: white;
+    background-color: #2b583d !Important;
+    border: solid 1px #2b583d !Important;
+}
 .flag-icon-el{
   padding-right: 5px;
   background-image: url(/staticfiles/img/el.png);

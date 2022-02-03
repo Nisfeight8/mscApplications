@@ -14,9 +14,10 @@
         </h5>
       </div>
       <div class="card-body">
-        
+          <div class="container">
             {% csrf_token %}
             {% crispy form %}
+          </div>
       </div>
       <div class="card-footer msc-color">
         <button type="submit" class="btn btn-outline-light">{% translate "Submit" %}</button>

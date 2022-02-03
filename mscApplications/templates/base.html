@@ -27,8 +27,22 @@
     {% block navbar %}
         {% include 'navbar.html' %}
     {% endblock %}
-    {% bootstrap_messages %}
+    </div>
     <div class="container flex-grow-1">
+      {% if messages %}
+        {% for message in messages %}
+            <div class="toast show " role="alert" aria-live="assertive" aria-atomic="true"  style="position: absolute;top: 30; right: 20px; z-index:1;">
+              <div class="toast-header">
+                <strong class="me-auto">MSC Applications</strong>
+                <small class="text-muted">Just Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+              </div>
+              <div class="toast-body">
+                {{ message }}
+              </div>
+            </div>
+        {% endfor %}
+      {% endif %}
       <br>
       <br>
       {% block content %}{% endblock %}

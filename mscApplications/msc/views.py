@@ -121,9 +121,11 @@ class MscProgrammeListView(ListView):
     model=MscProgramme
     template_name='msc_programme/msc_programme_list.html'
     context_object_name='programmes'
+    paginate_by = 6
 
     def get_queryset(self):
-        qs = self.model.objects.all()
+        qs = self.model.objects.all().order_by('id')
+        paginate_by = 2
         programme_filtered_list = MscProgrammeFilter(self.request.GET, queryset=qs)
         return programme_filtered_list.qs
 
@@ -133,6 +135,7 @@ class MscProgrammeListView(ListView):
         filter = MscProgrammeFilter(self.request.GET, queryset)
         context['filter'] = filter
         return context
+
 
 class MscProgrammeDetailView(DetailView):
     model=MscProgramme
@@ -144,6 +147,7 @@ class MscProgrammeDetailView(DetailView):
         calls = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now())).filter(msc_programme__id=self.kwargs['pk'])
         context['calls']=calls
         return context
+
 
 class MSCFlowInline(InlineFormSetFactory):
     model = MscFlow
@@ -164,7 +168,7 @@ class MscProgrammeCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateWi
         return super().form_valid(form)
 
 
-class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UpdateWithInlinesView):
+class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateWithInlinesView):
     model=MscProgramme
     form_class=MscProgrammeForm
     inlines = [ MSCFlowInline,]
@@ -176,6 +180,7 @@ class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UpdateWi
         user = self.request.user
         if user.secretary:
             if self.get_object().department==user.secretary.department:
+                print("here")
                 return True
         return False
 
@@ -214,6 +219,7 @@ class CallDetailView(DetailView):
     template_name = 'call/call_detail.html'
     context_object_name = 'call'
 
+
 class CallCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
     template_name='call/call_create.html'
     success_message = _('Call created !')
@@ -225,6 +231,7 @@ class CallCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
         form.fields['evaluators'].queryset = Evaluator.objects.filter(department=self.request.user.secretary.department)
         form.fields['msc_programme'].queryset = MscProgramme.objects.filter(department=self.request.user.secretary.department)
         return form
+
 
 class CallUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Call
