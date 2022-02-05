@@ -10,6 +10,9 @@ from django.contrib import messages
 
 from extra_views import  CreateWithInlinesView,UpdateWithInlinesView, InlineFormSetFactory
 
+from secretary.models import Secretary
+from evaluator.models import Evaluator
+
 from .models import *
 
 from .filters import MscProgrammeFilter
@@ -35,11 +38,10 @@ class ApplicationListView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,U
     def test_func(self):
         call = Call.objects.get(id=self.kwargs['pk'])
         user = self.request.user
-        if user.is_evaluator:
-            evaluator=user.evaluator
-            if evaluator in call.evaluators.all():
+        if user.has_evaluator:
+            if user.evaluator in call.evaluators.all():
                 return True
-        if user.is_secretary:
+        if user.has_secretary:
             if call.msc_programme.department==user.secretary.department:
                 return True
         return False
@@ -96,11 +98,10 @@ class ApplicationAdmitView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,
     def test_func(self):
         call = Call.objects.get(id=self.kwargs['call_pk'])
         user = self.request.user
-        if user.is_evaluator:
-            evaluator=user.evaluator
-            if evaluator in call.evaluators.all():
+        if user.has_evaluator:
+            if user.evaluator in call.evaluators.all():
                 return True
-        if user.is_secretary:
+        if user.has_secretary:
             if call.msc_programme.department==user.secretary.department:
                 return True
         return False
@@ -178,9 +179,8 @@ class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPass
 
     def test_func(self):
         user = self.request.user
-        if user.secretary:
+        if user.has_secretary:
             if self.get_object().department==user.secretary.department:
-                print("here")
                 return True
         return False
 
@@ -194,10 +194,11 @@ class MscProgrammeDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPasse
 
     def test_func(self):
         user = self.request.user
-        if user.secretary:
+        if user.has_secretary:
             if self.get_object().department==user.secretary.department:
                 return True
         return False
+
 
     def get_success_url(self):
         messages.success(self.request, (_('MSC Programme deleted.')))
@@ -220,7 +221,7 @@ class CallDetailView(DetailView):
     context_object_name = 'call'
 
 
-class CallCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
+class CallCreateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
     template_name='call/call_create.html'
     success_message = _('Call created !')
     success_url=reverse_lazy('secretary:secretary_calls')
@@ -233,7 +234,7 @@ class CallCreateView(SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
         return form
 
 
-class CallUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateView):
+class CallUpdateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Call
     form_class=CallForm
     template_name='call/call_update.html'
@@ -242,10 +243,11 @@ class CallUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMi
 
     def test_func(self):
         user = self.request.user
-        if user.secretary:
+        if user.has_secretary:
             if self.get_object().msc_programme.department==user.secretary.department:
                 return True
         return False
+
 
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
@@ -259,10 +261,11 @@ class CallDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPassesTestMix
 
     def test_func(self):
         user = self.request.user
-        if user.secretary:
+        if user.has_secretary:
             if self.get_object().msc_programme.department==user.secretary.department:
                 return True
         return False
+
 
     def get_success_url(self):
         messages.success(self.request, (_('Call deleted.')))

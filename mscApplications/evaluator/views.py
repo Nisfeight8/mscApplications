@@ -2,13 +2,12 @@ from msc.models import Call
 from .forms import *
 from .models import Evaluator
 from django.views.generic import UpdateView,DetailView,TemplateView,ListView,CreateView,DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import ugettext_lazy as _
 from utils.mixins import *
-from django.contrib.auth.mixins import LoginRequiredMixin
-from user_account.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class EvaluatorHomeView(LoginRequiredMixin,EvaluatorRequiredMixin,TemplateView):
@@ -20,7 +19,7 @@ class EvaluatorProfileDetailView(LoginRequiredMixin,EvaluatorRequiredMixin,Detai
     context_object_name = 'evaluator'
     template_name = 'evaluator_profile.html'
 
-    def get_object(self,queryset=None):
+    def get_object(self):
         return self.request.user.evaluator
 
 
@@ -57,7 +56,7 @@ class EvaluatorCallListView(LoginRequiredMixin,EvaluatorRequiredMixin,ListView):
         queryset = Call.objects.filter(evaluators__pk=self.request.user.id)
         return queryset
 
-class EvaluatorCreateView(SuccessMessageMixin,CreateView):
+class EvaluatorCreateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequiredMixin,CreateView):
     template_name='evaluator_create.html'
     form_class=EvaluatorCreateForm
     success_message = _('Evaluator created !')
@@ -68,12 +67,19 @@ class EvaluatorCreateView(SuccessMessageMixin,CreateView):
         kwargs.update({'user': self.request.user})
         return kwargs
 
-class EvaluatorUpdateView(SuccessMessageMixin,UpdateView):
+class EvaluatorUpdateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequiredMixin,UserPassesTestMixin,UpdateView):
     template_name='evaluator_update.html'
     model=Evaluator
     form_class=EvaluatorUpdateForm
     success_message = _('Evaluator updated !')
     success_url = reverse_lazy('secretary:secretary_evaluators')
+
+    def test_func(self):
+        user = self.request.user
+        if user.has_secretary:
+            if self.get_object().department==user.secretary.department:
+                return True
+        return False
 
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
@@ -86,8 +92,15 @@ class EvaluatorUpdateView(SuccessMessageMixin,UpdateView):
         kwargs.update({'user': self.request.user})
         return kwargs
 
-class EvaluatorDeleteView(DeleteView):
+class EvaluatorDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPassesTestMixin,DeleteView):
     model=Evaluator
+
+    def test_func(self):
+        user = self.request.user
+        if user.has_secretary:
+            if self.get_object().department==user.secretary.department:
+                return True
+        return False
 
     def get_success_url(self):
         messages.success(self.request, (_('Evaluator deleted.')))

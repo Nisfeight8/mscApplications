@@ -49,3 +49,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['first_name','last_name']
     objects = UserManager()
 
+    def has_secretary(self):
+       return hasattr(self, 'secretary')
+
+    def has_evaluator(self):
+        return hasattr(self, 'evaluator')
+
+    def has_applicant(self):
+        return hasattr(self, 'applicant')

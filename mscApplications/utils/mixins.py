@@ -2,7 +2,6 @@ from applicant.models import Applicant
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
 
@@ -25,7 +24,7 @@ class ApplicantRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_applicant:
+        if user.is_applicant and user.has_applicant:
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -35,7 +34,7 @@ class EvaluatorRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_evaluator:
+        if user.is_evaluator and user.has_evaluator:
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -44,7 +43,7 @@ class SecretaryRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_secretary:
+        if user.is_secretary and user.has_secretary:
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -53,7 +52,7 @@ class EvaluatorOrSecretaryRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_evaluator or user.is_secretary:
+        if user.is_evaluator and user.has_evaluator or user.is_secretary and user.has_secretary:
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
