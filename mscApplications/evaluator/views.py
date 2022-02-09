@@ -76,7 +76,7 @@ class EvaluatorUpdateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequir
 
     def test_func(self):
         user = self.request.user
-        if user.has_secretary:
+        if user.has_secretary():
             if self.get_object().department==user.secretary.department:
                 return True
         return False
@@ -97,7 +97,7 @@ class EvaluatorDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPassesTe
 
     def test_func(self):
         user = self.request.user
-        if user.has_secretary:
+        if user.has_secretary():
             if self.get_object().department==user.secretary.department:
                 return True
         return False

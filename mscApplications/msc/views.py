@@ -38,10 +38,10 @@ class ApplicationListView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,U
     def test_func(self):
         call = Call.objects.get(id=self.kwargs['pk'])
         user = self.request.user
-        if user.has_evaluator:
+        if user.has_evaluator():
             if user.evaluator in call.evaluators.all():
                 return True
-        if user.has_secretary:
+        if user.has_secretary():
             if call.msc_programme.department==user.secretary.department:
                 return True
         return False
@@ -98,10 +98,10 @@ class ApplicationAdmitView(LoginRequiredMixin,EvaluatorOrSecretaryRequiredMixin,
     def test_func(self):
         call = Call.objects.get(id=self.kwargs['call_pk'])
         user = self.request.user
-        if user.has_evaluator:
+        if user.has_evaluator():
             if user.evaluator in call.evaluators.all():
                 return True
-        if user.has_secretary:
+        if user.has_secretary():
             if call.msc_programme.department==user.secretary.department:
                 return True
         return False
@@ -179,7 +179,7 @@ class MscProgrammeUpdateView(SuccessMessageMixin,SecretaryRequiredMixin,UserPass
 
     def test_func(self):
         user = self.request.user
-        if user.has_secretary:
+        if user.has_secretary():
             if self.get_object().department==user.secretary.department:
                 return True
         return False
@@ -194,7 +194,7 @@ class MscProgrammeDeleteView(LoginRequiredMixin,SecretaryRequiredMixin,UserPasse
 
     def test_func(self):
         user = self.request.user
-        if user.has_secretary:
+        if user.has_secretary():
             if self.get_object().department==user.secretary.department:
                 return True
         return False
@@ -243,7 +243,7 @@ class CallUpdateView(LoginRequiredMixin,SuccessMessageMixin,SecretaryRequiredMix
 
     def test_func(self):
         user = self.request.user
-        if user.has_secretary:
+        if user.has_secretary():
             if self.get_object().msc_programme.department==user.secretary.department:
                 return True
         return False

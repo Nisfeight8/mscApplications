@@ -20,6 +20,21 @@ a.nav-link:hover{
 .page-link{
   color:#2b583d;
 }
+.btn-outline-success{
+  color: #203d2b;
+  background-color: transparent;
+  background-image: none;
+  border-color: #203d2b;
+}
+.btn-outline-success:focus,
+.btn-outline-success.focus {
+    box-shadow: 0 0 0 .2rem #203d2b;
+}
+.btn-outline-success:hover {
+  color: white;
+  background-color: #203d2b;
+  border-color: #203d2b;
+}
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,

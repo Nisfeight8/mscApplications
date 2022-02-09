@@ -24,7 +24,7 @@ class ApplicantRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_applicant and user.has_applicant:
+        if user.is_applicant and user.has_applicant():
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -34,7 +34,7 @@ class EvaluatorRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_evaluator and user.has_evaluator:
+        if user.is_evaluator and user.has_evaluator():
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -43,7 +43,7 @@ class SecretaryRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_secretary and user.has_secretary:
+        if user.is_secretary and user.has_secretary():
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
@@ -52,7 +52,7 @@ class EvaluatorOrSecretaryRequiredMixin:
 
     def dispatch(self, request, *args, **kwargs):
         user=request.user
-        if user.is_evaluator and user.has_evaluator or user.is_secretary and user.has_secretary:
+        if (user.is_evaluator and user.has_evaluator()) or (user.is_secretary and user.has_secretary()):
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied

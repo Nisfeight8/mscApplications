@@ -12,7 +12,7 @@
                     </h6>
                     {% if user.is_authenticated %}
                         {% if user.is_applicant %}
-                            <span class="float-end"><a href="{% url 'msc:call_new_application' call.pk %}" class="btn btn-outline-light btn-md">{% translate "New Application" %}</a></span>
+                            <span class="float-end"><a href="{% url 'msc:call_new_application' call.pk %}" class="btn btn-outline-light btn-md rounded-pill">{% translate "New Application" %}</a></span>
                         {% endif %}
                     {% endif %}
                 </div>
@@ -47,7 +47,7 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.title}}
-                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  call.msc_programme.pk  %}" class="btn btn-outline-light">{% translate "View Programme" %}</a></span>
+                                <span class="float-end"><a href="{% url 'msc:msc_programme_detail'  call.msc_programme.pk  %}" class="btn btn-outline-light rounded-pill">{% translate "View Programme" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
@@ -87,7 +87,7 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.department.title}}
-                                <span class="float-end"><a href="{% url 'org:department_detail'  call.msc_programme.department.pk  %}" class="btn btn-outline-light">{% translate "View Department" %}</a></span>
+                                <span class="float-end"><a href="{% url 'org:department_detail'  call.msc_programme.department.pk  %}" class="btn btn-outline-light rounded-pill">{% translate "View Department" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">
@@ -110,7 +110,7 @@
                         <div class="card-header msc-color text-white">
                             <h5 style="display: inline">
                                 {{call.msc_programme.department.institution.title}}
-                                <span class="float-end"><a href="{% url 'org:institution_detail'  call.msc_programme.department.institution.pk  %}" class="btn btn-outline-light">{% translate "View Institution" %}</a></span>
+                                <span class="float-end"><a href="{% url 'org:institution_detail'  call.msc_programme.department.institution.pk  %}" class="btn btn-outline-light rounded-pill">{% translate "View Institution" %}</a></span>
                             </h5>
                         </div>
                         <div class="card-body">

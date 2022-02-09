@@ -2,6 +2,14 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% block extra_css %}
+  <style>
+  .dropdown{
+    width:100% ! important;
+  }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"referrerpolicy="no-referrer" />
+{% endblock %}
 
 {% block title %}{% translate "Update Call" %} {% endblock title %}
 {% block content %}
@@ -24,4 +32,13 @@
       </div>
     </form>
   </div>
+{% endblock %}
+{% block javascript %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(document).ready(function() {
+      $('#id_evaluators').selectpicker();
+      $('.dropdown').removeClass("form-select");
+    });
+  </script>
 {% endblock %}

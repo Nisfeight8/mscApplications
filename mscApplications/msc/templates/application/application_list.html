@@ -36,7 +36,7 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <a class="btn msc-color text-white" href="{% url 'msc:call_application_admit' call.pk app.pk  %}">{% translate "Admit" %}</a>
+                                    <a class="btn btn-outline-success rounded-pill" href="{% url 'msc:call_application_admit' call.pk app.pk  %}">{% translate "Admit" %}</a>
                                 </td>
                             </tr>
                         {% endfor %}
