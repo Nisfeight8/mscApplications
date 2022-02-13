@@ -10,7 +10,7 @@ class MscFlowInline(TranslationStackedInline):
 
 class MscProgrammeAdmin(TranslationAdmin):
    inlines=[MscFlowInline]
-   list_display = ['title','telephone','address','city','country','department']
+   list_display = ['title','address','department']
 
    
 admin.site.register(MscProgramme,MscProgrammeAdmin)

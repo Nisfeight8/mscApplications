@@ -64,18 +64,14 @@ class MscProgrammeForm(forms.ModelForm):
 
     class Meta:
         model = MscProgramme
-        fields=('title_en','title_el','country_en','country_el','city_en','city_el','address_en','address_el','pobox','telephone')
+        fields=('title_en','title_el','address','description_en','description_el')
 
     def __init__(self, *args, **kwargs):
         super(MscProgrammeForm, self).__init__(*args, **kwargs)
         self.fields['title_en'].required=True
         self.fields['title_el'].required=True
-        self.fields['country_en'].required=True
-        self.fields['country_el'].required=True
-        self.fields['city_en'].required=True
-        self.fields['city_el'].required=True
-        self.fields['address_en'].required=True
-        self.fields['address_el'].required=True
+        self.fields['description_en'].required=True
+        self.fields['description_el'].required=True
         self.helper = FormHelper()  
         self.helper.form_tag = False
         self.helper.form_class = 'form-horizontal'

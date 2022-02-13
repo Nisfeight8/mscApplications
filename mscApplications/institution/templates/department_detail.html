@@ -53,23 +53,12 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="cols-12 col-sm-6">
-                                    <p><strong>{% translate "Country" %}:</strong>
-                                        {{msc.country}}
-                                    </p>
-                                    <p><strong>{% translate "City" %}:</strong>
-                                        {{msc.city}}
-                                    </p>
-                                </div>
-                                <div class="cols-12 col-sm-6">
-                                    <p><strong>{% translate "Address" %}:</strong>
-                                        {{msc.address}}
-                                    </p>
-                                    <p><strong>{% translate "Pobox" %}:</strong> {{msc.pobox }}</p>
-                                    <p><strong>{% translate "Telephone" %}:</strong> {{msc.telephone }}</p>
-                                </div>
-                            </div>
+                            <p>
+                                {{msc.description |truncatewords:50 }}
+                            </p>
+                            <p><strong>{% translate "Address" %}:</strong>
+                                {{msc.address}}
+                            </p>
                         </div>
                     </div>
                 {% endfor %}

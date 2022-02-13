@@ -51,17 +51,13 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <p><strong>{% translate "Country" %}:</strong>
-                                {{call.msc_programme.country}}
+                            <p>
+                                {{call.msc_programme.description|truncatewords:50}}
                             </p>
-                            <p><strong>{% translate "City" %}:</strong>
-                                {{call.msc_programme.city}}
-                            </p>
+                            <hr>
                             <p><strong>{% translate "Address" %}:</strong>
                                 {{call.msc_programme.address}}
                             </p>
-                            <p><strong>{% translate "Pobox" %}:</strong> {{call.msc_programme.pobox }}</p>
-                            <p><strong>{% translate "Telephone" %}:</strong> {{call.msc_programme.telephone }}</p>
                         </div>
                     </div>
                 </div>

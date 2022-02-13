@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-12 col-md-9">
+        <div class="col-12 {% if calls %}col-md-9 {% else %} col-md-12{% endif %} ">
 
             <div class="card">
                 <div class="card-header msc-color text-white">
@@ -16,31 +16,30 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-6">
-                            <p><strong>{% translate "Country" %}:</strong>
-                                {{programme.country}}
+                        <div class="col-12 col-md-8">
+                            <p>
+                                {{programme.description}}
                             </p>
-                            <p><strong>{% translate "City" %}:</strong>
-                                {{programme.city}}
-                            </p>
+                            <hr>
                             <p><strong>{% translate "Address" %}:</strong>
                                 {{programme.address}}
                             </p>
-                            <p><strong>{% translate "Pobox" %}:</strong> {{programme.pobox }}</p>
-                            <p><strong>{% translate "Telephone" %}:</strong> {{programme.telephone }}</p>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <p><strong>{% translate "Department" %}:</strong>
                                 <a href="{% url 'org:department_detail' programme.department.pk %}"> {{programme.department}}</a>
                             </p>
+                            <hr>
                             <p><strong>{% translate "Institution" %}:</strong>
                                 <a href="{% url 'org:institution_detail' programme.department.institution.pk %}"> {{programme.department.institution}}</a>
                             </p>
+                            <hr>
                             {% if programme.mscflow_set.all %}
                                 <p><strong>{% translate "Flows" %} :</strong></p>
                                 {% for flow in programme.mscflow_set.all %}
                                     <p><strong>{{forloop.counter}} : </strong>{{flow.title}}</p>
                                 {% endfor %}
+                                <hr>
                             {% endif %}
                         </div>
                     </div>

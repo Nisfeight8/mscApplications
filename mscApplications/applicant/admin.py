@@ -103,5 +103,5 @@ admin.site.register(Application,ApplicationAdmin)
 
 admin.site.site_header = 'MSC Applications Administration'
 admin.site.index_title = 'MSC Applications administration'
-admin.site.site_title = 'Welcome Secretery'
+admin.site.site_title = 'Welcome Admin'
 

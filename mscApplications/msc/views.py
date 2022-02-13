@@ -1,3 +1,4 @@
+from subprocess import call
 from django.db.models import Q
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -76,6 +77,9 @@ class ApplicationCreateView(LoginRequiredMixin,ApplicantRequiredMixin,ApplicantC
         application = form.save(commit=False)
         application.applicant=self.request.user.applicant
         application.call= get_object_or_404(Call, id=self.kwargs['pk'])
+        if Application.objects.filter(applicant=application.applicant,call=application.call).exists():
+            messages.warning(self.request, (_('You have already submitted an application for this call !')))
+            return redirect('/msc/calls/'+str(self.kwargs['pk'])+'/detail')
         application.save()
         for index,flow_id in enumerate(self.request.POST.getlist('preferences')):
             application.preferences.add(int(flow_id), through_defaults={'priority': index+1})
@@ -126,7 +130,6 @@ class MscProgrammeListView(ListView):
 
     def get_queryset(self):
         qs = self.model.objects.all().order_by('id')
-        paginate_by = 2
         programme_filtered_list = MscProgrammeFilter(self.request.GET, queryset=qs)
         return programme_filtered_list.qs
 
@@ -209,6 +212,7 @@ class CallListView(ListView):
     model = Call
     template_name = 'call/call_list.html'
     context_object_name = 'calls'
+    paginate_by = 4
 
     def get_queryset(self) :
         queryset = Call.objects.filter(Q(end_date__gte=datetime.datetime.now())&Q(start_date__lte=datetime.datetime.now()))

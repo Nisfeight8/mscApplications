@@ -1,7 +1,6 @@
 from django.db import models
 from institution.models import Department
 from django.utils.translation import gettext as _
-from utils.validators import telephone_validator
 from evaluator.models import Evaluator
 from django.db import models
 from applicant.models import Applicant,Reference
@@ -11,10 +10,7 @@ from django.core.validators import FileExtensionValidator
 class MscProgramme(models.Model):
     title = models.CharField(_('Title'),max_length = 200)
     address = models.CharField(_('Address'),max_length=50)
-    pobox = models.CharField(_('Pobox'),max_length=5)
-    city = models.CharField(_('City'),max_length=65)
-    country = models.CharField(_('Country'),max_length=50)
-    telephone = models.CharField(_('Telephone'),max_length = 10,validators=[telephone_validator])
+    description=models.TextField(_('description'),null=True,blank=True)
     department=models.ForeignKey(Department,on_delete=models.CASCADE, verbose_name=_("Department"))
 
     def __str__(self):
@@ -68,7 +64,9 @@ class Application (models.Model):
     class Meta:
         verbose_name = _("Application")
         verbose_name_plural = _("Applications")
-
+        constraints = [
+        models.UniqueConstraint(fields=['applicant', 'call'], name='unique call for applicant')
+    ]
 class Preference(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
     flow = models.ForeignKey(MscFlow,on_delete=models.CASCADE)

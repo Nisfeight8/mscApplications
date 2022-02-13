@@ -2,7 +2,7 @@ from modeltranslation.translator import translator, TranslationOptions
 from .models import *
 
 class MscProgrammeTranslationOptions(TranslationOptions):
-    fields = ('title', 'address','city','country')
+    fields = ('title','description')
 
 translator.register(MscProgramme, MscProgrammeTranslationOptions)
 

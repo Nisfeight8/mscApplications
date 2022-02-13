@@ -6,5 +6,5 @@ class MscProgrammeFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(lookup_expr='icontains')
     class Meta:
         model = MscProgramme
-        fields = ['title','country','city','department']
+        fields = ['title','department__country','department__city','department']
 
